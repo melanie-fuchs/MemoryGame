@@ -1,5 +1,4 @@
 package gui;
-// testGithub2 Hello
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,6 +22,7 @@ public class Memory extends JFrame {
 	JButton jbStart, jbcUseColors, jbChoseFiles, jbClose;
 	JCheckBox jbcTen, jcbSixteen, jcbTwenty, jbcThirty;
 	Font titleFont, instructionsFont;
+	Container contentpane = this.getContentPane();
 	
 	
 	// Constructor
@@ -30,10 +30,11 @@ public class Memory extends JFrame {
 		super("Memory");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-		this.setSize(500, 500);
-		this.setVisible(true);
+		this.setSize(450, 350);
 		
 		this.createGUI();
+
+		this.setVisible(true);
 	}
 	
 	private void createGUI() {
@@ -42,7 +43,7 @@ public class Memory extends JFrame {
 		instructionsFont = new Font("Arial", Font.PLAIN, 14);
 		
 		// set title		
-		jlbTitle = new JLabel("Memory", SwingConstants.CENTER);
+		jlbTitle = new JLabel("Memory Game", SwingConstants.CENTER);
 		jlbTitle.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jlbTitle.setForeground(new Color(150, 50, 50));
 		jlbTitle.setFont(titleFont);
@@ -57,13 +58,15 @@ public class Memory extends JFrame {
 				"You can either play the game with given different colors or\n" +
 				"by using your own photos by chosing them in your file system.";
 		jtaInstructions = new JTextArea(instructions);
+		jtaInstructions.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jtaInstructions.setFont(instructionsFont);
 		
+		// create custom JPanel for game-settings:
 		
 		
-		// put it all onto JFrame
-		this.add(jlbTitle, BorderLayout.NORTH);
-		this.add(jtaInstructions, BorderLayout.CENTER);
+		// put all components onto contentpane of JFrame:
+		contentpane.add(jlbTitle, BorderLayout.NORTH);
+		contentpane.add(jtaInstructions, BorderLayout.CENTER);
 	}
 	
 	
