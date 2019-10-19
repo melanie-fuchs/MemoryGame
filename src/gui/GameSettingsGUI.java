@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,7 @@ import javax.swing.JRadioButton;
 public class GameSettingsGUI extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
+	private Font font = new Font("Arial", Font.PLAIN, 14);
 	
 	/**
 	 * A static variable that represents the number of memory cards to play
@@ -52,6 +54,12 @@ public class GameSettingsGUI extends JPanel {
 		jrbSixteen = new JRadioButton("Sixteen");
 		jrbTwenty = new JRadioButton("Twenty");
 		jrbThirty = new JRadioButton("Thirty");
+		
+		// add fonts
+		jrbTen.setFont(font);
+		jrbSixteen.setFont(font);
+		jrbTwenty.setFont(font);
+		jrbThirty.setFont(font);
 		
 		// put it all together onto JPanel left
 		jRadioBoxes.add(jlbCardSize);
@@ -109,6 +117,11 @@ public class GameSettingsGUI extends JPanel {
 		jbChoseFiles = new JButton("Personal Photos");
 		jlbLoaded = new JLabel(""); // TODO must set text as soon as Files are loaded
 		jbStart = new JButton("Start Game");
+		
+		// set fonts
+		jbUseColors.setFont(font);
+		jbChoseFiles.setFont(font);
+		jbStart.setFont(font);
 		
 		// add listeners to buttons
 		jbUseColors.addActionListener(new ActionListener() {			
