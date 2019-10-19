@@ -1,5 +1,5 @@
 package gui;
-// testGithub
+// testGithub2
 
 import java.awt.BorderLayout;
 import java.awt.Color;
