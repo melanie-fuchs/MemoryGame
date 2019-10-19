@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -14,6 +16,17 @@ import javax.swing.JRadioButton;
 public class GameSettingsGUI extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
+	
+	/**
+	 * A static variable that represents the number of memory cards to play
+	 * with. Default value is 0. The value can be set by pressing one of the
+	 * radiobuttons.
+	 */
+	private int numberOfCards = 0;
+	private void setNumberOfCards(int number) {this.numberOfCards = number;}
+	public int getNumberOfCards() {return numberOfCards;}
+	
+	
 	JLabel jlbCardSize, jlbVersion, jlbLoaded;
 	JRadioButton jrbTen, jrbSixteen, jrbTwenty, jrbThirty;
 	JButton jbStart, jbUseColors, jbChoseFiles;
@@ -25,13 +38,13 @@ public class GameSettingsGUI extends JPanel {
 //		this.setLayout(new GridLayout());
 		this.setSize(150, 150);
 		
-		this.add(createCheckboxes());
+		this.add(createRadiobuttons());
 		this.add(createButtons());
 		
 		this.setVisible(true);		
 	}
 
-	private Component createCheckboxes() {
+	private Component createRadiobuttons() {
 		jRadioBoxes = new JPanel();
 		jRadioBoxes.setLayout(new GridLayout(5, 0, 2, 2));
 		
@@ -54,6 +67,35 @@ public class GameSettingsGUI extends JPanel {
 		group.add(jrbSixteen);
 		group.add(jrbTwenty);
 		group.add(jrbThirty);
+		
+		// add ActionListeners to RadioButtons
+		jrbTen.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setNumberOfCards(10);
+			}
+		});
+		
+		jrbSixteen.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setNumberOfCards(16);
+			}
+		});
+		
+		jrbTwenty.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setNumberOfCards(20);
+			}
+		});
+		
+		jrbThirty.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setNumberOfCards(30);
+			}
+		});
 		
 		return jRadioBoxes;
 		
