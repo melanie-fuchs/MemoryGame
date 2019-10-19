@@ -110,6 +110,31 @@ public class GameSettingsGUI extends JPanel {
 		jlbLoaded = new JLabel(""); // TODO must set text as soon as Files are loaded
 		jbStart = new JButton("Start Game");
 		
+		// add listeners to buttons
+		jbUseColors.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("\"Use Colors\" chosen");
+				// TODO implement colors and stuff
+			}
+		});
+		
+		jbChoseFiles.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("\"Choose Files\" chosen");
+				// TODO implement Logic and JFileChooser here
+			}
+		});
+		
+		jbStart.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("\"Start\" pressed");
+				// TODO Start game here. Open new Window and stuff
+			}
+		});
+		
 		// put it all together onto JPanel right
 		jpButtons.add(jlbVersion);
 		jpButtons.add(jbUseColors);
