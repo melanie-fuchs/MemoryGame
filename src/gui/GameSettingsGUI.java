@@ -31,13 +31,14 @@ public class GameSettingsGUI extends JPanel {
 	private JRadioButton jrbTen, jrbSixteen, jrbTwenty, jrbThirty;
 	private JButton jbStart, jbUseColors, jbChoseFiles;
 	private JPanel jRadioBoxes, jpButtons;
+	private JTextField jtfStatus;
 	
 	/**
 	 * A static variable that represents the number of memory cards to play
 	 * with. Default value is 0. The value can be set by pressing one of the
 	 * radiobuttons.
 	 */
-	private int numberOfCards = 0;
+	private int numberOfCards = 20;
 	private void setNumberOfCards(int number) {this.numberOfCards = number;}
 	public int getNumberOfCards() {return numberOfCards;}
 	
@@ -80,8 +81,8 @@ public class GameSettingsGUI extends JPanel {
 	}
 	
 	private JTextField status() {
-		JTextField jtfStatus = new JTextField("");
-		jtfStatus.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+		jtfStatus = new JTextField("");
+		jtfStatus.setBorder(BorderFactory.createEmptyBorder(1, 10, 1, 10));
 		jtfStatus.setEditable(false);
 		jtfStatus.setForeground(Color.WHITE);
 		jtfStatus.setBackground(Color.BLACK);
@@ -212,6 +213,7 @@ public class GameSettingsGUI extends JPanel {
 				case 2:
 					jlbChosenMode.setText("");
 					jlbChosenMode.setForeground(Color.BLACK);
+					jtfStatus.setText("Please choose " + getNumberOfCards()/2 + " photos.");
 					openFileChooser();
 					break;
 					// TODO start game in PHOTOS mode
