@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -15,10 +16,14 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class GameSettingsGUI extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
+
+	private Font fontTitle = new Font("Arial", Font.BOLD, 24);
 	private Font fontRegular = new Font("Arial", Font.PLAIN, 14);
 	private Font fontBold = new Font("Arial", Font.BOLD, 14);	
 	
@@ -47,14 +52,41 @@ public class GameSettingsGUI extends JPanel {
 
 	
 	public GameSettingsGUI() {
-		this.setLayout(new GridLayout(1, 2, 10, 10));
-		this.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-//		this.setSize(150, 150);
-		
-		this.add(createRadiobuttons());
-		this.add(createButtons());
+		this.setLayout(new BorderLayout());
+
+		this.add(title(), BorderLayout.NORTH);
+		this.add(settings(), BorderLayout.CENTER);
+		this.add(status(), BorderLayout.SOUTH);
 		
 		this.setVisible(true);		
+	}
+	private JLabel title() {
+		JLabel jlbTitleSettings = new JLabel("Settings", SwingConstants.CENTER);
+		jlbTitleSettings.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+		jlbTitleSettings.setFont(fontTitle);
+		
+		return jlbTitleSettings;		
+	}
+	
+	private JPanel settings() {
+		JPanel settingPanel = new JPanel();
+		settingPanel.setLayout(new GridLayout(1, 2, 10, 10));
+		settingPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+		// fill JPanel with radiobuttons and buttons;
+		settingPanel.add(createRadiobuttons());
+		settingPanel.add(createButtons());
+		
+		return settingPanel;
+	}
+	
+	private JTextField status() {
+		JTextField jtfStatus = new JTextField("");
+		jtfStatus.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+		jtfStatus.setEditable(false);
+		jtfStatus.setForeground(Color.WHITE);
+		jtfStatus.setBackground(Color.BLACK);
+		
+		return jtfStatus;		
 	}
 
 	private Component createRadiobuttons() {

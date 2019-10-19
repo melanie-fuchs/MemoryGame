@@ -18,11 +18,12 @@ import javax.swing.SwingConstants;
 public class Memory extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
-	private JLabel jlbTitleMemory, jlbTitleSettings;
-	private JTextField jtfStatus;
+	private JLabel jlbTitleMemory;
 	private JTextArea jtaInstructions;
-	private Font titleFont, instructionsFont;
 	private Container contentpane = this.getContentPane();
+
+	private Font fontTitle = new Font("Arial", Font.BOLD, 24);
+	private Font fontRegular = new Font("Arial", Font.PLAIN, 14);
 	
 	
 	// Constructor
@@ -37,16 +38,12 @@ public class Memory extends JFrame {
 		this.setVisible(true);
 	}
 	
-	private void createGUI() {
-		// set fonts
-		titleFont = new Font("Arial", Font.BOLD, 24);
-		instructionsFont = new Font("Arial", Font.PLAIN, 14);
-		
+	private void createGUI() {		
 		// set title		
 		jlbTitleMemory = new JLabel("Memory Game", SwingConstants.CENTER);
 		jlbTitleMemory.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jlbTitleMemory.setForeground(new Color(80, 50, 50));
-		jlbTitleMemory.setFont(titleFont);
+		jlbTitleMemory.setFont(fontTitle);
 		
 		// set textfield for instructions
 		String instructions = 
@@ -56,33 +53,20 @@ public class Memory extends JFrame {
 				"which card is hidden where and try to reveal the pairs with as\n" +
 				"few tries as possible.\n\n" +
 				"You can either play the game with given different colors or\n" +
-				"by using your own photos by chosing them from your file system.";
+				"by using your own photos by chosing them from your file\n" +
+				"system.";
 		jtaInstructions = new JTextArea(instructions);
 		jtaInstructions.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-		jtaInstructions.setFont(instructionsFont);
+		jtaInstructions.setFont(fontRegular);
 		jtaInstructions.setEditable(false);
-		
-		// create custom JPanel for game-settings:
-		JPanel gameSettingPanel = new JPanel();
-		gameSettingPanel.setLayout(new BorderLayout());
-		jlbTitleSettings = new JLabel("Settings", SwingConstants.CENTER);
-		jlbTitleSettings.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
-		jlbTitleSettings.setFont(titleFont);
-		GameSettingsGUI gameSettings = new GameSettingsGUI();
-		jtfStatus = new JTextField("");
-		jtfStatus.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-		jtfStatus.setEditable(false);
-		jtfStatus.setForeground(Color.WHITE);
-		jtfStatus.setBackground(Color.BLACK);
-		gameSettingPanel.add(jlbTitleSettings, BorderLayout.NORTH);
-		gameSettingPanel.add(gameSettings, BorderLayout.CENTER);
-		gameSettingPanel.add(jtfStatus, BorderLayout.SOUTH);
-		
+
+		// create all the settings:
+		GameSettingsGUI gameSettings = new GameSettingsGUI();	
 		
 		// put all components onto contentpane of JFrame:
 		contentpane.add(jlbTitleMemory, BorderLayout.NORTH);
 		contentpane.add(jtaInstructions, BorderLayout.CENTER);
-		contentpane.add(gameSettingPanel, BorderLayout.SOUTH);
+		contentpane.add(gameSettings, BorderLayout.SOUTH);
 	}
 	
 	
