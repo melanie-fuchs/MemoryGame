@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -47,7 +48,7 @@ public class GameSettingsGUI extends JPanel {
 	public GameSettingsGUI() {
 		this.setLayout(new GridLayout(1, 2, 10, 10));
 		this.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-		this.setSize(150, 150);
+//		this.setSize(150, 150);
 		
 		this.add(createRadiobuttons());
 		this.add(createButtons());
@@ -126,7 +127,7 @@ public class GameSettingsGUI extends JPanel {
 		// create buttons 
 		jlbChooseMode = new JLabel("Chose prefered version:");
 		jlbChooseMode.setFont(fontBold);
-		jbUseColors = new JButton("Use preset colors");
+		jbUseColors = new JButton("Use Preset Colors");
 		jbChoseFiles = new JButton("Choose Photos");
 		jlbChosenMode = new JLabel("");
 		jlbChosenMode.setFont(fontBold);
@@ -142,8 +143,10 @@ public class GameSettingsGUI extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setGameMode(1);
-				jlbChosenMode.setText("Mode \"Colors\" chosen");
+				jbUseColors.setFont(fontBold);
+				jbChoseFiles.setFont(fontRegular);
 				jlbChosenMode.setForeground(Color.BLACK);
+				jlbChosenMode.setText("");
 				// TODO implement colors and stuff
 			}
 		});
@@ -152,8 +155,10 @@ public class GameSettingsGUI extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setGameMode(2);
-				jlbChosenMode.setText("Mode \"Photos\" chosen");
+				jbChoseFiles.setFont(fontBold);
+				jbUseColors.setFont(fontRegular);
 				jlbChosenMode.setForeground(Color.BLACK);
+				jlbChosenMode.setText("");
 				// TODO implement Logic and JFileChooser here
 			}
 		});
@@ -187,15 +192,6 @@ public class GameSettingsGUI extends JPanel {
 		jpButtons.add(jlbChosenMode);
 		jpButtons.add(jbStart);	
 		
-		return jpButtons;
-		
+		return jpButtons;		
 	}
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new GameSettingsGUI();
-
-	}
-
 }
