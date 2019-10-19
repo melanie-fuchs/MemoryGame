@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -25,7 +24,6 @@ public class GameSettingsGUI extends JPanel {
 	private int numberOfCards = 0;
 	private void setNumberOfCards(int number) {this.numberOfCards = number;}
 	public int getNumberOfCards() {return numberOfCards;}
-	
 	
 	JLabel jlbCardSize, jlbVersion, jlbLoaded;
 	JRadioButton jrbTen, jrbSixteen, jrbTwenty, jrbThirty;

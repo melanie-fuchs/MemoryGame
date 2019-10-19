@@ -14,10 +14,10 @@ import javax.swing.SwingConstants;
 public class Memory extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
-	JLabel jlbTitle;
-	JTextArea jtaInstructions;
-	Font titleFont, instructionsFont;
-	Container contentpane = this.getContentPane();
+	private JLabel jlbTitle;
+	private JTextArea jtaInstructions;
+	private Font titleFont, instructionsFont;
+	private Container contentpane = this.getContentPane();
 	
 	
 	// Constructor
