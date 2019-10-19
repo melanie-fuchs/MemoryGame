@@ -4,18 +4,20 @@ import java.awt.Component;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 public class GameSettingsGUI extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	JLabel jlbCardSize, jlbVersion, jlbLoaded;
-	JCheckBox jcbTen, jcbSixteen, jcbTwenty, jcbThirty;
+	JRadioButton jrbTen, jrbSixteen, jrbTwenty, jrbThirty;
 	JButton jbStart, jbUseColors, jbChoseFiles;
-	JPanel jpCheckboxes, jpButtons;
+	JPanel jRadioBoxes, jpButtons;
 	
 	public GameSettingsGUI() {
 		this.setLayout(new GridLayout(1, 2, 10, 10));
@@ -30,24 +32,30 @@ public class GameSettingsGUI extends JPanel {
 	}
 
 	private Component createCheckboxes() {
-		jpCheckboxes = new JPanel();
-		jpCheckboxes.setLayout(new GridLayout(5, 0, 2, 2));
+		jRadioBoxes = new JPanel();
+		jRadioBoxes.setLayout(new GridLayout(5, 0, 2, 2));
 		
 		// create options for number of memory cards to play with:
 		jlbCardSize = new JLabel("No. of Memory-Cards:");
-		jcbTen = new JCheckBox("Ten");
-		jcbSixteen = new JCheckBox("Sixteen");
-		jcbTwenty = new JCheckBox("Twenty");
-		jcbThirty = new JCheckBox("Thirty");
+		jrbTen = new JRadioButton("Ten");
+		jrbSixteen = new JRadioButton("Sixteen");
+		jrbTwenty = new JRadioButton("Twenty");
+		jrbThirty = new JRadioButton("Thirty");
 		
 		// put it all together onto JPanel left
-		jpCheckboxes.add(jlbCardSize);
-		jpCheckboxes.add(jcbTen);
-		jpCheckboxes.add(jcbSixteen);
-		jpCheckboxes.add(jcbTwenty);
-		jpCheckboxes.add(jcbThirty);
+		jRadioBoxes.add(jlbCardSize);
+		jRadioBoxes.add(jrbTen);
+		jRadioBoxes.add(jrbSixteen);
+		jRadioBoxes.add(jrbTwenty);
+		jRadioBoxes.add(jrbThirty);
 		
-		return jpCheckboxes;
+		ButtonGroup group = new ButtonGroup();
+		group.add(jrbTen);
+		group.add(jrbSixteen);
+		group.add(jrbTwenty);
+		group.add(jrbThirty);
+		
+		return jRadioBoxes;
 		
 	}
 
