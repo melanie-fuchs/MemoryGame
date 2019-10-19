@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -16,7 +17,13 @@ import javax.swing.JRadioButton;
 public class GameSettingsGUI extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private Font font = new Font("Arial", Font.PLAIN, 14);
+	private Font fontRegular = new Font("Arial", Font.PLAIN, 14);
+	private Font fontBold = new Font("Arial", Font.BOLD, 14);	
+	
+	private JLabel jlbNumberOfCards, jlbChooseMode, jlbChosenMode;
+	private JRadioButton jrbTen, jrbSixteen, jrbTwenty, jrbThirty;
+	private JButton jbStart, jbUseColors, jbChoseFiles;
+	private JPanel jRadioBoxes, jpButtons;
 	
 	/**
 	 * A static variable that represents the number of memory cards to play
@@ -35,17 +42,11 @@ public class GameSettingsGUI extends JPanel {
 	private int gameMode = 0;
 	private void setGameMode(int gameMode) {this.gameMode = gameMode;}
 	public int getGameMode() {return gameMode;}
-	
-	
-	JLabel jlbCardSize, jlbVersion, jlbLoaded;
-	JRadioButton jrbTen, jrbSixteen, jrbTwenty, jrbThirty;
-	JButton jbStart, jbUseColors, jbChoseFiles;
-	JPanel jRadioBoxes, jpButtons;
+
 	
 	public GameSettingsGUI() {
 		this.setLayout(new GridLayout(1, 2, 10, 10));
 		this.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-//		this.setLayout(new GridLayout());
 		this.setSize(150, 150);
 		
 		this.add(createRadiobuttons());
@@ -59,20 +60,21 @@ public class GameSettingsGUI extends JPanel {
 		jRadioBoxes.setLayout(new GridLayout(5, 0, 2, 2));
 		
 		// create options for number of memory cards to play with:
-		jlbCardSize = new JLabel("No. of Memory-Cards:");
+		jlbNumberOfCards = new JLabel("No. of Memory-Cards:");
+		jlbNumberOfCards.setFont(fontBold);
 		jrbTen = new JRadioButton("Ten");
 		jrbSixteen = new JRadioButton("Sixteen");
 		jrbTwenty = new JRadioButton("Twenty");
 		jrbThirty = new JRadioButton("Thirty");
 		
 		// add fonts
-		jrbTen.setFont(font);
-		jrbSixteen.setFont(font);
-		jrbTwenty.setFont(font);
-		jrbThirty.setFont(font);
+		jrbTen.setFont(fontRegular);
+		jrbSixteen.setFont(fontRegular);
+		jrbTwenty.setFont(fontRegular);
+		jrbThirty.setFont(fontRegular);
 		
 		// put it all together onto JPanel left
-		jRadioBoxes.add(jlbCardSize);
+		jRadioBoxes.add(jlbNumberOfCards);
 		jRadioBoxes.add(jrbTen);
 		jRadioBoxes.add(jrbSixteen);
 		jRadioBoxes.add(jrbTwenty);
@@ -122,24 +124,26 @@ public class GameSettingsGUI extends JPanel {
 		jpButtons.setLayout(new GridLayout(5, 0, 2, 2));
 		
 		// create buttons 
-		jlbVersion = new JLabel("Chose prefered version:");
+		jlbChooseMode = new JLabel("Chose prefered version:");
+		jlbChooseMode.setFont(fontBold);
 		jbUseColors = new JButton("Use preset colors");
 		jbChoseFiles = new JButton("Choose Photos");
-		jlbLoaded = new JLabel(""); // TODO must set text as soon as Files are loaded
+		jlbChosenMode = new JLabel("");
+		jlbChosenMode.setFont(fontBold);
 		jbStart = new JButton("Start Game");
 		
 		// set fonts
-		jbUseColors.setFont(font);
-		jbChoseFiles.setFont(font);
-		jbStart.setFont(font);
+		jbUseColors.setFont(fontRegular);
+		jbChoseFiles.setFont(fontRegular);
+		jbStart.setFont(fontRegular);
 		
 		// add listeners to buttons
 		jbUseColors.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("\"Use Colors\" chosen");
 				setGameMode(1);
-				jlbLoaded.setText("Mode \"Colors\" chosen");
+				jlbChosenMode.setText("Mode \"Colors\" chosen");
+				jlbChosenMode.setForeground(Color.BLACK);
 				// TODO implement colors and stuff
 			}
 		});
@@ -147,9 +151,9 @@ public class GameSettingsGUI extends JPanel {
 		jbChoseFiles.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("\"Choose Files\" chosen");
 				setGameMode(2);
-				jlbLoaded.setText("Mode \"Photos\" chosen");
+				jlbChosenMode.setText("Mode \"Photos\" chosen");
+				jlbChosenMode.setForeground(Color.BLACK);
 				// TODO implement Logic and JFileChooser here
 			}
 		});
@@ -157,25 +161,30 @@ public class GameSettingsGUI extends JPanel {
 		jbStart.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("\"Start\" pressed");
 				switch(gameMode) {
 				case 0:
-					jlbLoaded.setText("Game-Mode must be set!");
+					jlbChosenMode.setText("Game-Mode must be set!");
+					jlbChosenMode.setForeground(Color.RED);
+					break;
 				case 1:
-					jlbLoaded.setText("Game-Mode");
+					jlbChosenMode.setText("");
+					jlbChosenMode.setForeground(Color.BLACK);
+					break;
 					// TODO start game in COLORS mode
 				case 2:
-					jlbLoaded.setText("HELLO FROM THE OTheR sidE");
+					jlbChosenMode.setText("");
+					jlbChosenMode.setForeground(Color.BLACK);
+					break;
 					// TODO start game in PHOTOS mode
 				}
 			}
 		});
 		
 		// put it all together onto JPanel right
-		jpButtons.add(jlbVersion);
+		jpButtons.add(jlbChooseMode);
 		jpButtons.add(jbUseColors);
 		jpButtons.add(jbChoseFiles);
-		jpButtons.add(jlbLoaded);
+		jpButtons.add(jlbChosenMode);
 		jpButtons.add(jbStart);	
 		
 		return jpButtons;
