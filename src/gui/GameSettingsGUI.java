@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -36,7 +37,7 @@ public class GameSettingsGUI extends JPanel {
 	public int getNumberOfCards() {return numberOfCards;}
 	
 	/**
-	 * int -value that represents a game-mode. The game-mode can be either 0
+	 * int-value that represents a game-mode. The game-mode can be either 0
 	 * (if not set yet), 1 (if mode "colors" is chosen) or 2 (if mode "photos"
 	 * is chosen). 
 	 */
@@ -179,6 +180,7 @@ public class GameSettingsGUI extends JPanel {
 				case 2:
 					jlbChosenMode.setText("");
 					jlbChosenMode.setForeground(Color.BLACK);
+					openFileChooser();
 					break;
 					// TODO start game in PHOTOS mode
 				}
@@ -193,5 +195,10 @@ public class GameSettingsGUI extends JPanel {
 		jpButtons.add(jbStart);	
 		
 		return jpButtons;		
+	}
+	
+	private void openFileChooser() {
+		JFileChooser chooser = new JFileChooser();
+		chooser.showOpenDialog(this);
 	}
 }

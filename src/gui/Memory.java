@@ -52,14 +52,13 @@ public class Memory extends JFrame {
 				"identical, you can reveal another two cards. If you did not find\n" +
 				"a pair, the cards will be turned around again. Try to remember\n" +
 				"which card is hidden where and try to reveal the pairs with as\n" +
-				"little tries as possible.\n\n" +
+				"few tries as possible.\n\n" +
 				"You can either play the game with given different colors or\n" +
 				"by using your own photos by chosing them from your file system.";
 		jtaInstructions = new JTextArea(instructions);
 		jtaInstructions.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jtaInstructions.setFont(instructionsFont);
 		jtaInstructions.setEditable(false);
-
 		
 		// create custom JPanel for game-settings:
 		JPanel gameSettingPanel = new JPanel();
@@ -67,9 +66,7 @@ public class Memory extends JFrame {
 		jlbTitleSettings = new JLabel("Settings", SwingConstants.CENTER);
 		jlbTitleSettings.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		jlbTitleSettings.setFont(titleFont);
-		
 		GameSettingsGUI gameSettings = new GameSettingsGUI();
-		
 		gameSettingPanel.add(jlbTitleSettings, BorderLayout.NORTH);
 		gameSettingPanel.add(gameSettings, BorderLayout.CENTER);
 	
