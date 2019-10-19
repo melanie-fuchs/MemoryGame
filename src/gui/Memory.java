@@ -12,12 +12,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class Memory extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel jlbTitleMemory, jlbTitleSettings;
+	private JTextField jtfStatus;
 	private JTextArea jtaInstructions;
 	private Font titleFont, instructionsFont;
 	private Container contentpane = this.getContentPane();
@@ -28,7 +30,7 @@ public class Memory extends JFrame {
 		super("Memory");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-		this.setSize(450, 450);
+		this.setSize(450, 500);
 		
 		this.createGUI();
 
@@ -67,9 +69,16 @@ public class Memory extends JFrame {
 		jlbTitleSettings.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		jlbTitleSettings.setFont(titleFont);
 		GameSettingsGUI gameSettings = new GameSettingsGUI();
+		jtfStatus = new JTextField("");
+		jtfStatus.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+		jtfStatus.setEditable(false);
+		jtfStatus.setForeground(Color.WHITE);
+		jtfStatus.setBackground(Color.BLACK);
 		gameSettingPanel.add(jlbTitleSettings, BorderLayout.NORTH);
 		gameSettingPanel.add(gameSettings, BorderLayout.CENTER);
-	
+		gameSettingPanel.add(jtfStatus, BorderLayout.SOUTH);
+		
+		
 		// put all components onto contentpane of JFrame:
 		contentpane.add(jlbTitleMemory, BorderLayout.NORTH);
 		contentpane.add(jtaInstructions, BorderLayout.CENTER);
