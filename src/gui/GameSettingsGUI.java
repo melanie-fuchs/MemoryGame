@@ -27,6 +27,16 @@ public class GameSettingsGUI extends JPanel {
 	private void setNumberOfCards(int number) {this.numberOfCards = number;}
 	public int getNumberOfCards() {return numberOfCards;}
 	
+	/**
+	 * int -value that represents a game-mode. The game-mode can be either 0
+	 * (if not set yet), 1 (if mode "colors" is chosen) or 2 (if mode "photos"
+	 * is chosen). 
+	 */
+	private int gameMode = 0;
+	private void setGameMode(int gameMode) {this.gameMode = gameMode;}
+	public int getGameMode() {return gameMode;}
+	
+	
 	JLabel jlbCardSize, jlbVersion, jlbLoaded;
 	JRadioButton jrbTen, jrbSixteen, jrbTwenty, jrbThirty;
 	JButton jbStart, jbUseColors, jbChoseFiles;
@@ -114,7 +124,7 @@ public class GameSettingsGUI extends JPanel {
 		// create buttons 
 		jlbVersion = new JLabel("Chose prefered version:");
 		jbUseColors = new JButton("Use preset colors");
-		jbChoseFiles = new JButton("Personal Photos");
+		jbChoseFiles = new JButton("Choose Photos");
 		jlbLoaded = new JLabel(""); // TODO must set text as soon as Files are loaded
 		jbStart = new JButton("Start Game");
 		
@@ -128,6 +138,8 @@ public class GameSettingsGUI extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("\"Use Colors\" chosen");
+				setGameMode(1);
+				jlbLoaded.setText("Mode \"Colors\" chosen");
 				// TODO implement colors and stuff
 			}
 		});
@@ -136,6 +148,8 @@ public class GameSettingsGUI extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("\"Choose Files\" chosen");
+				setGameMode(2);
+				jlbLoaded.setText("Mode \"Photos\" chosen");
 				// TODO implement Logic and JFileChooser here
 			}
 		});
@@ -144,7 +158,16 @@ public class GameSettingsGUI extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("\"Start\" pressed");
-				// TODO Start game here. Open new Window and stuff
+				switch(gameMode) {
+				case 0:
+					jlbLoaded.setText("Game-Mode must be set!");
+				case 1:
+					jlbLoaded.setText("Game-Mode");
+					// TODO start game in COLORS mode
+				case 2:
+					jlbLoaded.setText("HELLO FROM THE OTheR sidE");
+					// TODO start game in PHOTOS mode
+				}
 			}
 		});
 		
