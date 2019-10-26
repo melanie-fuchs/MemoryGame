@@ -193,6 +193,9 @@ public class GameSettingsGUI extends JPanel {
 				jbUseColors.setFont(fontRegular);
 				jlbChosenMode.setForeground(Color.BLACK);
 				jlbChosenMode.setText("");
+				jtfStatus.setText("Please choose " + getNumberOfCards()/2 +
+						" photos from your file system.");
+				openFileChooser();
 				// TODO implement Logic and JFileChooser here
 			}
 		});
@@ -213,8 +216,6 @@ public class GameSettingsGUI extends JPanel {
 				case 2:
 					jlbChosenMode.setText("");
 					jlbChosenMode.setForeground(Color.BLACK);
-					jtfStatus.setText("Please choose " + getNumberOfCards()/2 + " photos.");
-					openFileChooser();
 					break;
 					// TODO start game in PHOTOS mode
 				}
@@ -231,8 +232,8 @@ public class GameSettingsGUI extends JPanel {
 		return jpButtons;		
 	}
 	
-	private void openFileChooser() {
-		JFileChooser chooser = new JFileChooser();
+	private void openFileChooser() {		
+		PhotoChooser chooser = new PhotoChooser();
 		chooser.showOpenDialog(this);
 	}
 }
