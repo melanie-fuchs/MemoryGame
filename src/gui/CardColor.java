@@ -5,13 +5,12 @@ package gui;
 
 import java.awt.Color;
 
-import javax.swing.JButton;
 
 /**
  * @author yume
  *
  */
-public class CardColor extends JButton implements BaseCard {
+public class CardColor extends BaseCard {
 	
 	private int cardID;				// ID of the card. The game will use this ID to compare pairs
 	public int getCardID() {		// getter for cardID

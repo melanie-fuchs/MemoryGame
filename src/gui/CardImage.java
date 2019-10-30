@@ -4,16 +4,13 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-
 /**
  * @author yume
  *
  */
-public class CardImage extends JButton implements BaseCard {
+public class CardImage extends BaseCard {
 	
 	private int cardID;				// ID of the card. The game will use this ID to compare pairs
 	public int getCardID() {		// getter for cardID
