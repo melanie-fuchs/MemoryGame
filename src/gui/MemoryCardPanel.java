@@ -55,13 +55,13 @@ public class MemoryCardPanel extends JPanel {
 	private void setGridLayout(int memorySize) {
 		switch (memorySize) {
 		case 16:
-			this.setLayout(new GridLayout(4, 4, 5, 5));
+			this.setLayout(new GridLayout(4, 4, 7, 7));
 			break;
 		case 20:
-			this.setLayout(new GridLayout(4, 5, 5 ,5));
+			this.setLayout(new GridLayout(4, 5, 7 ,7));
 			break;
 		case 30:
-			this.setLayout(new GridLayout(5, 6, 5, 5));
+			this.setLayout(new GridLayout(5, 6, 7, 7));
 			break;
 		}
 	}
