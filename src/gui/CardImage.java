@@ -35,17 +35,19 @@ public class CardImage extends BaseCard {
 	
 	@Override
 	public void switchFace() {
-		if(faceUp) {
-			this.setBackground(backgroundColor);
-			this.faceUp = false;
-		} else {
-			try {
-				foregroundImage = new ImageIcon(imagePath);
-				this.setIcon(foregroundImage);
-				this.faceUp = true;
-			} catch (Exception e) {
-				System.out.println("CardImage.switchFace: " + e.getMessage());
-				System.exit(99);
+		if(!locked) {
+			if(faceUp) {
+				this.setBackground(backgroundColor);
+				this.faceUp = false;
+			} else {
+				try {
+					foregroundImage = new ImageIcon(imagePath);
+					this.setIcon(foregroundImage);
+					this.faceUp = true;
+				} catch (Exception e) {
+					System.out.println("CardImage.switchFace: " + e.getMessage());
+					System.exit(99);
+				}
 			}
 		}
 	}

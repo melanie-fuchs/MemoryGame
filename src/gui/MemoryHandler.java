@@ -22,6 +22,7 @@ public class MemoryHandler {
 				System.out.println("They match");
 				flippedPairs.add(tempCardArray.elementAt(0));
 				tempCardArray.removeAllElements();
+				// TODO lock revealed cards
 			} else {
 				System.out.println("They do not match");
 				tempCardArray.removeAllElements();

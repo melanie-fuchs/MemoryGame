@@ -34,12 +34,14 @@ public class CardColor extends BaseCard {
 	
 	@Override
 	public void switchFace() {
-		if(faceUp) {
-			this.setBackground(backgroundColor);
-			this.faceUp = false;
-		} else {
-			this.setBackground(foregroundColor);
-			this.faceUp = true;
+		if(!locked) {
+			if(faceUp) {
+				this.setBackground(backgroundColor);
+				this.faceUp = false;
+			} else {
+				this.setBackground(foregroundColor);
+				this.faceUp = true;
+			}
 		}
 	}
 }
