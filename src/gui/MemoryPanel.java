@@ -3,18 +3,19 @@
  */
 package gui;
 
+import java.awt.Button;
 import java.awt.GridLayout;
+import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.JPanel;
 
 /**
- * A base class for memory-panels. The class sets a gridlayout
- * TODO some more
+ * 
  * @author yume
  *
  */
-public abstract class BaseMemoryPanel extends JPanel {
+public class MemoryPanel extends JPanel {
 	
 	private int memorySize;		// 16, 20 or 30 cards possible
 	private void setMemorySize(int memorySize) {
@@ -32,10 +33,18 @@ public abstract class BaseMemoryPanel extends JPanel {
 		return cards;
 	}
 	
-	public BaseMemoryPanel(int memorySize, Vector<BaseCard> cards) {
+	/**
+	 * Constructor that takes an int-value that represents the gamesize
+	 * (number of cards in the game) and a Vector of memory-cards.
+	 * 
+	 * @param memorySize
+	 * @param cards
+	 */
+	public MemoryPanel(int memorySize, Vector<BaseCard> cards) {
 		setMemorySize(memorySize);
 		setCards(cards);
 		setGridLayout(memorySize);
+		fillPanel(cards);
 	}
 	
 	/**
@@ -58,6 +67,16 @@ public abstract class BaseMemoryPanel extends JPanel {
 		}
 	}
 	
-	abstract void fillPanel();
-	
+	/**
+	 * Method that shuffles the cards of the Vector and adds them to
+	 * the GridLayout.
+	 * 
+	 * @param cards
+	 */
+	private void fillPanel(Vector<BaseCard> cards) {
+		Collections.shuffle(cards);	// shuffle cards in random order
+		for (int i = 0; i < cards.size(); i++) {
+			this.add(cards.get(i));
+		}
+	}	
 }
