@@ -15,14 +15,20 @@ import javax.swing.JFrame;
  */
 public class MemoryFrame extends JFrame {
 	
+	private int memorySize;
 	private MemoryCardPanel memoryCardPanel;
 	private MemorySettingPanel memorySettingPanel;
 	
 	public MemoryFrame(int memorySize, Vector<BaseCard> cards) {
 		super("Memory");
+		this.memorySize = memorySize;
+		if(memorySize == 16) {
+			this.setSize(650, 750);
+		} else {
+			this.setSize(720, 700);
+		}
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setSize(650, 750);
 		this.setLayout(new BorderLayout());
 		
 		memoryCardPanel = new MemoryCardPanel(memorySize, cards);
