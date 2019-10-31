@@ -4,6 +4,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.util.Vector;
 
@@ -31,6 +32,10 @@ public class CardColor extends BaseCard {
 		this.setBackground(backgroundColor);
 		this.faceUp = false;
 		this.locked = false;		
+
+		if(!locked) {
+			this.setCursor(new Cursor(Cursor.HAND_CURSOR)); // cursor for unlocked cards
+		}
 	}
 	
 	@Override

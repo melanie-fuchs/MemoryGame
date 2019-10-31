@@ -23,6 +23,7 @@ public class MemoryHandler {
 				flippedPairs.add(tempCardArray.elementAt(0));
 				tempCardArray.removeAllElements();
 				// TODO lock revealed cards
+				// TODO set cursor cannot be hand card is locked
 			} else {
 				System.out.println("They do not match");
 				tempCardArray.removeAllElements();
