@@ -12,3 +12,5 @@ local.properties
 .loadpath
 notes.txt
 TestClass.java
+.idea/
+MemoryGame.iml
