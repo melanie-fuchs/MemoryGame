@@ -4,6 +4,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 /**
@@ -34,7 +35,18 @@ public class CardImage extends BaseCard {
 	}
 	
 	@Override
-	public void switchFace() {
+	protected void paintComponent(Graphics g) {
+        if (getModel().isPressed()) {
+            g.setColor(backgroundColor);
+        } else {
+            g.setColor(getBackground());
+        }
+        g.fillRect(0, 0, getWidth(), getHeight());
+//      super.paintComponent(g); //TODO might have to be active
+    }
+	
+	@Override
+	protected void switchFace() {
 		if(!locked) {
 			if(faceUp) {
 				this.setBackground(backgroundColor);

@@ -44,7 +44,7 @@ public class MemoryFrame extends JFrame {
 	public static void main(String[] args) {
 		Vector<BaseCard> cards = new Vector<BaseCard>();
 		for(int i = 0; i < 16; i++) {
-			cards.add(new CardColor(Color.GREEN, Color.BLACK, i));
+			cards.add(new CardColor(Color.GREEN, Color.BLUE, i));
 		}
 		
 		new MemoryFrame(16, cards);

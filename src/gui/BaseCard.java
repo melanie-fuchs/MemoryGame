@@ -3,6 +3,7 @@
  */
 package gui;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,6 +22,7 @@ public abstract class BaseCard extends JButton {
 	 */
 	public BaseCard() {
 		super();
+		super.setContentAreaFilled(false);
 		this.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -29,8 +31,10 @@ public abstract class BaseCard extends JButton {
 		});
 	}	
 
+	protected abstract void paintComponent(Graphics g);
+	
 	/**
 	 * The method switches the faces of the memory-card.
 	 */
-	abstract void switchFace();
+	protected abstract void switchFace();
 }
