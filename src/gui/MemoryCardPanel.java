@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 /**
  * 
@@ -40,6 +41,7 @@ public class MemoryCardPanel extends JPanel {
 	 * @param cards
 	 */
 	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards) {
+		this.setBorder(new EmptyBorder(10, 10, 15, 10));
 		setMemorySize(memorySize);
 		setCards(cards);
 		setGridLayout(memorySize);
