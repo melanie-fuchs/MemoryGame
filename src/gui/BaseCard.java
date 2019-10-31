@@ -3,19 +3,22 @@
  */
 package gui;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
 /**
+ * Abstract BaseClass for memorycards (JButtons).
  * @author yume
  *
  */
 public abstract class BaseCard extends JButton {
-	abstract void switchFace();
 	
+	/**
+	 * Constructor that adds an ActionListener to the JButton. The
+	 * ActionListener calls the method <code>switchFace()</code>.
+	 */
 	public BaseCard() {
 		super();
 		this.addActionListener(new ActionListener() {
@@ -25,4 +28,9 @@ public abstract class BaseCard extends JButton {
 			}
 		});
 	}	
+
+	/**
+	 * The method switches the faces of the memory-card.
+	 */
+	abstract void switchFace();
 }
