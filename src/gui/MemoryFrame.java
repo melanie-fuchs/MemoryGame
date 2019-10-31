@@ -22,7 +22,7 @@ public class MemoryFrame extends JFrame {
 		super("Memory");
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setSize(700, 700);
+		this.setSize(650, 750);
 		this.setLayout(new BorderLayout());
 		
 		memoryCardPanel = new MemoryCardPanel(memorySize, cards);
