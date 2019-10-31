@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  * @author yume
  *
  */
-public class MemoryPanel extends JPanel {
+public class MemoryCardPanel extends JPanel {
 	
 	private int memorySize;		// 16, 20 or 30 cards possible
 	private void setMemorySize(int memorySize) {
@@ -39,7 +39,7 @@ public class MemoryPanel extends JPanel {
 	 * @param memorySize
 	 * @param cards
 	 */
-	public MemoryPanel(int memorySize, Vector<BaseCard> cards) {
+	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards) {
 		setMemorySize(memorySize);
 		setCards(cards);
 		setGridLayout(memorySize);
