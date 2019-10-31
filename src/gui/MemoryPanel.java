@@ -3,7 +3,6 @@
  */
 package gui;
 
-import java.awt.Button;
 import java.awt.GridLayout;
 import java.util.Collections;
 import java.util.Vector;
