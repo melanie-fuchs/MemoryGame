@@ -18,6 +18,7 @@ public class CardColor extends BaseCard {
 		return cardID;
 	}
 	private boolean faceUp; 		// true if face is visible, false if card is hidden
+	private boolean locked;			// true if card was successfully revealed as a pair, false if not
 	private Color backgroundColor;	// backgroundcolor of every card
 	private Color foregroundColor;	// foregroundcolor of every card
 	
@@ -28,6 +29,7 @@ public class CardColor extends BaseCard {
 		
 		this.setBackground(backgroundColor);
 		this.faceUp = false;
+		this.locked = false;
 	}
 	
 	@Override
