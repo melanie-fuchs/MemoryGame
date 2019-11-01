@@ -34,9 +34,8 @@ public class MemorySettingPanel extends JPanel {
 	private JFrame parentFrame;
 	private MemoryModel model;
 	
-	public MemorySettingPanel(JFrame parentFrame, MemoryModel model) {
+	public MemorySettingPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
-		this.model = model;
 		this.setLayout(new GridLayout(2, 3, 60, 5));
 		this.setBorder(new EmptyBorder(10, 10, 15, 10));
 		jbEndGame = new JButton("End Game");

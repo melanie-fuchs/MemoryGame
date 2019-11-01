@@ -42,8 +42,7 @@ public class MemoryCardPanel extends JPanel {
 	 * @param memorySize
 	 * @param cards
 	 */
-	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards, MemoryModel model) {
-		this.model = model;
+	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards) {
 		this.setBorder(new EmptyBorder(10, 10, 15, 10));
 		setMemorySize(memorySize);
 		setCards(cards);
