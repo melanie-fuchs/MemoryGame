@@ -26,7 +26,7 @@ public abstract class BaseCard extends JButton {
 	}	
 
 	protected abstract int getCardID();
-	
+	protected abstract void setLocked();
 	protected abstract void paintComponent(Graphics g);
 	
 	/**
