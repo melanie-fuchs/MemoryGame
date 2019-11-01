@@ -170,11 +170,11 @@ public class GameSettingsGUI extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setGameMode(1);
+				jtfStatus.setText("");
 				jbUseColors.setFont(fontBold);
 				jbChoseFiles.setFont(fontRegular);
 				jlbChosenMode.setForeground(Color.BLACK);
 				jlbChosenMode.setText("");
-				// TODO implement colors and stuff
 			}
 		});
 		
