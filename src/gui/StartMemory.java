@@ -54,7 +54,7 @@ public class StartMemory {
 	}
 	
 	private void initColors() {		
-		colors[0] = new Color(170, 11, 50); 	// darkRed
+		colors[0] = new Color(130, 20, 30); 	// darkRed
 		colors[1] = new Color(240, 40, 90); 	// red
 		colors[2] = new Color(240, 140, 60); 	// orange
 		colors[3] = new Color(255, 240, 130); 	// yellow
@@ -64,12 +64,12 @@ public class StartMemory {
 		colors[7] = new Color(75, 5, 190); 		// purple
 
 		colors[8] = new Color(240, 100, 40); 	// darkOrange2
-		colors[9] = new Color(250, 230, 100); 	// darkYellow
+		colors[9] = new Color(250, 200, 100); 	// darkYellow
 
-		colors[10] = new Color(45, 175, 10); 	// darkGreen
-		colors[11] = new Color(220, 255, 130);	 // lime
+		colors[10] = new Color(0, 100, 0);	 	// darkGreen
+		colors[11] = new Color(220, 255, 130);	// lime
 		colors[12] = new Color(0, 40, 190); 	// darkBlue
 		colors[13] = new Color(135, 5, 190); 	// fuchsia
-		colors[14] = new Color(190, 5, 105); 	// pink
+		colors[14] = new Color(255, 105, 225); 	// pink
 	}
 }
