@@ -33,7 +33,7 @@ public class MemoryModel {
 		allMemoryCards.put(card.getCardID(), card);
 	}
 	
-	public void action() {
+	public void action(int cardID) {
 		// TODO call switchFace-method here in the 
 		// card
 	}
