@@ -38,7 +38,7 @@ public class MemoryModel {
 		BaseCard tempCard = getMemoryCard(hashCode);
 		tempCard.switchFace();
 		tempCardArray.add(tempCard);
-		
+
 		if(tempCardArray.size() == 2){
 			this.checkPairs();
 		}
