@@ -83,6 +83,7 @@ public class MemoryCardPanel extends JPanel {
 		Collections.shuffle(cards);	// shuffle cards in random order
 		for (int i = 0; i < cards.size(); i++) {
 			BaseCard currentCard = cards.get(i);
+			// TODO add custom actionlistener right here?
 			this.add(currentCard);
 			model.registerCard(currentCard);
 		}
