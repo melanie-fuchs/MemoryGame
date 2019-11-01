@@ -16,7 +16,9 @@ import java.util.Vector;
 public class CardColor extends BaseCard {
 	
 	private int cardID;				// ID of the card. The game will use this ID to compare pairs
-	public int getCardID() {		// getter for cardID
+	
+	@Override
+	protected int getCardID() {		// getter for cardID
 		return cardID;
 	}
 	private boolean faceUp; 		// true if face is visible, false if card is hidden

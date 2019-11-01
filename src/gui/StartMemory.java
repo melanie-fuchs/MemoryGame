@@ -41,8 +41,8 @@ public class StartMemory {
 		initColors();
 		for(int i = 0; i < (gameSize / 2); i++) {
 			cards.add(new CardColor(colors[i], colorBack, i));
-			cards.add(new CardColor(colors[i], colorBack, i));		
-		}		
+			cards.add(new CardColor(colors[i], colorBack, i));					
+		}
 	}
 	
 	private void generateImageCards() {

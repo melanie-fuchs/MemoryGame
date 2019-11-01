@@ -1,5 +1,6 @@
 package gui;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 import gui.BaseCard;
@@ -18,10 +19,16 @@ public class MemoryModel {
 
 	private Vector<BaseCard> tempCardArray; 	
 	private Vector<BaseCard> flippedPairs;
+	private HashMap<Integer, BaseCard> allMemoryCards; // TODO types not clear yet. Gotta think about that some more
 	
 	public MemoryModel() {
 		tempCardArray = new Vector<BaseCard>();
 		flippedPairs = new Vector<BaseCard>();
+		allMemoryCards = new HashMap<Integer, BaseCard>();
+	}
+	
+	public void registerCard(BaseCard card) {
+		allMemoryCards.put(card.getCardID(), card);
 	}
 	
 	public void action() {
