@@ -28,7 +28,7 @@ public class GameSettingsGUI extends JPanel {
 	private Font fontBold = new Font("Arial", Font.BOLD, 14);	
 	
 	private JLabel jlbNumberOfCards, jlbChooseMode, jlbChosenMode;
-	private JRadioButton jrbTen, jrbSixteen, jrbTwenty, jrbThirty;
+	private JRadioButton jrbSixteen, jrbTwenty, jrbThirty;
 	private JButton jbStart, jbUseColors, jbChoseFiles;
 	private JPanel jRadioBoxes, jpButtons;
 	private JTextField jtfStatus;
@@ -97,38 +97,27 @@ public class GameSettingsGUI extends JPanel {
 		// create options for number of memory cards to play with:
 		jlbNumberOfCards = new JLabel("No. of Memory-Cards:");
 		jlbNumberOfCards.setFont(fontBold);
-		jrbTen = new JRadioButton("Ten");
 		jrbSixteen = new JRadioButton("Sixteen");
 		jrbTwenty = new JRadioButton("Twenty");
 		jrbThirty = new JRadioButton("Thirty");
 		
 		// add fonts
-		jrbTen.setFont(fontRegular);
 		jrbSixteen.setFont(fontRegular);
 		jrbTwenty.setFont(fontRegular);
 		jrbThirty.setFont(fontRegular);
 		
 		// put it all together onto JPanel left
 		jRadioBoxes.add(jlbNumberOfCards);
-		jRadioBoxes.add(jrbTen);
 		jRadioBoxes.add(jrbSixteen);
 		jRadioBoxes.add(jrbTwenty);
 		jRadioBoxes.add(jrbThirty);
+		jRadioBoxes.add(new JLabel(""));			// dummy
 		
 		ButtonGroup group = new ButtonGroup();
-		group.add(jrbTen);
 		group.add(jrbSixteen);
 		group.add(jrbTwenty);
 		group.add(jrbThirty);
-		
-		// add ActionListeners to RadioButtons
-		jrbTen.addActionListener(new ActionListener() {			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setNumberOfCards(10);
-			}
-		});
-		
+				
 		jrbSixteen.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {

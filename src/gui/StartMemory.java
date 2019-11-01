@@ -14,7 +14,7 @@ public class StartMemory {
 	
 	private Vector<BaseCard> cards;
 	private String gameMode;		// possible values: "color" or "image"
-	private int gameSize;			// possible values: 10, 16, 20, 30
+	private int gameSize;			// possible values: 16, 20, 30
 	private Color[] colors = new Color[15];
 	private Color colorBack = Color.DARK_GRAY;
 	
