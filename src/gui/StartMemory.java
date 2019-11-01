@@ -40,37 +40,23 @@ public class StartMemory {
 		
 	}
 	
-	private void initColors() {
-		Color darkRed = new Color(170, 11, 50);
-		Color red = new Color(240, 40, 90);
-		Color darkOrange = new Color(240, 100, 40);
-		Color orange = new Color(240, 140, 60);
-		Color darkYellow = new Color(250, 230, 100);
-		Color yellow = new Color(255, 240, 130);
-		Color darkGreen = new Color(45, 175, 10);
-		Color green = new Color(140, 230, 20);
-		Color lime = new Color(220, 255, 130);
-		Color turquoise = new Color(0, 150, 100);
-		Color darkBlue = new Color(0, 40, 190);
-		Color blue = new Color(5, 105, 190);
-		Color purple = new Color(75, 5, 190);
-		Color fuchsia = new Color(135, 5, 190);
-		Color pink = new Color(190, 5, 105);
-		
-		colors[0] = darkRed;
-		colors[1] = red;
-		colors[2] = darkOrange;
-		colors[3] = orange;
-		colors[4] = darkYellow;
-		colors[5] = yellow;
-		colors[6] = darkGreen;
-		colors[7] = green;
-		colors[8] = lime;
-		colors[9] = turquoise;
-		colors[10] = darkBlue;
-		colors[11] = blue;
-		colors[12] = purple;
-		colors[13] = fuchsia;
-		colors[14] = pink;
+	private void initColors() {		
+		colors[0] = new Color(170, 11, 50); 	// darkRed
+		colors[1] = new Color(240, 40, 90); 	// red
+		colors[2] = new Color(240, 140, 60); 	// orange
+		colors[3] = new Color(255, 240, 130); 	// yellow
+		colors[4] = new Color(140, 230, 20); 	// green
+		colors[5] = new Color(0, 150, 100); 	// turquoise
+		colors[6] = new Color(5, 105, 190); 	// blue
+		colors[7] = new Color(75, 5, 190); 		// purple
+
+		colors[8] = new Color(240, 100, 40); 	// darkOrange2
+		colors[9] = new Color(250, 230, 100); 	// darkYellow
+
+		colors[10] = new Color(45, 175, 10); 	// darkGreen
+		colors[11] = new Color(220, 255, 130);	 // lime
+		colors[12] = new Color(0, 40, 190); 	// darkBlue
+		colors[13] = new Color(135, 5, 190); 	// fuchsia
+		colors[14] = new Color(190, 5, 105); 	// pink
 	}
 }
