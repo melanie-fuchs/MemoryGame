@@ -34,8 +34,7 @@ public class MemoryModel {
 	}
 	
 	public void action(int cardID) {
-		// TODO call switchFace-method here in the 
-		// card
+		getMemoryCard(cardID).switchFace();
 	}
 	
 
