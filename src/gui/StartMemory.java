@@ -39,7 +39,11 @@ public class StartMemory {
 	}
 	
 	private void generateImageCards() {
-		
+//		TODO load images
+//		private void openFileChooser() {		
+//			PhotoChooser chooser = new PhotoChooser();
+//			chooser.showOpenDialog(this);
+//		}
 	}
 	
 	private void initColors() {		

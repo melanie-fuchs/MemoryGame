@@ -188,8 +188,6 @@ public class GameSettingsGUI extends JPanel {
 				jlbChosenMode.setText("");
 				jtfStatus.setText("Please choose " + getNumberOfCards()/2 +
 						" photos from your file system.");
-				openFileChooser();
-				// TODO implement Logic and JFileChooser here
 			}
 		});
 		
@@ -215,7 +213,7 @@ public class GameSettingsGUI extends JPanel {
 			}
 		});
 		
-		// put it all together onto JPanel right
+		// put it all together onto JPanel
 		jpButtons.add(jlbChooseMode);
 		jpButtons.add(jbUseColors);
 		jpButtons.add(jbChoseFiles);
@@ -223,10 +221,5 @@ public class GameSettingsGUI extends JPanel {
 		jpButtons.add(jbStart);	
 		
 		return jpButtons;		
-	}
-	
-	private void openFileChooser() {		
-		PhotoChooser chooser = new PhotoChooser();
-		chooser.showOpenDialog(this);
 	}
 }
