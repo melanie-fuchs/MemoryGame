@@ -13,19 +13,21 @@ import java.util.Vector;
 public class StartMemory {
 	
 	private Vector<BaseCard> cards;
-	private String gameMode;		// possible values: "color" or "image"
+	private int gameMode;			// possible values: 1 (color), 2 (image)
 	private int gameSize;			// possible values: 16, 20, 30
 	private Color[] colors = new Color[15];
 	private Color colorBack = Color.DARK_GRAY;
 	
-	public StartMemory(int gameSize, String gameMode) {
+	public StartMemory(int gameSize, int gameMode) {
 		this.gameMode = gameMode;
 		this.gameSize = gameSize;
 		
-		if(gameMode == "color") {
+		if(gameMode == 1) {
 			generateColorCards();
 		} else {
-			generateImageCards();
+			if (gameMode == 2) {
+				generateImageCards();
+			}
 		}
 	}
 	
