@@ -17,6 +17,9 @@ import javax.swing.border.EmptyBorder;
  */
 public class MemoryCardPanel extends JPanel {
 	
+
+	// TODO add MemoryEventHanlder
+	
 	private int memorySize;		// 16, 20 or 30 cards possible
 	private void setMemorySize(int memorySize) {
 		this.memorySize = memorySize;
@@ -32,6 +35,8 @@ public class MemoryCardPanel extends JPanel {
 	public Vector<BaseCard> getCards() {
 		return cards;
 	}
+	
+	private MemoryModel model = new MemoryModel();
 	
 	/**
 	 * Constructor that takes an int-value that represents the gamesize
@@ -77,7 +82,9 @@ public class MemoryCardPanel extends JPanel {
 	private void fillPanel(Vector<BaseCard> cards) {
 		Collections.shuffle(cards);	// shuffle cards in random order
 		for (int i = 0; i < cards.size(); i++) {
-			this.add(cards.get(i));
+			BaseCard currentCard = cards.get(i);
+			this.add(currentCard);
+			model.registerCard(currentCard);
 		}
 	}	
 }
