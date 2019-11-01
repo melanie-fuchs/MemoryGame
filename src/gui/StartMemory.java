@@ -32,12 +32,15 @@ public class StartMemory {
 		}
 	}
 	
+	/**
+	 * The method generates pairs of cards and adds them to the
+	 * cards-Vector.
+	 */
 	private void generateColorCards() {
 		initColors();
-		for(int i = 0; i < gameSize; i++) {
-			// TODO create pairs, not single cards
-			System.out.println("GameSize: " + gameSize);
+		for(int i = 0; i < (gameSize / 2); i++) {
 			cards.add(new CardColor(colors[i], colorBack, i));
+			cards.add(new CardColor(colors[i], colorBack, i));		
 		}		
 	}
 	
