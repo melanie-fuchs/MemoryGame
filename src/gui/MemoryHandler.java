@@ -13,36 +13,33 @@ import java.util.Vector;
 public class MemoryHandler {
 	
 	public static int attempts;
-	private static Vector<Integer> tempCardArray; 	
-	private static Vector<Integer> flippedPairs;
+	private Vector<BaseCard> tempCardArray; 	
+	private Vector<BaseCard> flippedPairs;
 	
-	private void checkPairs() {
-		if(tempCardArray.size() == 2) {
-			if(tempCardArray.elementAt(0) == tempCardArray.elementAt(1)) {
-				System.out.println("They match");
-				flippedPairs.add(tempCardArray.elementAt(0));
-				tempCardArray.removeAllElements();
-				// TODO lock revealed cards
-				// TODO set cursor cannot be hand card is locked
-			} else {
-				System.out.println("They do not match");
-				tempCardArray.removeAllElements();
-			}
-		} else {
-			System.out.println("Can't compare due to wrong number of items.");
-		}
-	}
 
 	public MemoryHandler() {
-		tempCardArray = new Vector<Integer>();
-		flippedPairs = new Vector<Integer>();
-		tempCardArray.add(1);
-		tempCardArray.add(1);;
-		checkPairs();
+		tempCardArray = new Vector<BaseCard>();
+		flippedPairs = new Vector<BaseCard>();
 	}
 	
-	public static void main(String[] args) {
-		new MemoryHandler();
-		
+	public void cardTurned(BaseCard card) {
+		tempCardArray.add(card);
+		if(tempCardArray.size() == 2){
+			checkPairs();
+		}
+	}
+	
+	
+	private void checkPairs() {
+		if (tempCardArray.elementAt(0) == tempCardArray.elementAt(1)) {
+			System.out.println("They match");
+			flippedPairs.add(tempCardArray.elementAt(0));
+			tempCardArray.removeAllElements();
+			// TODO lock revealed cards
+			// TODO set cursor cannot be hand card is locked
+		} else {
+			System.out.println("They do not match");
+			tempCardArray.removeAllElements();
+		}
 	}
 }
