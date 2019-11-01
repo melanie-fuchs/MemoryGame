@@ -27,7 +27,5 @@ public class MemoryActionListener implements ActionListener {
 		//get ID of the pressed card:
 		int cardID = ((BaseCard)e.getSource()).getCardID();
 		model.action(cardID);
-
 	}
-
 }

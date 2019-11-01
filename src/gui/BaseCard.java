@@ -23,12 +23,6 @@ public abstract class BaseCard extends JButton {
 	public BaseCard() {
 		super();
 		super.setContentAreaFilled(false);
-		this.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				switchFace();				
-			}
-		});
 	}	
 
 	protected abstract int getCardID();
