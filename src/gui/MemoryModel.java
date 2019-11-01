@@ -34,9 +34,28 @@ public class MemoryModel {
 	}
 	
 	public void action(int hashCode) {
-		getMemoryCard(hashCode).switchFace();
+		BaseCard tempCard = getMemoryCard(hashCode);
+		tempCard.switchFace();
+		tempCardArray.add(tempCard);
+		
+		if(tempCardArray.size() == 2){
+			this.checkPairs();
+		}
 	}
+
 	
+	private void checkPairs() {
+		if (tempCardArray.elementAt(0) == tempCardArray.elementAt(1)) {
+			System.out.println("They match");
+			flippedPairs.add(tempCardArray.elementAt(0));
+			tempCardArray.removeAllElements();
+			// TODO lock revealed cards
+			// TODO set cursor cannot be hand card is locked
+		} else {
+			System.out.println("They do not match");
+			tempCardArray.removeAllElements();
+		}
+	}
 
 	// TODO when ever a pair is being found:
 	// attempts += 1;
