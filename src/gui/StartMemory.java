@@ -21,6 +21,7 @@ public class StartMemory {
 	public StartMemory(int gameSize, int gameMode) {
 		this.gameMode = gameMode;
 		this.gameSize = gameSize;
+		this.cards = new Vector<BaseCard>();
 		
 		if(gameMode == 1) {
 			generateColorCards();
@@ -34,6 +35,8 @@ public class StartMemory {
 	private void generateColorCards() {
 		initColors();
 		for(int i = 0; i < gameSize; i++) {
+			// TODO create pairs, not single cards
+			System.out.println("GameSize: " + gameSize);
 			cards.add(new CardColor(colors[i], colorBack, i));
 		}		
 	}
