@@ -43,17 +43,20 @@ public class MemoryModel {
 		}
 	}
 
-	
 	private void checkPairs() {
 		if (tempCardArray.elementAt(0) == tempCardArray.elementAt(1)) {
 			System.out.println("They match");
 			flippedPairs.add(tempCardArray.elementAt(0));
+			tempCardArray.elementAt(0).setLocked(true);
+			tempCardArray.elementAt(1).setLocked(true);
 			tempCardArray.removeAllElements();
+			this.attempts += 1;
 			// TODO lock revealed cards
 			// TODO set cursor cannot be hand card is locked
 		} else {
 			System.out.println("They do not match");
 			tempCardArray.removeAllElements();
+			this.attempts += 1;
 		}
 	}
 

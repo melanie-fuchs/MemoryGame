@@ -21,8 +21,8 @@ public class CardImage extends BaseCard {
 	private boolean faceUp; 		// true if face is visible, false if card is hidden
 	private boolean locked;			// true if card was successfully revealed as a pair, false if not
 	@Override
-	protected void setLocked() {
-		this.locked = true;		
+	protected void setLocked(boolean locked) {
+		this.locked = locked;		
 	}
 	private Color backgroundColor;	// backgroundcolor of every card
 	private String imagePath;
