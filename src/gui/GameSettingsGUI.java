@@ -35,12 +35,16 @@ public class GameSettingsGUI extends JPanel {
 	
 	/**
 	 * A static variable that represents the number of memory cards to play
-	 * with. Default value is 0. The value can be set by pressing one of the
+	 * with. Default value is 20. The value can be set by pressing one of the
 	 * radiobuttons.
 	 */
 	private int numberOfCards = 20;
-	private void setNumberOfCards(int number) {this.numberOfCards = number;}
-	public int getNumberOfCards() {return numberOfCards;}
+	private void setNumberOfCards(int number) {
+		this.numberOfCards = number;
+		}
+	public int getNumberOfCards() {
+		return numberOfCards;
+		}
 	
 	/**
 	 * int-value that represents a game-mode. The game-mode can be either 0
