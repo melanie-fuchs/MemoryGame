@@ -2,6 +2,7 @@ package gui;
 
 import java.util.HashMap;
 import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 
 import gui.BaseCard;
 
@@ -44,20 +45,34 @@ public class MemoryModel {
 	}
 
 	private void checkPairs() {
-		if (tempCardArray.elementAt(0) == tempCardArray.elementAt(1)) {
+		BaseCard cardA = tempCardArray.elementAt(0);
+		BaseCard cardB = tempCardArray.elementAt(1);
+		if (cardA.getCardID() == cardB.getCardID()) {
 			System.out.println("They match");
 			flippedPairs.add(tempCardArray.elementAt(0));
-			tempCardArray.elementAt(0).setLocked(true);
-			tempCardArray.elementAt(1).setLocked(true);
+			cardA.setLocked(true);
+			cardB.setLocked(true);
 			tempCardArray.removeAllElements();
 			this.attempts += 1;
-			// TODO lock revealed cards
-			// TODO set cursor cannot be hand card is locked
 		} else {
 			System.out.println("They do not match");
+			turnCardDelayed(cardA, cardB);
 			tempCardArray.removeAllElements();
 			this.attempts += 1;
 		}
+	}
+	
+	private void turnCardDelayed(BaseCard cardA, BaseCard cardB) {
+		try {
+			// wait 2 seconds before turning the cards back
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			System.out.println("MemoryModel.turnCardDelayed(): "
+					+ e.getMessage());
+		}
+		cardA.switchFace();
+		cardB.switchFace();
 	}
 
 	// TODO when ever a pair is being found:
