@@ -20,7 +20,9 @@ public class MemoryModel {
 	private Vector<BaseCard> tempCardArray; 	
 	private Vector<BaseCard> flippedPairs;
 	private HashMap<Integer, BaseCard> allMemoryCards; // TODO types not clear yet. Gotta think about that some more
-	
+	public BaseCard getMemoryCard(Integer cardID) {
+		return allMemoryCards.get(cardID);
+	}
 	public MemoryModel() {
 		tempCardArray = new Vector<BaseCard>();
 		flippedPairs = new Vector<BaseCard>();
