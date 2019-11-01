@@ -25,6 +25,7 @@ public class StartMemory {
 		
 		if(gameMode == 1) {
 			generateColorCards();
+			new MemoryFrame(gameSize, cards);
 		} else {
 			if (gameMode == 2) {
 				generateImageCards();
