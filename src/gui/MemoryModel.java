@@ -80,6 +80,7 @@ public class MemoryModel {
 		cardA.switchFace();
 		cardB.switchFace();
 	}
+	
 
 	// TODO when ever a pair is being found:
 	// attempts += 1;
