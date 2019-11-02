@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Component;
 import java.util.HashMap;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +12,7 @@ import gui.BaseCard;
  * @author yume
  *
  */
-public class MemoryModel {
+public class MemoryModel implements BaseModel {
 
 	private int attempts = 0;
 	public int getAttempts() {
@@ -40,7 +41,7 @@ public class MemoryModel {
 		tempCard.setEnabled(false);
 		tempCardArray.add(tempCard);
 		System.out.println("CARD IS SWITCHED: " + tempCard.hashCode());
-		// the problem seems to be here somewhere. 
+		// the problem seems to be here somewhere:
 		if(tempCardArray.size() == 2){
 			for (BaseCard card : tempCardArray) {
 				card.setEnabled(true);
