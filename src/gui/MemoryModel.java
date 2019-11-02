@@ -38,7 +38,7 @@ public class MemoryModel {
 		BaseCard tempCard = getMemoryCard(hashCode);
 		tempCard.switchFace();
 		tempCardArray.add(tempCard);
-
+		System.out.println("CARD IS SWITCHED");
 		if(tempCardArray.size() == 2){
 			this.checkPairs();
 		}
@@ -49,11 +49,12 @@ public class MemoryModel {
 		BaseCard cardB = tempCardArray.elementAt(1);
 		if (cardA.getCardID() == cardB.getCardID()) {
 			System.out.println("They match");
-			flippedPairs.add(tempCardArray.elementAt(0));
+			flippedPairs.add(cardA);
 			cardA.setLocked(true);
 			cardB.setLocked(true);
 			tempCardArray.removeAllElements();
 			this.attempts += 1;
+			System.out.println("\tAttempts: " + attempts + "\t Pairs: " + flippedPairs.size());
 		} else {
 			System.out.println("They do not match");
 			turnCardDelayed(cardA, cardB);
@@ -65,7 +66,8 @@ public class MemoryModel {
 	private void turnCardDelayed(BaseCard cardA, BaseCard cardB) {
 		try {
 			// wait 2 seconds before turning the cards back
-			TimeUnit.SECONDS.sleep(2);
+			//TimeUnit.SECONDS.sleep(2);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			System.out.println("MemoryModel.turnCardDelayed(): "
