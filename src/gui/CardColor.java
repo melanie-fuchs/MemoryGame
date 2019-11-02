@@ -25,7 +25,7 @@ public class CardColor extends BaseCard {
 	private boolean locked;			// true if card was successfully revealed as a pair, false if not
 	@Override
 	protected void setLocked(boolean locked) {
-		this.locked = locked;		
+		this.locked = true;		
 	}
 	private Color backgroundColor;	// backgroundcolor of every card
 	private Color foregroundColor;	// foregroundcolor of every card

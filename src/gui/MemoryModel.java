@@ -27,6 +27,7 @@ public class MemoryModel {
 	public BaseCard getMemoryCard(Integer hashCode) {
 		return allMemoryCards.get(hashCode);
 	}
+	
 	public MemoryModel() {
 		tempCardArray = new Vector<BaseCard>();
 		flippedPairs = new Vector<BaseCard>();
@@ -47,6 +48,7 @@ public class MemoryModel {
 		}
 	}
 
+	
 	private void checkPairs() {
 		BaseCard cardA = tempCardArray.elementAt(0);
 		BaseCard cardB = tempCardArray.elementAt(1);
@@ -60,11 +62,13 @@ public class MemoryModel {
 			if(flippedPairs.size() == allMemoryCards.size()) {
 				this.gameOver = true;
 			}
+			tempCardArray.removeAllElements();
+			// TODO lock revealed cards
+			// TODO set cursor cannot be hand card is locked
 		} else {
 			System.out.println("They do not match");
 			turnCardDelayed(cardA, cardB);
 			tempCardArray.removeAllElements();
-			this.attempts += 1;
 		}
 	}
 	
