@@ -17,6 +17,9 @@ import javax.swing.border.EmptyBorder;
  */
 public class MemoryCardPanel extends JPanel {
 	
+
+	// TODO add MemoryEventHanlder
+	
 	private int memorySize;		// 16, 20 or 30 cards possible
 	private void setMemorySize(int memorySize) {
 		this.memorySize = memorySize;
@@ -33,7 +36,7 @@ public class MemoryCardPanel extends JPanel {
 		return cards;
 	}
 	
-	private MemoryModel model;
+	private MemoryModel model = new MemoryModel();
 	
 	/**
 	 * Constructor that takes an int-value that represents the gamesize

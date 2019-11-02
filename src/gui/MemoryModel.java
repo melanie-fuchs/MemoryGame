@@ -17,17 +17,13 @@ public class MemoryModel {
 	public int getAttempts() {
 		return attempts;
 	}
-	private boolean gameOver = false;
-	public boolean GetGameOver() {
-		return gameOver;
-	}
+
 	private Vector<BaseCard> tempCardArray; 	
 	private Vector<BaseCard> flippedPairs;
 	private HashMap<Integer, BaseCard> allMemoryCards; // TODO types not clear yet. Gotta think about that some more
 	public BaseCard getMemoryCard(Integer hashCode) {
 		return allMemoryCards.get(hashCode);
 	}
-	
 	public MemoryModel() {
 		tempCardArray = new Vector<BaseCard>();
 		flippedPairs = new Vector<BaseCard>();
@@ -48,7 +44,6 @@ public class MemoryModel {
 		}
 	}
 
-	
 	private void checkPairs() {
 		BaseCard cardA = tempCardArray.elementAt(0);
 		BaseCard cardB = tempCardArray.elementAt(1);
@@ -59,16 +54,11 @@ public class MemoryModel {
 			cardB.setLocked(true);
 			tempCardArray.removeAllElements();
 			this.attempts += 1;
-			if(flippedPairs.size() == allMemoryCards.size()) {
-				this.gameOver = true;
-			}
-			tempCardArray.removeAllElements();
-			// TODO lock revealed cards
-			// TODO set cursor cannot be hand card is locked
 		} else {
 			System.out.println("They do not match");
 			turnCardDelayed(cardA, cardB);
 			tempCardArray.removeAllElements();
+			this.attempts += 1;
 		}
 	}
 	
@@ -84,7 +74,6 @@ public class MemoryModel {
 		cardA.switchFace();
 		cardB.switchFace();
 	}
-	
 
 	// TODO when ever a pair is being found:
 	// attempts += 1;

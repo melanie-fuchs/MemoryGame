@@ -32,7 +32,6 @@ public class MemorySettingPanel extends JPanel {
 	private JButton jbEndGame;
 	private JLabel jlAttemptsText, jlAttemptsCounter;
 	private JFrame parentFrame;
-	private MemoryModel model;
 	
 	public MemorySettingPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
@@ -63,8 +62,5 @@ public class MemorySettingPanel extends JPanel {
 		this.add(new JLabel(""));	// dummy
 		this.add(jbEndGame);
 	}
-	
-	public void updateAttempts(int attempts) {
-		this.setAttempts(attempts);
-	}
+
 }

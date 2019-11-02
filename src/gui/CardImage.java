@@ -22,7 +22,7 @@ public class CardImage extends BaseCard {
 	private boolean locked;			// true if card was successfully revealed as a pair, false if not
 	@Override
 	protected void setLocked(boolean locked) {
-		this.locked = true;		
+		this.locked = locked;		
 	}
 	private Color backgroundColor;	// backgroundcolor of every card
 	private String imagePath;

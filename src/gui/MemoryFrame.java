@@ -18,7 +18,6 @@ public class MemoryFrame extends JFrame {
 	private int memorySize;
 	private MemoryCardPanel memoryCardPanel;
 	private MemorySettingPanel memorySettingPanel;
-	private MemoryModel model  = new MemoryModel();
 	
 	public MemoryFrame(int memorySize, Vector<BaseCard> cards) {
 		super("Memory");
@@ -31,7 +30,7 @@ public class MemoryFrame extends JFrame {
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-
+		
 		memoryCardPanel = new MemoryCardPanel(memorySize, cards);
 		memorySettingPanel = new MemorySettingPanel(this);
 		
@@ -41,7 +40,13 @@ public class MemoryFrame extends JFrame {
 		this.setVisible(true);
 	}
 	
-	public void gameOver() {
-		// TODO layeredPane, show game ended message
+	//TODO for test purposes only 
+	public static void main(String[] args) {
+		Vector<BaseCard> cards = new Vector<BaseCard>();
+		for(int i = 0; i < 16; i++) {
+			cards.add(new CardColor(Color.GREEN, Color.BLUE, i));
+		}
+		
+		new MemoryFrame(16, cards);
 	}
 }
