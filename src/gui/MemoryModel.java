@@ -54,6 +54,7 @@ public class MemoryModel {
 		BaseCard cardA = tempCardArray.elementAt(0);
 		BaseCard cardB = tempCardArray.elementAt(1);
 		if (cardA.getCardID() == cardB.getCardID()) {
+			waitAMoment();
 			System.out.println("They match");
 			flippedPairs.add(cardA);
 			cardA.setEnabled(false);
@@ -62,30 +63,30 @@ public class MemoryModel {
 			this.attempts += 1;
 			System.out.println("\tAttempts in IF: " + attempts + "\t Pairs: " + flippedPairs.size());
 		} else {
+			waitAMoment();
 			System.out.println("They do not match");
 			tempCardArray.removeAllElements();
 			this.attempts += 1;
 			System.out.println("\tAttempts in ELSE: " + attempts + "\t Pairs: " + flippedPairs.size());
-			turnCardDelayed(cardA, cardB);
+			switchUnfitPairs(cardA, cardB);
 		}
 	}
-	
-	private void turnCardDelayed(BaseCard cardA, BaseCard cardB) {
-		cardA.repaint();
-		cardA.repaint();
-		cardB.validate();
-		cardB.validate();
+		
+	private void waitAMoment() {
 		try {
 			// wait 2 seconds before turning the cards back
 			//TimeUnit.SECONDS.sleep(2);
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			System.out.println("MemoryModel.turnCardDelayed(): "
+			System.out.println("MemoryModel.waitAMoment(): "
 					+ e.getMessage());
 		}
+	}
+	
+	private void switchUnfitPairs(BaseCard cardA, BaseCard cardB) {
 		cardA.switchFace();
-		cardB.switchFace();
+		cardB.switchFace();		
 	}
 
 	// TODO when ever a pair is being found:
