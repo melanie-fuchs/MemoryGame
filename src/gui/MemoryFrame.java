@@ -28,7 +28,7 @@ public class MemoryFrame extends JFrame {
 			this.setSize(720, 700);
 		}
 		
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		
 		memoryCardPanel = new MemoryCardPanel(memorySize, cards);
@@ -38,15 +38,5 @@ public class MemoryFrame extends JFrame {
 		this.add(memorySettingPanel, BorderLayout.SOUTH);
 		
 		this.setVisible(true);
-	}
-	
-	//TODO for test purposes only 
-	public static void main(String[] args) {
-		Vector<BaseCard> cards = new Vector<BaseCard>();
-		for(int i = 0; i < 16; i++) {
-			cards.add(new CardColor(Color.GREEN, Color.BLUE, i));
-		}
-		
-		new MemoryFrame(16, cards);
 	}
 }
