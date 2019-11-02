@@ -87,7 +87,4 @@ public class MemoryModel implements BaseModel {
 		cardA.switchFace();
 		cardB.switchFace();		
 	}
-
-	// TODO when ever a pair is being found:
-	// attempts += 1;
 }

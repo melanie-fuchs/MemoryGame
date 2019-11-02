@@ -17,9 +17,6 @@ import javax.swing.border.EmptyBorder;
  */
 public class MemoryCardPanel extends JPanel {
 	
-
-	// TODO add MemoryEventHanlder
-	
 	private int memorySize;		// 16, 20 or 30 cards possible
 	private void setMemorySize(int memorySize) {
 		this.memorySize = memorySize;
@@ -35,6 +32,8 @@ public class MemoryCardPanel extends JPanel {
 	public Vector<BaseCard> getCards() {
 		return cards;
 	}
+	
+	private MemorySettingPanel foreignPanel;
 	
 	private MemoryModel model = new MemoryModel();
 	
@@ -83,9 +82,18 @@ public class MemoryCardPanel extends JPanel {
 		Collections.shuffle(cards);	// shuffle cards in random order
 		for (int i = 0; i < cards.size(); i++) {
 			BaseCard currentCard = cards.get(i);
-			currentCard.addActionListener(new MemoryActionListener(model));
+			currentCard.addActionListener(new MemoryActionListener(model, foreignPanel));
 			this.add(currentCard);
 			model.registerCard(currentCard);
 		}
 	}	
+	
+	/**
+	 * The method imports another JPframe to pass it to the ActionListener.
+	 * 
+	 * @param panel
+	 */
+	public void importPanel(MemorySettingPanel panel) {
+		this.foreignPanel = panel;
+	}
 }

@@ -9,6 +9,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * @author yume
@@ -17,8 +18,10 @@ import javax.swing.JLabel;
 public class MemoryActionListener implements ActionListener {
 
 	Hashtable<Integer, BaseModel> modelHashtable;
+	MemorySettingPanel passivePanel;
 	
-	public MemoryActionListener(BaseModel model) {
+	public MemoryActionListener(BaseModel model, MemorySettingPanel passivePanel) {
+		this.passivePanel = passivePanel;
 		modelHashtable = new Hashtable<Integer, BaseModel>();
 		this.addModel(model);
 	}
@@ -35,8 +38,17 @@ public class MemoryActionListener implements ActionListener {
 		
 		Enumeration<Integer> enuma = modelHashtable.keys();
 	    while (enuma.hasMoreElements()) {
+	    	// execute method action of every model on the HashMap:
 	         int key = enuma.nextElement();
 	         ((BaseModel)modelHashtable.get(key)).action(hashCode);
+	         
+	 	    // update JLabel in MemoryStatsPanel:
+	 		int attempts = ((BaseModel)modelHashtable.get(key)).getAttempts();
+	 		System.out.println(attempts + " attempts");
+	 		
+	 		//TODO still buggy passivePanel.setAttemptsLabel(attempts);
 	    }
 	}
+
+
 }

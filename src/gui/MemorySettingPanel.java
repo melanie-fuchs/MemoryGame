@@ -25,13 +25,12 @@ import javax.swing.border.EmptyBorder;
  */
 public class MemorySettingPanel extends JPanel {
 	
-	private String attempts;
-	private void setAttempts(int attempts) {
-		this.attempts = String.valueOf(attempts);
-	}
+	private String attempts = "";
+
 	private JButton jbEndGame;
 	private JLabel jlAttemptsText, jlAttemptsCounter;
 	private JFrame parentFrame;
+	
 	
 	public MemorySettingPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
@@ -53,7 +52,7 @@ public class MemorySettingPanel extends JPanel {
 			}
 		});
 		jlAttemptsText= new JLabel("Attempts: ", SwingConstants.CENTER);
-		jlAttemptsCounter = new JLabel(attempts, SwingConstants.CENTER);
+		jlAttemptsCounter = new JLabel("0", SwingConstants.CENTER);
 		
 		this.add(jlAttemptsText);
 		this.add(new JLabel(""));	// dummy
@@ -62,5 +61,9 @@ public class MemorySettingPanel extends JPanel {
 		this.add(new JLabel(""));	// dummy
 		this.add(jbEndGame);
 	}
-
+	
+	public void setAttemptsLabel(int att) {
+		attempts = String.valueOf(att);
+		jlAttemptsCounter.setText(attempts);
+	}
 }

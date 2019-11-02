@@ -34,6 +34,8 @@ public class MemoryFrame extends JFrame {
 		memoryCardPanel = new MemoryCardPanel(memorySize, cards);
 		memorySettingPanel = new MemorySettingPanel(this);
 		
+		memoryCardPanel.importPanel(memorySettingPanel);
+		
 		this.add(memoryCardPanel, BorderLayout.CENTER);
 		this.add(memorySettingPanel, BorderLayout.SOUTH);
 		

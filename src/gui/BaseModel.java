@@ -11,4 +11,5 @@ import java.awt.Component;
  */
 public interface BaseModel {
 	void action(int hashCodeOfTrigger);
+	int getAttempts();
 }
