@@ -44,8 +44,9 @@ public class MemoryCardPanel extends JPanel {
 	 * @param memorySize
 	 * @param cards
 	 */
-	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards) {
+	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards, MemoryStatsPanel foreignPanel) {
 		this.setBorder(new EmptyBorder(10, 10, 15, 10));
+		this.foreignPanel = foreignPanel;
 		setMemorySize(memorySize);
 		setCards(cards);
 		setGridLayout(memorySize);
@@ -87,13 +88,4 @@ public class MemoryCardPanel extends JPanel {
 			model.registerCard(currentCard);
 		}
 	}	
-	
-	/**
-	 * The method imports another JPframe to pass it to the ActionListener.
-	 * 
-	 * @param panel
-	 */
-	public void importPanel(MemoryStatsPanel panel) {
-		this.foreignPanel = panel;
-	}
 }

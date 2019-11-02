@@ -31,10 +31,8 @@ public class MemoryFrame extends JFrame {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		
-		memoryCardPanel = new MemoryCardPanel(memorySize, cards);
 		memorySettingPanel = new MemoryStatsPanel(this);
-		
-		memoryCardPanel.importPanel(memorySettingPanel);
+		memoryCardPanel = new MemoryCardPanel(memorySize, cards, memorySettingPanel);
 		
 		this.add(memoryCardPanel, BorderLayout.CENTER);
 		this.add(memorySettingPanel, BorderLayout.SOUTH);
