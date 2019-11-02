@@ -39,4 +39,8 @@ public class MemoryFrame extends JFrame {
 		
 		this.setVisible(true);
 	}
+	
+	public void gameOver() {
+		
+	}
 }

@@ -62,5 +62,8 @@ public class MemorySettingPanel extends JPanel {
 		this.add(new JLabel(""));	// dummy
 		this.add(jbEndGame);
 	}
-
+	
+	public void updateAttempts(int attempts) {
+		this.setAttempts(attempts);
+	}
 }
