@@ -17,7 +17,7 @@ public class MemoryFrame extends JFrame {
 	
 	private int memorySize;
 	private MemoryCardPanel memoryCardPanel;
-	private MemoryStatsPanel memorySettingPanel;
+	private MemoryStatsPanel memoryStatsPanel;
 	
 	public MemoryFrame(int memorySize, Vector<BaseCard> cards) {
 		super("Memory");
@@ -31,11 +31,11 @@ public class MemoryFrame extends JFrame {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		
-		memorySettingPanel = new MemoryStatsPanel(this);
-		memoryCardPanel = new MemoryCardPanel(memorySize, cards, memorySettingPanel);
+		memoryStatsPanel = new MemoryStatsPanel(this);
+		memoryCardPanel = new MemoryCardPanel(memorySize, cards, memoryStatsPanel);
 		
 		this.add(memoryCardPanel, BorderLayout.CENTER);
-		this.add(memorySettingPanel, BorderLayout.SOUTH);
+		this.add(memoryStatsPanel, BorderLayout.SOUTH);
 		
 		this.setVisible(true);
 	}
