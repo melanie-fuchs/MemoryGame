@@ -33,7 +33,7 @@ public class MemoryCardPanel extends JPanel {
 		return cards;
 	}
 	
-	private MemoryModel model = new MemoryModel();
+	private MemoryModel model;
 	
 	/**
 	 * Constructor that takes an int-value that represents the gamesize
@@ -42,7 +42,8 @@ public class MemoryCardPanel extends JPanel {
 	 * @param memorySize
 	 * @param cards
 	 */
-	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards) {
+	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards, MemoryModel model) {
+		this.model = model;
 		this.setBorder(new EmptyBorder(10, 10, 15, 10));
 		setMemorySize(memorySize);
 		setCards(cards);
