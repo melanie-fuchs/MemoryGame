@@ -17,7 +17,10 @@ public class MemoryModel {
 	public int getAttempts() {
 		return attempts;
 	}
-
+	private boolean gameOver = false;
+	public boolean GetGameOver() {
+		return gameOver;
+	}
 	private Vector<BaseCard> tempCardArray; 	
 	private Vector<BaseCard> flippedPairs;
 	private HashMap<Integer, BaseCard> allMemoryCards; // TODO types not clear yet. Gotta think about that some more
@@ -54,6 +57,9 @@ public class MemoryModel {
 			cardB.setLocked(true);
 			tempCardArray.removeAllElements();
 			this.attempts += 1;
+			if(flippedPairs.size() == allMemoryCards.size()) {
+				this.gameOver = true;
+			}
 		} else {
 			System.out.println("They do not match");
 			turnCardDelayed(cardA, cardB);
