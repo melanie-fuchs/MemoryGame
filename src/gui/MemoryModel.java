@@ -40,12 +40,12 @@ public class MemoryModel {
 		tempCard.setEnabled(false);
 		tempCardArray.add(tempCard);
 		System.out.println("CARD IS SWITCHED: " + tempCard.hashCode());
+		// the problem seems to be here somewhere. 
 		if(tempCardArray.size() == 2){
 			for (BaseCard card : tempCardArray) {
 				card.setEnabled(true);
 			}
 			this.checkPairs();
-		} else {
 		}
 	}
 
@@ -54,29 +54,27 @@ public class MemoryModel {
 		BaseCard cardA = tempCardArray.elementAt(0);
 		BaseCard cardB = tempCardArray.elementAt(1);
 		if (cardA.getCardID() == cardB.getCardID()) {
-			waitAMoment();
 			System.out.println("They match");
 			flippedPairs.add(cardA);
 			cardA.setEnabled(false);
 			cardB.setEnabled(false);
 			tempCardArray.removeAllElements();
 			this.attempts += 1;
-			System.out.println("\tAttempts in IF: " + attempts + "\t Pairs: " + flippedPairs.size());
+			waitAMoment(500);
 		} else {
-			waitAMoment();
 			System.out.println("They do not match");
 			tempCardArray.removeAllElements();
 			this.attempts += 1;
-			System.out.println("\tAttempts in ELSE: " + attempts + "\t Pairs: " + flippedPairs.size());
+			waitAMoment(1200);
 			switchUnfitPairs(cardA, cardB);
 		}
 	}
 		
-	private void waitAMoment() {
+	private void waitAMoment(int sleepMillis) {
 		try {
 			// wait 2 seconds before turning the cards back
 			//TimeUnit.SECONDS.sleep(2);
-			Thread.sleep(2000);
+			Thread.sleep(sleepMillis);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			System.out.println("MemoryModel.waitAMoment(): "
