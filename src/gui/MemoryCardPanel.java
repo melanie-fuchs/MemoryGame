@@ -33,7 +33,7 @@ public class MemoryCardPanel extends JPanel {
 		return cards;
 	}
 	
-	private MemorySettingPanel foreignPanel;
+	private MemoryStatsPanel foreignPanel;
 	
 	private MemoryModel model = new MemoryModel();
 	
@@ -93,7 +93,7 @@ public class MemoryCardPanel extends JPanel {
 	 * 
 	 * @param panel
 	 */
-	public void importPanel(MemorySettingPanel panel) {
+	public void importPanel(MemoryStatsPanel panel) {
 		this.foreignPanel = panel;
 	}
 }

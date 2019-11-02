@@ -23,7 +23,7 @@ import javax.swing.border.EmptyBorder;
  * @author yume
  *
  */
-public class MemorySettingPanel extends JPanel {
+public class MemoryStatsPanel extends JPanel {
 	
 	private String attempts = "";
 
@@ -32,7 +32,7 @@ public class MemorySettingPanel extends JPanel {
 	private JFrame parentFrame;
 	
 	
-	public MemorySettingPanel(JFrame parentFrame) {
+	public MemoryStatsPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
 		this.setLayout(new GridLayout(2, 3, 60, 5));
 		this.setBorder(new EmptyBorder(10, 10, 15, 10));

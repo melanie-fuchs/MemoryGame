@@ -18,9 +18,9 @@ import javax.swing.JPanel;
 public class MemoryActionListener implements ActionListener {
 
 	Hashtable<Integer, BaseModel> modelHashtable;
-	MemorySettingPanel passivePanel;
+	MemoryStatsPanel passivePanel;
 	
-	public MemoryActionListener(BaseModel model, MemorySettingPanel passivePanel) {
+	public MemoryActionListener(BaseModel model, MemoryStatsPanel passivePanel) {
 		this.passivePanel = passivePanel;
 		modelHashtable = new Hashtable<Integer, BaseModel>();
 		this.addModel(model);

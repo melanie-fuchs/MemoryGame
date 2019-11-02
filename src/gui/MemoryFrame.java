@@ -17,7 +17,7 @@ public class MemoryFrame extends JFrame {
 	
 	private int memorySize;
 	private MemoryCardPanel memoryCardPanel;
-	private MemorySettingPanel memorySettingPanel;
+	private MemoryStatsPanel memorySettingPanel;
 	
 	public MemoryFrame(int memorySize, Vector<BaseCard> cards) {
 		super("Memory");
@@ -32,7 +32,7 @@ public class MemoryFrame extends JFrame {
 		this.setLayout(new BorderLayout());
 		
 		memoryCardPanel = new MemoryCardPanel(memorySize, cards);
-		memorySettingPanel = new MemorySettingPanel(this);
+		memorySettingPanel = new MemoryStatsPanel(this);
 		
 		memoryCardPanel.importPanel(memorySettingPanel);
 		
