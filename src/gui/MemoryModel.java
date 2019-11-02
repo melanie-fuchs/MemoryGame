@@ -37,33 +37,44 @@ public class MemoryModel {
 	public void action(int hashCode) {
 		BaseCard tempCard = getMemoryCard(hashCode);
 		tempCard.switchFace();
+		tempCard.setEnabled(false);
 		tempCardArray.add(tempCard);
-		System.out.println("CARD IS SWITCHED");
+		System.out.println("CARD IS SWITCHED: " + tempCard.hashCode());
 		if(tempCardArray.size() == 2){
+			for (BaseCard card : tempCardArray) {
+				card.setEnabled(true);
+			}
 			this.checkPairs();
+		} else {
 		}
 	}
 
 	private void checkPairs() {
+		System.out.println("checkPairs() started");
 		BaseCard cardA = tempCardArray.elementAt(0);
 		BaseCard cardB = tempCardArray.elementAt(1);
 		if (cardA.getCardID() == cardB.getCardID()) {
 			System.out.println("They match");
 			flippedPairs.add(cardA);
-			cardA.setLocked(true);
-			cardB.setLocked(true);
+			cardA.setEnabled(false);
+			cardB.setEnabled(false);
 			tempCardArray.removeAllElements();
 			this.attempts += 1;
-			System.out.println("\tAttempts: " + attempts + "\t Pairs: " + flippedPairs.size());
+			System.out.println("\tAttempts in IF: " + attempts + "\t Pairs: " + flippedPairs.size());
 		} else {
 			System.out.println("They do not match");
-			turnCardDelayed(cardA, cardB);
 			tempCardArray.removeAllElements();
 			this.attempts += 1;
+			System.out.println("\tAttempts in ELSE: " + attempts + "\t Pairs: " + flippedPairs.size());
+			turnCardDelayed(cardA, cardB);
 		}
 	}
 	
 	private void turnCardDelayed(BaseCard cardA, BaseCard cardB) {
+		cardA.repaint();
+		cardA.repaint();
+		cardB.validate();
+		cardB.validate();
 		try {
 			// wait 2 seconds before turning the cards back
 			//TimeUnit.SECONDS.sleep(2);

@@ -4,6 +4,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
@@ -19,11 +20,7 @@ public class CardImage extends BaseCard {
 		return cardID;
 	}
 	private boolean faceUp; 		// true if face is visible, false if card is hidden
-	private boolean locked;			// true if card was successfully revealed as a pair, false if not
-	@Override
-	protected void setLocked(boolean locked) {
-		this.locked = locked;		
-	}
+
 	private Color backgroundColor;	// backgroundcolor of every card
 	private String imagePath;
 	private ImageIcon foregroundImage;// foregroundcolor of every card
@@ -36,7 +33,10 @@ public class CardImage extends BaseCard {
 		
 		this.setBackground(backgroundColor);
 		this.faceUp = false;
-		this.locked = false;
+		
+		if(this.isEnabled()) {
+			this.setCursor(new Cursor(Cursor.HAND_CURSOR)); // cursor for unlocked cards
+		}
 	}
 	
 	@Override
@@ -52,7 +52,7 @@ public class CardImage extends BaseCard {
 	
 	@Override
 	protected void switchFace() {
-		if(!locked) {
+		if(this.isEnabled()) {
 			if(faceUp) {
 				this.setBackground(backgroundColor);
 				this.faceUp = false;
