@@ -29,7 +29,10 @@ public class MemoryStatsPanel extends JPanel {
 	
 	private String attempts = "";
 	private String pairsFound = "";
-
+	
+	private int gameSize;
+	private int gameMode;
+	
 	private JPanel statsPanel, gameOverPanel;
 	private JButton jbEndGame;
 	private JLabel jlAttemptsText, jlAttemptsCounter, jlPairsFoundText,
@@ -39,8 +42,10 @@ public class MemoryStatsPanel extends JPanel {
 		return parentFrame;
 	}
 	
-	public MemoryStatsPanel(JFrame parentFrame) {
+	public MemoryStatsPanel(JFrame parentFrame, int gameMode, int gameSize) {
 		this.parentFrame = parentFrame;
+		this.gameMode = gameMode;
+		this.gameSize = gameSize;
 		
 		this.setLayout(new BorderLayout());
 		
@@ -59,15 +64,23 @@ public class MemoryStatsPanel extends JPanel {
 		jbEndGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int close = JOptionPane.showConfirmDialog(parentFrame, "Do you want to end this round?",
-						"Close Memory Window",  JOptionPane.YES_NO_OPTION,
-					      JOptionPane.PLAIN_MESSAGE);
-				if(close == 0) {
-					parentFrame.dispose();
+				if (((JButton)e.getSource()).getText() == "End Game") {
+					int close = JOptionPane.showConfirmDialog(parentFrame, "Do you want to end this round?",
+							"Close Memory Window",  JOptionPane.YES_NO_OPTION,
+						      JOptionPane.PLAIN_MESSAGE);
+					if(close == 0) {
+						parentFrame.dispose();
+					}
+					if(close == 1) {
+						return;
+					}
+				} else {
+					if (((JButton)e.getSource()).getText() == "Play Again") {
+						new StartMemory(gameSize, gameMode);
+						parentFrame.dispose();
+					}
 				}
-				if(close == 1) {
-					return;
-				}
+		
 			}
 		});
 		jlAttemptsText= new JLabel("Attempts: ", SwingConstants.CENTER);
@@ -94,13 +107,14 @@ public class MemoryStatsPanel extends JPanel {
 		gameOverPanel.add(jlGameOver, SwingConstants.CENTER);
 	}
 	
-	public void setGameOverLabel() {
+	public void setGameOver() {
 		jlGameOver.setText("Game Over");
 		jlGameOver.setForeground(Color.WHITE);
 		jlGameOver.setOpaque(true);
 		jlGameOver.setBackground(Color.BLACK);
 		gameOverPanel.setOpaque(true);
 		gameOverPanel.setBackground(Color.BLACK);
+		jbEndGame.setText("Play Again");
 	}
 	
 	public void setAttemptsLabel(int att) {

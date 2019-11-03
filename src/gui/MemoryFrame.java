@@ -14,13 +14,14 @@ import javax.swing.JFrame;
  */
 public class MemoryFrame extends JFrame {
 	
-	private int memorySize;
+	private int memorySize, gameMode;
 	private MemoryCardPanel memoryCardPanel;
 	private MemoryStatsPanel memoryStatsPanel;
 	
-	public MemoryFrame(int memorySize, Vector<BaseCard> cards) {
+	public MemoryFrame(int memorySize, int gameMode, Vector<BaseCard> cards) {
 		super("Memory");
 		this.memorySize = memorySize;
+		this.gameMode = gameMode;
 		if(memorySize == 16) {
 			this.setSize(650, 800);
 		} else {
@@ -30,7 +31,7 @@ public class MemoryFrame extends JFrame {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		
-		memoryStatsPanel = new MemoryStatsPanel(this);
+		memoryStatsPanel = new MemoryStatsPanel(this, gameMode, memorySize);
 		memoryCardPanel = new MemoryCardPanel(memorySize, cards, memoryStatsPanel);
 		
 		this.add(memoryCardPanel, BorderLayout.CENTER);
