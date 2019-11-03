@@ -48,6 +48,12 @@ public class MemoryActionListener implements ActionListener {
 	 		
 	 		int foundPairs = ((BaseModel)modelHashtable.get(key)).getPairsFound();
 	 		passivePanel.setPairsFound(foundPairs);
+	 	
+	 		int totalPairs = ((BaseModel)modelHashtable.get(key)).getAllMemoryCardsSize() / 2;
+	 		
+	 		if(totalPairs - foundPairs == 0) {
+	 			// TODO popup message game over
+	 		}
 	    }
 	}
 }

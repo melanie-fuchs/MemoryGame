@@ -13,4 +13,5 @@ public interface BaseModel {
 	void action(int hashCodeOfTrigger);
 	int getAttempts();
 	int getPairsFound();
+	int getAllMemoryCardsSize();
 }

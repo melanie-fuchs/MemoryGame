@@ -55,6 +55,9 @@ public class MemoryModel implements BaseModel {
 	 * Hashmap-Object that contains all cards of the game (type <code>BaseCard</code>)
 	 */
 	private HashMap<Integer, BaseCard> allMemoryCards;
+	public int getAllMemoryCardsSize() {
+		return allMemoryCards.size();
+	}
 		
 	/**
 	 * Constructor that creates instances of the card-Vectors.
