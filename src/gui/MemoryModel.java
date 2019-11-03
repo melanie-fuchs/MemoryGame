@@ -18,14 +18,29 @@ import gui.BaseCard;
  */
 public class MemoryModel implements BaseModel {
 
+	/**
+	 * The number of attempts (number of pairs revealed no matter if they matched or not)
+	 */
 	private int attempts = 0;
 	/**
-	 * The method returns the number (int value) of attempts.
+	 * The method returns the number (int value) of attempts)
 	 * 	 */
 	public int getAttempts() {
 		return attempts;
 	}
 
+	/**
+	 * The number of successfully revealed pairs of cards
+	 */
+	private int foundPairs = 0;
+	/**
+	 * The method returns the number (int vaue) of successfully revealed pairs
+	 * @return
+	 */
+	public int getFoundPairs() {
+		return foundPairs;
+	}
+	
 	/**
 	 * Vector-Object that is used to collect two cards (type <code>BaseCard</code>)
 	 * to later check them for unity.
@@ -133,6 +148,7 @@ public class MemoryModel implements BaseModel {
             @Override 
             public void actionPerformed(ActionEvent e) {
         		if (pairFound) {
+        			foundPairs += 1;
         			System.out.println("They match");
         			flippedPairs.add(cardA);
         			flippedPairs.add(cardB);
