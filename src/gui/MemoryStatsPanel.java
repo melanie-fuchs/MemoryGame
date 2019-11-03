@@ -31,6 +31,9 @@ public class MemoryStatsPanel extends JPanel {
 	private JButton jbEndGame;
 	private JLabel jlAttemptsText, jlAttemptsCounter, jlPairsFoundText, jlPairsFoundCounter;
 	private JFrame parentFrame;
+	public JFrame getParentFrame() {
+		return parentFrame;
+	}
 	
 	public MemoryStatsPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
