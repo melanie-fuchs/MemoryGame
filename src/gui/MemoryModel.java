@@ -37,7 +37,7 @@ public class MemoryModel implements BaseModel {
 	 * The method returns the number (int vaue) of successfully revealed pairs
 	 * @return
 	 */
-	public int getFoundPairs() {
+	public int getPairsFound() {
 		return foundPairs;
 	}
 	

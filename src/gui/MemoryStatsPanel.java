@@ -32,7 +32,6 @@ public class MemoryStatsPanel extends JPanel {
 	private JLabel jlAttemptsText, jlAttemptsCounter, jlPairsFoundText, jlPairsFoundCounter;
 	private JFrame parentFrame;
 	
-	
 	public MemoryStatsPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
 		this.setLayout(new GridLayout(2, 3, 60, 5));

@@ -44,8 +44,10 @@ public class MemoryActionListener implements ActionListener {
 	         
 	 	    // update JLabel in MemoryStatsPanel:
 	 		int attempts = ((BaseModel)modelHashtable.get(key)).getAttempts();
-	 		System.out.println(attempts + " attempts");
-	 		passivePanel.setAttemptsLabel(attempts); // TODO TODO still buggy 
+	 		passivePanel.setAttemptsLabel(attempts);
+	 		
+	 		int foundPairs = ((BaseModel)modelHashtable.get(key)).getPairsFound();
+	 		passivePanel.setPairsFound(foundPairs);
 	    }
 	}
 }
