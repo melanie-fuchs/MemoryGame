@@ -26,9 +26,10 @@ import javax.swing.border.EmptyBorder;
 public class MemoryStatsPanel extends JPanel {
 	
 	private String attempts = "";
+	private String pairsFound = "";
 
 	private JButton jbEndGame;
-	private JLabel jlAttemptsText, jlAttemptsCounter;
+	private JLabel jlAttemptsText, jlAttemptsCounter, jlPairsFoundText, jlPairsFoundCounter;
 	private JFrame parentFrame;
 	
 	
@@ -53,17 +54,24 @@ public class MemoryStatsPanel extends JPanel {
 		});
 		jlAttemptsText= new JLabel("Attempts: ", SwingConstants.CENTER);
 		jlAttemptsCounter = new JLabel("0", SwingConstants.CENTER);
+		jlPairsFoundText = new JLabel("Found Pairs:", SwingConstants.CENTER);
+		jlPairsFoundCounter = new JLabel("0", SwingConstants.CENTER);
 		
 		this.add(jlAttemptsText);
-		this.add(new JLabel(""));	// dummy
+		this.add(jlPairsFoundText);	// dummy
 		this.add(new JLabel(""));	// dummy
 		this.add(jlAttemptsCounter);
-		this.add(new JLabel(""));	// dummy
+		this.add(jlPairsFoundCounter);	// dummy
 		this.add(jbEndGame);
 	}
 	
 	public void setAttemptsLabel(int att) {
 		attempts = String.valueOf(att);
 		jlAttemptsCounter.setText(attempts);
+	}
+	
+	public void setPairsFound(int pairs) {
+		pairsFound = String.valueOf(pairs);
+		jlPairsFoundCounter.setText(pairsFound);
 	}
 }
