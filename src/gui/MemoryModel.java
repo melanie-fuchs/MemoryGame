@@ -119,6 +119,7 @@ public class MemoryModel implements BaseModel {
 		BaseCard cardA = tempCardArray.elementAt(0);
 		BaseCard cardB = tempCardArray.elementAt(1);
 		if (cardA.getCardID() == cardB.getCardID()) {
+			foundPairs += 1;
 			this.handleFlippedCards(cardA, cardB, true, 500);
 		} else {
 			this.handleFlippedCards(cardA, cardB, false, 1200);
@@ -148,7 +149,6 @@ public class MemoryModel implements BaseModel {
             @Override 
             public void actionPerformed(ActionEvent e) {
         		if (pairFound) {
-        			foundPairs += 1;
         			System.out.println("They match");
         			flippedPairs.add(cardA);
         			flippedPairs.add(cardB);
