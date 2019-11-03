@@ -74,9 +74,11 @@ public class MemoryModel implements BaseModel {
 		allMemoryCards.put(card.hashCode(), card);
 	}
 	
-	//TODO find better description for method
 	/**
-	 * The Method takes an int-value (hashCode) and handles the card-event
+	 * The Method is invoked by an <code>ActionListener</code> of a card.
+	 * It handles events on the cards.
+	 * 
+	 * @param hashCode	int-value that represents the cashCode of an object
 	 */
 	@Override
 	public void action(int hashCode) {
@@ -85,31 +87,56 @@ public class MemoryModel implements BaseModel {
 		tempCard.setEnabled(false);
 		tempCardArray.add(tempCard);
 		System.out.println("CARD IS SWITCHED: " + tempCard.hashCode());
-		// the problem seems to be here somewhere:
 		if(tempCardArray.size() == 2){
-			for (BaseCard card : allMemoryCards.values()) {
-				card.setEnabled(false);
-			}
-			this.checkPairs(2500);
-			this.attempts += 1;
+			this.checkPairs();
+		}
+	}
+	
+	/**
+	 * The method compares two cards by comparing the cardID of the objects.
+	 * Depending on whether the two cards are identical, different parameters are
+	 * used to call the <code>handleFlippedCards()</code>-Method.
+	 * Every card is being set disabled to prevent the player from pushing cards
+	 * while the operations are running in the background.
+	 */
+	private void checkPairs() {
+		for (BaseCard card : allMemoryCards.values()) {
+			card.setEnabled(false);
+		}
+		this.attempts += 1;
+
+		BaseCard cardA = tempCardArray.elementAt(0);
+		BaseCard cardB = tempCardArray.elementAt(1);
+		if (cardA.getCardID() == cardB.getCardID()) {
+			this.handleFlippedCards(cardA, cardB, true, 500);
+		} else {
+			this.handleFlippedCards(cardA, cardB, false, 1200);
 		}
 	}
 
-	//TODO find better description for method
+	
 	/**
-	 * The method compares the cards in the <code>tempCardArray</code>-
-	 * Vector and handles further tasks.
-	 */	
-	private void checkPairs(int sleepMillis) {
-		System.out.println("Program is gonna sleep... wait:");
-
+	 * The method performs operations based on whether a pair was found or
+	 * not. If a pair was found, it will be saved in the Vector <code>flippedPairs</code>
+	 * and the card will be set disabled. All other cards will be set enabled. If no
+	 * pair was found, all of the cards (except the ones saved in the Vector for already
+	 * successfully flipped pairs) will be set enabled and the two cards are covered again.
+	 * The Method uses a timer to improve the feel of the game.
+	 * 
+	 * @param cardA <BaseCard</code>-object, the first card in the temporary flipped
+	 * cards-Vector: <code>tempCardsArray</code>
+	 * @param cardB <BaseCard</code>-object, the second card in the temporary flipped
+	 * cards-Vector: <code>tempCardsArray</code>
+	 * @param pairFound boolean value that is true, if a pair was found and false if not
+	 * @param sleepMillis int-value that represents the time that the program sleeps
+	 * in milliseconds
+	 */
+	private void handleFlippedCards(BaseCard cardA, BaseCard cardB,
+			boolean pairFound, int sleepMillis) {
 		Timer timer = new Timer(sleepMillis, new ActionListener() {
             @Override 
             public void actionPerformed(ActionEvent e) {
-            	System.out.println("checkPairs() started");
-        		BaseCard cardA = tempCardArray.elementAt(0);
-        		BaseCard cardB = tempCardArray.elementAt(1);
-        		if (cardA.getCardID() == cardB.getCardID()) {
+        		if (pairFound) {
         			System.out.println("They match");
         			flippedPairs.add(cardA);
         			flippedPairs.add(cardB);
@@ -131,7 +158,6 @@ public class MemoryModel implements BaseModel {
         			cardA.switchFace();
         			cardB.switchFace();
         			tempCardArray.removeAllElements();
-        			System.out.println("AFTER REMOVING ALL ELEMENTS; SIZE IS NOW: " + tempCardArray.size());
         		}
             }
           });
