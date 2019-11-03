@@ -34,7 +34,7 @@ public class MemoryStatsPanel extends JPanel {
 	
 	public MemoryStatsPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
-		this.setLayout(new GridLayout(2, 3, 60, 5));
+		this.setLayout(new GridLayout(2, 4, 60, 5));
 		this.setBorder(new EmptyBorder(10, 10, 15, 10));
 		jbEndGame = new JButton("End Game");
 		jbEndGame.addActionListener(new ActionListener() {
@@ -57,10 +57,12 @@ public class MemoryStatsPanel extends JPanel {
 		jlPairsFoundCounter = new JLabel("0", SwingConstants.CENTER);
 		
 		this.add(jlAttemptsText);
-		this.add(jlPairsFoundText);	// dummy
+		this.add(jlPairsFoundText);
+		this.add(new JLabel(""));	// dummy
 		this.add(new JLabel(""));	// dummy
 		this.add(jlAttemptsCounter);
-		this.add(jlPairsFoundCounter);	// dummy
+		this.add(jlPairsFoundCounter);
+		this.add(new JLabel(""));	// dummy
 		this.add(jbEndGame);
 	}
 	
