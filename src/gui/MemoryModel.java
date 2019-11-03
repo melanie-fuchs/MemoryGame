@@ -1,13 +1,9 @@
 package gui;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Vector;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 import javax.swing.Timer;
 
