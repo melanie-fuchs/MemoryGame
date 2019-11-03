@@ -87,8 +87,9 @@ public class MemoryStatsPanel extends JPanel {
 	
 	private void createGameOverPanel() {
 		gameOverPanel = new JPanel();
+		gameOverPanel.setBorder(new EmptyBorder(0, 10, 0, 10));
 		jlGameOver = new JLabel(" ");
-		jlGameOver.setFont(new Font("Arial", Font.BOLD, 40));
+		jlGameOver.setFont(new Font("Arial Narrow", Font.BOLD, 50));
 		
 		gameOverPanel.add(jlGameOver, SwingConstants.CENTER);
 	}
@@ -96,7 +97,10 @@ public class MemoryStatsPanel extends JPanel {
 	public void setGameOverLabel() {
 		jlGameOver.setText("Game Over");
 		jlGameOver.setForeground(Color.WHITE);
+		jlGameOver.setOpaque(true);
 		jlGameOver.setBackground(Color.BLACK);
+		gameOverPanel.setOpaque(true);
+		gameOverPanel.setBackground(Color.BLACK);
 	}
 	
 	public void setAttemptsLabel(int att) {

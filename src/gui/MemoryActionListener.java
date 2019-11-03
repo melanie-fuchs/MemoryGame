@@ -52,7 +52,7 @@ public class MemoryActionListener implements ActionListener {
 	 		int totalPairs = ((BaseModel)modelHashtable.get(key)).getAllMemoryCardsSize() / 2;
 	 		
 	 		if(totalPairs - foundPairs == 0) {
-	 			// TODO popup message game over
+	 			passivePanel.setGameOverLabel();
 	 		}
 	    }
 	}
