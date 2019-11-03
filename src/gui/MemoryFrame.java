@@ -4,7 +4,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.Vector;
 
 import javax.swing.JFrame;
