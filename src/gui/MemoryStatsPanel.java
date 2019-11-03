@@ -4,7 +4,9 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -28,8 +30,10 @@ public class MemoryStatsPanel extends JPanel {
 	private String attempts = "";
 	private String pairsFound = "";
 
+	private JPanel statsPanel, gameOverPanel;
 	private JButton jbEndGame;
-	private JLabel jlAttemptsText, jlAttemptsCounter, jlPairsFoundText, jlPairsFoundCounter;
+	private JLabel jlAttemptsText, jlAttemptsCounter, jlPairsFoundText,
+		jlPairsFoundCounter, jlGameOver;
 	private JFrame parentFrame;
 	public JFrame getParentFrame() {
 		return parentFrame;
@@ -37,8 +41,20 @@ public class MemoryStatsPanel extends JPanel {
 	
 	public MemoryStatsPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
-		this.setLayout(new GridLayout(2, 4, 60, 5));
-		this.setBorder(new EmptyBorder(10, 10, 15, 10));
+		
+		this.setLayout(new BorderLayout());
+		
+		this.createStatsPanel();
+		this.createGameOverPanel();
+		
+		this.add(gameOverPanel, BorderLayout.NORTH);
+		this.add(statsPanel, BorderLayout.CENTER);
+	}
+	
+	private void createStatsPanel() {
+		statsPanel = new JPanel();
+		statsPanel.setLayout(new GridLayout(2, 4, 60, 5));
+		statsPanel.setBorder(new EmptyBorder(10, 10, 15, 10));
 		jbEndGame = new JButton("End Game");
 		jbEndGame.addActionListener(new ActionListener() {
 			@Override
@@ -59,14 +75,28 @@ public class MemoryStatsPanel extends JPanel {
 		jlPairsFoundText = new JLabel("Found Pairs:", SwingConstants.CENTER);
 		jlPairsFoundCounter = new JLabel("0", SwingConstants.CENTER);
 		
-		this.add(jlAttemptsText);
-		this.add(jlPairsFoundText);
-		this.add(new JLabel(""));	// dummy
-		this.add(new JLabel(""));	// dummy
-		this.add(jlAttemptsCounter);
-		this.add(jlPairsFoundCounter);
-		this.add(new JLabel(""));	// dummy
-		this.add(jbEndGame);
+		statsPanel.add(jlAttemptsText);
+		statsPanel.add(jlPairsFoundText);
+		statsPanel.add(new JLabel(""));	// dummy
+		statsPanel.add(new JLabel(""));	// dummy
+		statsPanel.add(jlAttemptsCounter);
+		statsPanel.add(jlPairsFoundCounter);
+		statsPanel.add(new JLabel(""));	// dummy
+		statsPanel.add(jbEndGame);
+	}
+	
+	private void createGameOverPanel() {
+		gameOverPanel = new JPanel();
+		jlGameOver = new JLabel(" ");
+		jlGameOver.setFont(new Font("Arial", Font.BOLD, 40));
+		
+		gameOverPanel.add(jlGameOver, SwingConstants.CENTER);
+	}
+	
+	public void setGameOverLabel() {
+		jlGameOver.setText("Game Over");
+		jlGameOver.setForeground(Color.WHITE);
+		jlGameOver.setBackground(Color.BLACK);
 	}
 	
 	public void setAttemptsLabel(int att) {

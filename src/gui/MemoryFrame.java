@@ -22,9 +22,9 @@ public class MemoryFrame extends JFrame {
 		super("Memory");
 		this.memorySize = memorySize;
 		if(memorySize == 16) {
-			this.setSize(650, 750);
+			this.setSize(650, 800);
 		} else {
-			this.setSize(720, 700);
+			this.setSize(720, 750);
 		}
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
