@@ -4,8 +4,10 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import javax.swing.Timer;
 
@@ -85,7 +87,7 @@ public class MemoryModel implements BaseModel {
 		System.out.println("CARD IS SWITCHED: " + tempCard.hashCode());
 		// the problem seems to be here somewhere:
 		if(tempCardArray.size() == 2){
-			for (BaseCard card : tempCardArray) {
+			for (BaseCard card : allMemoryCards.values()) {
 				card.setEnabled(false);
 			}
 			this.checkPairs(2500);
@@ -111,31 +113,29 @@ public class MemoryModel implements BaseModel {
         			System.out.println("They match");
         			flippedPairs.add(cardA);
         			flippedPairs.add(cardB);
-        			cardA.setEnabled(false);
-        			cardB.setEnabled(false);
+        			for(BaseCard card : allMemoryCards.values()) {
+        				if(!flippedPairs.contains(card)) {
+        					card.setEnabled(true);
+        				}
+        			}
         			tempCardArray.removeAllElements();
         		} else {
+        			// enable every card that is not contained in flipped pairs:
+        			for(BaseCard card : allMemoryCards.values()) {
+        				if(!flippedPairs.contains(card)) {
+        					card.setEnabled(true);
+        					System.out.println(card.hashCode());
+        				}
+        			}
         			System.out.println("They do not match");
+        			cardA.switchFace();
+        			cardB.switchFace();
         			tempCardArray.removeAllElements();
-        			switchUnfitPairs(cardA, cardB);
-        			// TODO swith every card that is not contained in flipped pairs
+        			System.out.println("AFTER REMOVING ALL ELEMENTS; SIZE IS NOW: " + tempCardArray.size());
         		}
             }
           });
 		timer.setRepeats(false);
-		timer.start();
-		
-	}
-
-	
-	/**
-	 * The method calls the <code>switchFace()</code>-Method of two cards.
-	 * 
-	 * @param cardA
-	 * @param cardB
-	 */
-	private void switchUnfitPairs(BaseCard cardA, BaseCard cardB) {
-		cardA.switchFace();
-		cardB.switchFace();		
+		timer.start();		
 	}
 }

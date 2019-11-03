@@ -56,10 +56,17 @@ public class CardColor extends BaseCard {
 			if(faceUp) {
 				this.setBackground(backgroundColor);
 				this.faceUp = false;
+
+				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to BACKGROUNDCOLOR---");
 			} else {
 				this.setBackground(foregroundColor);
 				this.faceUp = true;
+
+				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to FOREGROUNDCOLOR---");
 			}
+			this.repaint();
+			this.validate();
+			System.out.println("harr, switchi switchi");
 		}
 	}
 }
