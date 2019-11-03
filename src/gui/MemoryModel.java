@@ -1,9 +1,13 @@
 package gui;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
+
+import javax.swing.Timer;
 
 import gui.BaseCard;
 
@@ -82,9 +86,10 @@ public class MemoryModel implements BaseModel {
 		// the problem seems to be here somewhere:
 		if(tempCardArray.size() == 2){
 			for (BaseCard card : tempCardArray) {
-				card.setEnabled(true);
+				card.setEnabled(false);
 			}
-			this.checkPairs();
+			this.checkPairs(2500);
+			this.attempts += 1;
 		}
 	}
 
@@ -92,44 +97,36 @@ public class MemoryModel implements BaseModel {
 	/**
 	 * The method compares the cards in the <code>tempCardArray</code>-
 	 * Vector and handles further tasks.
-	 */
-	private void checkPairs() {
-		System.out.println("checkPairs() started");
-		BaseCard cardA = tempCardArray.elementAt(0);
-		BaseCard cardB = tempCardArray.elementAt(1);
-		if (cardA.getCardID() == cardB.getCardID()) {
-			System.out.println("They match");
-			flippedPairs.add(cardA);
-			cardA.setEnabled(false);
-			cardB.setEnabled(false);
-			tempCardArray.removeAllElements();
-			this.attempts += 1;
-			waitAMoment(500);
-		} else {
-			System.out.println("They do not match");
-			tempCardArray.removeAllElements();
-			this.attempts += 1;
-			waitAMoment(1200);
-			switchUnfitPairs(cardA, cardB);
-		}
-	}
+	 */	
+	private void checkPairs(int sleepMillis) {
+		System.out.println("Program is gonna sleep... wait:");
+
+		Timer timer = new Timer(sleepMillis, new ActionListener() {
+            @Override 
+            public void actionPerformed(ActionEvent e) {
+            	System.out.println("checkPairs() started");
+        		BaseCard cardA = tempCardArray.elementAt(0);
+        		BaseCard cardB = tempCardArray.elementAt(1);
+        		if (cardA.getCardID() == cardB.getCardID()) {
+        			System.out.println("They match");
+        			flippedPairs.add(cardA);
+        			flippedPairs.add(cardB);
+        			cardA.setEnabled(false);
+        			cardB.setEnabled(false);
+        			tempCardArray.removeAllElements();
+        		} else {
+        			System.out.println("They do not match");
+        			tempCardArray.removeAllElements();
+        			switchUnfitPairs(cardA, cardB);
+        			// TODO swith every card that is not contained in flipped pairs
+        		}
+            }
+          });
+		timer.setRepeats(false);
+		timer.start();
 		
-	/**
-	 * The Method puts the program to sleep for a moment
-	 * @param sleepMillis int-value that represents the milliseconds that the
-	 * program should sleep
-	 */
-	private void waitAMoment(int sleepMillis) {
-		try {
-			// wait 2 seconds before turning the cards back
-			//TimeUnit.SECONDS.sleep(2);
-			Thread.sleep(sleepMillis);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			System.out.println("MemoryModel.waitAMoment(): "
-					+ e.getMessage());
-		}
 	}
+
 	
 	/**
 	 * The method calls the <code>switchFace()</code>-Method of two cards.
