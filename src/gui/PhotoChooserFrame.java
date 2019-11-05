@@ -35,6 +35,9 @@ public class PhotoChooserFrame extends JFrame {
 	photoPanel.setLayout(new GridLayout());
 	photoPanel.setBorder(new EmptyBorder(10, 10, 15, 10));
 	photoPanel.setLayout(new GridLayout(5, 6, 7, 7));
+	for(int i = 0; i < gameSize; i++) {
+	    photoPanel.add(comp)
+	}
     }
     
     private void createChooserPanel() {
