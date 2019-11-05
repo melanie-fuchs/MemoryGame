@@ -8,9 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 /**
  * @author yume
  *
