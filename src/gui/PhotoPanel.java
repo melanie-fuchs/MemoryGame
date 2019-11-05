@@ -23,21 +23,7 @@ public class PhotoPanel extends JPanel {
 	private int numberOfCards;
 	private int numberOfPhotos;
 	private Vector<JLabel> photoLabelVector;
-	private JLabel 	photo0,
-					photo1,
-					photo2,
-					photo3,
-					photo4,
-					photo5,
-					photo6,
-					photo7,
-					photo8,
-					photo9,
-					photo10,
-					photo11,
-					photo12,
-					photo13,
-					photo14;
+
 	
 	public void setPhoto(int fieldNo, File photoFile) {
 		try {
@@ -54,21 +40,10 @@ public class PhotoPanel extends JPanel {
 	
 	public PhotoPanel(int numberOfCards) {
 		photoLabelVector = new Vector<JLabel>();
-		photoLabelVector.add(photo0 = new JLabel());
-		photoLabelVector.add(photo1 = new JLabel());
-		photoLabelVector.add(photo2 = new JLabel());
-		photoLabelVector.add(photo3 = new JLabel());
-		photoLabelVector.add(photo4 = new JLabel());
-		photoLabelVector.add(photo5 = new JLabel());
-		photoLabelVector.add(photo6 = new JLabel());
-		photoLabelVector.add(photo7 = new JLabel());
-		photoLabelVector.add(photo8 = new JLabel());
-		photoLabelVector.add(photo9 = new JLabel());
-		photoLabelVector.add(photo10 = new JLabel());
-		photoLabelVector.add(photo11 = new JLabel());
-		photoLabelVector.add(photo12 = new JLabel());
-		photoLabelVector.add(photo13 = new JLabel());
-		photoLabelVector.add(photo14 = new JLabel());
+		for(int i = 0; i < numberOfPhotos; i++) {
+			photoLabelVector.add(new JLabel());
+		}
+		
 		
 		this.numberOfCards = numberOfCards;
 		this.numberOfPhotos = numberOfCards / 2;
