@@ -39,7 +39,9 @@ public class MemoryCardPanel extends JPanel {
 	
 	/**
 	 * Constructor that takes an int-value that represents the gamesize
-	 * (number of cards in the game) and a Vector of memory-cards.
+	 * (number of cards in the game), a Vector of memory-cards and a MemoryStatsPanel.
+	 * This MemoryStatsPanel will be used to connect the class with the foreign Panel
+	 * to display numbers.
 	 * 
 	 * @param memorySize
 	 * @param cards
