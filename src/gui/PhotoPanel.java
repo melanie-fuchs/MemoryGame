@@ -12,6 +12,7 @@ import java.util.Vector;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -74,6 +75,8 @@ public class PhotoPanel extends JPanel {
 	private JPanel createChooserPanel() {
 		chooserPanel = new JPanel();
 		chooserPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		
+		JFileChooser photochooser = new JFileChooser();
 		
 		return chooserPanel;
 		
