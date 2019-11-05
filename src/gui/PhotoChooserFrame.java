@@ -35,6 +35,7 @@ public class PhotoChooserFrame extends JFrame {
 	private JButton jbtLoadImages, jbtStartGame;
 	private JFileChooser photoChooser;
 	private JFrame thisFrame = this;
+	private Vector<File> chosenFiles;
 
 	
 	
@@ -47,7 +48,7 @@ public class PhotoChooserFrame extends JFrame {
 			photoLabelVector.add(new JLabel());
 		}
 
-		this.setSize(720, 750);
+		this.setSize(720, 400);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		
@@ -101,16 +102,18 @@ public class PhotoChooserFrame extends JFrame {
 		FileNameExtensionFilter extensionFiler = new
 				FileNameExtensionFilter("images",  "jpg", "png", "gif", "jpeg");
 		photoChooser.setFileFilter(extensionFiler);
-		Vector<File> chosenFiles = new Vector<File>();
+		chosenFiles = new Vector<File>();
+		// TODO fill 
 		
-		return chooserPanel;
-		
+		return chooserPanel;		
 	}
 	
 	public void setPhoto(int fieldNo, File photoFile) {
 		try {
 			BufferedImage photo = ImageIO.read(photoFile);
 			(photoLabelVector.elementAt(fieldNo)).setIcon(new ImageIcon(photo));
+			(photoLabelVector.elementAt(fieldNo)).setHorizontalAlignment(JLabel.CENTER);
+			(photoLabelVector.elementAt(fieldNo)).setVerticalAlignment(JLabel.CENTER);
 		} catch (IOException e) {
 			System.out.println("PhotoChooserFrame.setPhoto(): loading image failed."
 					+ e.getMessage());
@@ -144,8 +147,10 @@ public class PhotoChooserFrame extends JFrame {
 		}
 	}
 	
-	private void loadImages() {
-		
+	private void fillPhotoPanel() {
+		for(int i = 0; i < numberOfPhotos; i++) {
+			setPhoto(i, chosenFiles.elementAt(i));
+		}
 	}
 
 	public static void main(String[] args) {
