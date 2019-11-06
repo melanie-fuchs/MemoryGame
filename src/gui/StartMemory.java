@@ -64,11 +64,9 @@ public class StartMemory {
 	}
 	
 	private void generateImageCards() {
-//		TODO load images
-//		private void openFileChooser() {		
-//			PhotoChooser chooser = new PhotoChooser();
-//			chooser.showOpenDialog(this);
-//		}
+		for(int i = 0; i < (gameSize / 2); i++) {
+			cards.add(new CardImage(imageVector.elementAt(i), colorBack, i);
+		}
 	}
 	
 	private void initColors() {		
