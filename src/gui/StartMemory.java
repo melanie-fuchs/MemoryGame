@@ -67,6 +67,7 @@ public class StartMemory {
 	private void generateImageCards() {
 		for(int i = 0; i < (gameSize / 2); i++) {
 			cards.add(new CardImage(imageVector.elementAt(i), colorBack, i));
+			cards.add(new CardImage(imageVector.elementAt(i), colorBack, i));
 		}
 	}
 	
