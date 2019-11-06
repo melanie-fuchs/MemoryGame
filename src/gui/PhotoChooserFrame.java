@@ -134,7 +134,7 @@ public class PhotoChooserFrame extends JFrame {
 		chooserPanelTop.add(jbtStartGame);
 
 		// creating and setting the JFileChooser
-		photoChooser = new JFileChooser();
+		photoChooser = new JFileChooser("C:\\Users\\yume\\Pictures\\javatests"); // TODO remove directory
 		FileNameExtensionFilter extensionFiler = new FileNameExtensionFilter("images", "jpg", "png", "gif", "jpeg");
 		photoChooser.setAcceptAllFileFilterUsed(false);
 		photoChooser.setMultiSelectionEnabled(true);

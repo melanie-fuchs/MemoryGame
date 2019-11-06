@@ -6,9 +6,17 @@ package gui;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
+
+
+
 /**
  * @author yume
  *
@@ -24,6 +32,7 @@ public class CardImage extends BaseCard {
 
 	private Color backgroundColor;	// backgroundcolor of every card
 	private BufferedImage image;	// Buffered Image of the card
+	private BaseCard thisCard = this;
 	
 	public CardImage(BufferedImage image, Color colorBack, int id) {
 		this.image = image;
@@ -55,9 +64,23 @@ public class CardImage extends BaseCard {
 			if(faceUp) {
 				this.setBackground(backgroundColor);
 				this.faceUp = false;
+				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to BACKGROUNDCOLOR---");
 			} else {
-				this.setIcon(new ImageIcon(image));
+//				this.setIcon(new ImageIcon(image));
+//				this.setSelectedIcon(new ImageIcon("C:\\Users\\yume\\Pictures\\javatests\\1.jpg"));
+
+				SwingUtilities.invokeLater(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+//						thisCard.setIcon(new ImageIcon(image));
+						thisCard.setBackground(Color.BLUE);
+						
+					}
+				});
 				this.faceUp = true;
+				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to FOREGROUNDCOLOR---");
 			}
 			this.repaint();
 			this.validate();
