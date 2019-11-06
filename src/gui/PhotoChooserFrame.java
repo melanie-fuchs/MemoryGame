@@ -150,10 +150,11 @@ public class PhotoChooserFrame extends JFrame {
     public void setPhoto(int fieldNo, File photoFile) {
 	try {
 	    BufferedImage photo = ImageIO.read(photoFile);
-	    (photoLabelVector.elementAt(fieldNo)).setIcon(new ImageIcon(photo));
-	    (photoLabelVector.elementAt(fieldNo)).setHorizontalAlignment(JLabel.CENTER);
-	    (photoLabelVector.elementAt(fieldNo)).setVerticalAlignment(JLabel.CENTER);
-	    System.out.println("Photo displayed!?");
+	    JLabel tempLabel = photoLabelVector.elementAt(fieldNo);
+	    tempLabel.setIcon(new ImageIcon(photo));
+	    tempLabel.setHorizontalAlignment(JLabel.CENTER);
+	    tempLabel.setVerticalAlignment(JLabel.CENTER);
+	    photoPanel.add(tempLabel);
 	} catch (IOException e) {
 	    System.out.println("PhotoChooserFrame.setPhoto(): loading image failed." + e.getMessage());
 	    e.printStackTrace();
