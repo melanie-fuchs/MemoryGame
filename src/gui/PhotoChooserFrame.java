@@ -45,6 +45,7 @@ public class PhotoChooserFrame extends JFrame {
 		this.numberOfCards = numberOfCards;
 		this.numberOfPhotos = numberOfCards / 2;
 
+		this.memoryCardPhotos = new Vector<BufferedImage>();
 		this.photoLabelVector = new Vector<JLabel>();
 		for (int i = 0; i < numberOfPhotos; i++) {
 			photoLabelVector.add(new JLabel());
@@ -125,6 +126,7 @@ public class PhotoChooserFrame extends JFrame {
 				for(BufferedImage photo : memoryCardPhotos) {
 					resizedImages.add(resizePhoto(photo, 200));
 				}
+				System.out.println("Game should start now");
 				new StartMemory(numberOfCards, 2, resizedImages);
 			}
 		});
@@ -265,7 +267,7 @@ public class PhotoChooserFrame extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new PhotoChooserFrame(30);
+		new PhotoChooserFrame(16);
 
 	}
 }

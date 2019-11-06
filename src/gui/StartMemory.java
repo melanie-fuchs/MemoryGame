@@ -47,6 +47,7 @@ public class StartMemory {
 		} else {
 			if (gameMode == 2) {
 				generateImageCards();
+				new MemoryFrame(gameSize, gameMode, cards);
 			}
 		}
 	}
