@@ -163,8 +163,8 @@ public class PhotoChooserFrame extends JFrame {
 	    System.out.println("PhotoChooserFrame.setPhoto(): loading image failed." + e.getMessage());
 	    e.printStackTrace();
 	}
-	repaint();
-	validate();
+//	repaint();
+//	validate();
     }
     
     private BufferedImage cropPhoto(BufferedImage originalPhoto) {
@@ -178,15 +178,16 @@ public class PhotoChooserFrame extends JFrame {
 	} else {
 	    if(photoHeight > photoWidth) {
 		// cropping the photo starting on the top left corner
-		croppedImage = originalPhoto.getSubimage(0, 0, photoWidth, photoHeight);
+		croppedImage = originalPhoto.getSubimage(0, 0, photoWidth, photoWidth);
 		return croppedImage;
 	    } else {
-		if (photoHeight < photoWidth) {
-		    // cropping the photo centered, full height
-		    int cropX = (photoWidth - photoHeight) / 2;
-		    croppedImage = originalPhoto.getSubimage(cropX, 0, photoWidth, photoHeight);
-		    return croppedImage;
-		}
+			if (photoHeight < photoWidth) {
+			    // cropping the photo centered, full height
+			    int cropX = (photoWidth - photoHeight) / 2;
+			    System.out.println("cropX = " + cropX + "\tphotoWidth " + photoWidth + "\tphotoHeight " + photoHeight);
+			    croppedImage = originalPhoto.getSubimage(cropX, 0, photoHeight, photoHeight);
+			    return croppedImage;
+			}
 	    }
 	}
 	return null;
