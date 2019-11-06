@@ -172,6 +172,10 @@ public class PhotoChooserFrame extends JFrame {
 		jlMessage.setText("You chose too many photos. The first " + numberOfPhotos
 			+ " of the selected photos will be used."
 			+ " You can start the game now.");
+		// removing items so the vector contains only the required number of photos:
+		while(chosenFiles.size() > numberOfPhotos) {
+		    chosenFiles.remove(numberOfPhotos);
+		}
 		fillPhotoPanel();
 	    } else {
 		if (chosenFiles.size() < numberOfPhotos) {
