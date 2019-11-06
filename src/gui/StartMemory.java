@@ -4,6 +4,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 /**
@@ -17,10 +18,27 @@ public class StartMemory {
 	private int gameSize;			// possible values: 16, 20, 30
 	private Color[] colors = new Color[15];
 	private Color colorBack = Color.DARK_GRAY;
+	private Vector<BufferedImage> imageVector;
 	
 	public StartMemory(int gameSize, int gameMode) {
 		this.gameMode = gameMode;
 		this.gameSize = gameSize;
+		this.cards = new Vector<BaseCard>();
+		
+		if(gameMode == 1) {
+			generateColorCards();
+			new MemoryFrame(gameSize, gameMode, cards);
+		} else {
+			if (gameMode == 2) {
+				generateImageCards();
+			}
+		}
+	}
+	
+	public StartMemory(int gameSize, int gameMode, Vector<BufferedImage> imageVector) {
+		this.gameMode = gameMode;
+		this.gameSize = gameSize;
+		this.imageVector = imageVector;
 		this.cards = new Vector<BaseCard>();
 		
 		if(gameMode == 1) {

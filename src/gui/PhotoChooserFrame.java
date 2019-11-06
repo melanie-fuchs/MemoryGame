@@ -38,6 +38,7 @@ public class PhotoChooserFrame extends JFrame {
 	private JFileChooser photoChooser;
 	private JFrame thisFrame = this;
 	private Vector<File> chosenFiles;
+	private Vector<BufferedImage> memoryCardPhotos;
 	private JLabel jlMessage;
 
 	public PhotoChooserFrame(int numberOfCards) {
@@ -120,6 +121,7 @@ public class PhotoChooserFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Start the game
+				// resize every item of memoryCardPhotos to memoryCard-size
 
 			}
 		});
@@ -151,7 +153,8 @@ public class PhotoChooserFrame extends JFrame {
 		try {
 			BufferedImage photo = ImageIO.read(photoFile);
 			BufferedImage croppedPhoto = cropPhoto(photo);
-			BufferedImage resizedPhoto = resizePhoto(croppedPhoto);
+			memoryCardPhotos.add(croppedPhoto); // adding the cropped version into vector
+			BufferedImage resizedPhoto = resizePhoto(croppedPhoto, thumbSize);
 			JLabel tempLabel = photoLabelVector.elementAt(fieldNo);
 			tempLabel.setIcon(new ImageIcon(resizedPhoto));
 			tempLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -188,7 +191,8 @@ public class PhotoChooserFrame extends JFrame {
 		return null;
 	}
 
-	private BufferedImage resizePhoto(BufferedImage originalPhoto) {
+	private BufferedImage resizePhoto(BufferedImage originalPhoto, int thumbSize) {
+		this.thumbSize = thumbSize;
 		if (originalPhoto != null) {
 			BufferedImage resizedImage = new BufferedImage(thumbSize, thumbSize, originalPhoto.getType());
 			Graphics2D graphic = resizedImage.createGraphics();
