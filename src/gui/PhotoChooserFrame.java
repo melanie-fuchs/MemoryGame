@@ -152,7 +152,8 @@ public class PhotoChooserFrame extends JFrame {
     public void setPhoto(int fieldNo, File photoFile) {
 	try {
 	    BufferedImage photo = ImageIO.read(photoFile);
-	    Image resizedPhoto = resizePhoto(photo);
+	    BufferedImage croppedPhoto = cropPhoto(photo);
+	    BufferedImage resizedPhoto = resizePhoto(croppedPhoto);
 	    JLabel tempLabel = photoLabelVector.elementAt(fieldNo);
 	    tempLabel.setIcon(new ImageIcon(resizedPhoto));
 	    tempLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -165,51 +166,44 @@ public class PhotoChooserFrame extends JFrame {
 	repaint();
 	validate();
     }
-
-    private BufferedImage resizePhoto(BufferedImage originalPhoto) {
+    
+    private BufferedImage cropPhoto(BufferedImage originalPhoto) {
 	int photoWidth = originalPhoto.getWidth();
 	int photoHeight = originalPhoto.getHeight();
 	BufferedImage croppedImage;
-	BufferedImage resizedImage;
-	System.out.println("PHotoWidth = " + photoWidth + "\theight: " + photoHeight);
 	if(photoHeight == photoWidth) {
-	    croppedImage = originalPhoto;
-	    resizedImage = new BufferedImage(thumbSize, thumbSize, croppedImage.getType());
-	    Graphics2D graphic = resizedImage.createGraphics();
-	    graphic.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-	    graphic.drawImage(croppedImage, 0, 0, thumbSize, thumbSize, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), null);
-	    graphic.dispose();
-	    return resizedImage;
-//	    resizedImage = croppedImage.getScaledInstance(thumbSize, thumbSize, Image.SCALE_SMOOTH);
+	    croppedImage = originalPhoto;	    
+	    return croppedImage;
 
 	} else {
 	    if(photoHeight > photoWidth) {
 		// cropping the photo starting on the top left corner
 		croppedImage = originalPhoto.getSubimage(0, 0, photoWidth, photoHeight);
-		resizedImage = new BufferedImage(thumbSize, thumbSize, croppedImage.getType());
-		    Graphics2D graphic = resizedImage.createGraphics();
-		    graphic.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-		    graphic.drawImage(croppedImage, 0, 0, thumbSize, thumbSize, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), null);
-		    graphic.dispose();
-		    return resizedImage;
-//		resizedImage = croppedImage.getScaledInstance(thumbSize, thumbSize, Image.SCALE_SMOOTH);
+		return croppedImage;
 	    } else {
 		if (photoHeight < photoWidth) {
 		    // cropping the photo centered, full height
 		    int cropX = (photoWidth - photoHeight) / 2;
 		    croppedImage = originalPhoto.getSubimage(cropX, 0, photoWidth, photoHeight);
-		    resizedImage = new BufferedImage(thumbSize, thumbSize, croppedImage.getType());
-		    Graphics2D graphic = resizedImage.createGraphics();
-		    graphic.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-		    graphic.drawImage(croppedImage, 0, 0, thumbSize, thumbSize, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), null);
-		    graphic.dispose();
-		    return resizedImage;
-//		    resizedImage = croppedImage.getScaledInstance(thumbSize, thumbSize, Image.SCALE_SMOOTH);
+		    return croppedImage;
 		}
 	    }
 	}
-
 	return null;
+    }
+
+    private BufferedImage resizePhoto(BufferedImage originalPhoto) {
+	if(originalPhoto != null) {
+	    BufferedImage resizedImage = new BufferedImage(thumbSize, thumbSize, originalPhoto.getType());
+	    Graphics2D graphic = resizedImage.createGraphics();
+	    graphic.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+	    graphic.drawImage(originalPhoto, 0, 0, thumbSize, thumbSize, 0, 0, originalPhoto.getWidth(),
+		    originalPhoto.getHeight(), null);
+	    graphic.dispose();
+	    return resizedImage;
+	}
+	return null;
+	
     }
     private void handleLoadedFiles() {
 	if (chosenFiles.size() == numberOfPhotos) {
