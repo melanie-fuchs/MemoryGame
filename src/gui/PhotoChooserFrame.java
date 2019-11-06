@@ -49,7 +49,7 @@ public class PhotoChooserFrame extends JFrame {
 	    photoLabelVector.add(new JLabel());
 	}
 
-	this.setSize(720, 400);
+	this.setSize(720, 500);
 	this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	this.setLayout(new BorderLayout());
 
@@ -240,15 +240,15 @@ public class PhotoChooserFrame extends JFrame {
 	switch (numberOfPhotos) {
 	case 8:
 	    thumbSize = 120;
-	    return new GridLayout(4, 2, 7, 7);
+	    return new GridLayout(2, 4, 7, 7);
 //			break;
 	case 10:
 	    thumbSize = 120;
-	    return new GridLayout(5, 2, 7, 7);
+	    return new GridLayout(2, 5, 7, 7);
 //			break;
 	case 15:
 	    thumbSize = 80;
-	    return new GridLayout(5, 3, 7, 7);
+	    return new GridLayout(3, 5, 7, 7);
 //			break;
 	default:
 	    return null;
