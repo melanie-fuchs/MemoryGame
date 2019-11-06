@@ -184,8 +184,7 @@ public class GameSettingsGUI extends JPanel {
 				jbUseColors.setFont(fontRegular);
 				jlbChosenMode.setForeground(Color.BLACK);
 				jlbChosenMode.setText("");
-				jtfStatus.setText("Please choose " + getNumberOfCards()/2 +
-						" photos from your file system.");
+				jtfStatus.setText("You will choose images from your filesystem");
 			}
 		});
 		
