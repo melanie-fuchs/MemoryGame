@@ -4,7 +4,10 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -28,8 +31,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class PhotoChooserFrame extends JFrame {
 
-    private int numberOfCards;
-    private int numberOfPhotos;
+    private int numberOfCards, numberOfPhotos, thumbSize;
     private Vector<JLabel> photoLabelVector;
     private JPanel photoPanel, chooserPanel, chooserPanelTop, chooserPanelBottom;
     private JButton jbtLoadImages, jbtStartGame;
@@ -150,8 +152,9 @@ public class PhotoChooserFrame extends JFrame {
     public void setPhoto(int fieldNo, File photoFile) {
 	try {
 	    BufferedImage photo = ImageIO.read(photoFile);
+	    Image resizedPhoto = resizePhoto(photo);
 	    JLabel tempLabel = photoLabelVector.elementAt(fieldNo);
-	    tempLabel.setIcon(new ImageIcon(photo));
+	    tempLabel.setIcon(new ImageIcon(resizedPhoto));
 	    tempLabel.setHorizontalAlignment(JLabel.CENTER);
 	    tempLabel.setVerticalAlignment(JLabel.CENTER);
 	    photoPanel.add(tempLabel);
@@ -163,6 +166,51 @@ public class PhotoChooserFrame extends JFrame {
 	validate();
     }
 
+    private BufferedImage resizePhoto(BufferedImage originalPhoto) {
+	int photoWidth = originalPhoto.getWidth();
+	int photoHeight = originalPhoto.getHeight();
+	BufferedImage croppedImage;
+	BufferedImage resizedImage;
+	System.out.println("PHotoWidth = " + photoWidth + "\theight: " + photoHeight);
+	if(photoHeight == photoWidth) {
+	    croppedImage = originalPhoto;
+	    resizedImage = new BufferedImage(thumbSize, thumbSize, croppedImage.getType());
+	    Graphics2D graphic = resizedImage.createGraphics();
+	    graphic.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+	    graphic.drawImage(croppedImage, 0, 0, thumbSize, thumbSize, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), null);
+	    graphic.dispose();
+	    return resizedImage;
+//	    resizedImage = croppedImage.getScaledInstance(thumbSize, thumbSize, Image.SCALE_SMOOTH);
+
+	} else {
+	    if(photoHeight > photoWidth) {
+		// cropping the photo starting on the top left corner
+		croppedImage = originalPhoto.getSubimage(0, 0, photoWidth, photoHeight);
+		resizedImage = new BufferedImage(thumbSize, thumbSize, croppedImage.getType());
+		    Graphics2D graphic = resizedImage.createGraphics();
+		    graphic.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		    graphic.drawImage(croppedImage, 0, 0, thumbSize, thumbSize, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), null);
+		    graphic.dispose();
+		    return resizedImage;
+//		resizedImage = croppedImage.getScaledInstance(thumbSize, thumbSize, Image.SCALE_SMOOTH);
+	    } else {
+		if (photoHeight < photoWidth) {
+		    // cropping the photo centered, full height
+		    int cropX = (photoWidth - photoHeight) / 2;
+		    croppedImage = originalPhoto.getSubimage(cropX, 0, photoWidth, photoHeight);
+		    resizedImage = new BufferedImage(thumbSize, thumbSize, croppedImage.getType());
+		    Graphics2D graphic = resizedImage.createGraphics();
+		    graphic.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		    graphic.drawImage(croppedImage, 0, 0, thumbSize, thumbSize, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), null);
+		    graphic.dispose();
+		    return resizedImage;
+//		    resizedImage = croppedImage.getScaledInstance(thumbSize, thumbSize, Image.SCALE_SMOOTH);
+		}
+	    }
+	}
+
+	return null;
+    }
     private void handleLoadedFiles() {
 	if (chosenFiles.size() == numberOfPhotos) {
 	    jlMessage.setText("Your cards are now set. You can start the game.");
@@ -197,12 +245,15 @@ public class PhotoChooserFrame extends JFrame {
     private GridLayout setGridLayout(int numberOfPhotos) {
 	switch (numberOfPhotos) {
 	case 8:
+	    thumbSize = 120;
 	    return new GridLayout(4, 2, 7, 7);
 //			break;
 	case 10:
+	    thumbSize = 120;
 	    return new GridLayout(5, 2, 7, 7);
 //			break;
 	case 15:
+	    thumbSize = 80;
 	    return new GridLayout(5, 3, 7, 7);
 //			break;
 	default:
