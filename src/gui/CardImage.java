@@ -23,11 +23,11 @@ public class CardImage extends BaseCard {
 	private boolean faceUp; 		// true if face is visible, false if card is hidden
 
 	private Color backgroundColor;	// backgroundcolor of every card
-	private ImageIcon foregroundImage;// foregroundcolor of every card
 	private BufferedImage image;	// Buffered Image of the card
 	
 	public CardImage(BufferedImage image, Color colorBack, int id) {
 		this.image = image;
+		
 		this.backgroundColor = colorBack;
 		this.cardID = id;
 		
@@ -57,7 +57,10 @@ public class CardImage extends BaseCard {
 				this.faceUp = false;
 			} else {
 				this.setIcon(new ImageIcon(image));
+				this.faceUp = true;
 			}
+			this.repaint();
+			this.validate();
 		}
 	}
 }
