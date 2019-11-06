@@ -67,7 +67,6 @@ public class PhotoChooserFrame extends JFrame {
 		photoPanel = new JPanel();
 		photoPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		photoPanel.setLayout(setGridLayout(numberOfPhotos));
-//		loadImages();
 
 		return photoPanel;
 	}
@@ -122,7 +121,11 @@ public class PhotoChooserFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Start the game
 				// resize every item of memoryCardPhotos to memoryCard-size
-
+				Vector<BufferedImage> resizedImages = new Vector<BufferedImage>();
+				for(BufferedImage photo : memoryCardPhotos) {
+					resizedImages.add(resizePhoto(photo, 200));
+				}
+				new StartMemory(numberOfCards, 2, resizedImages);
 			}
 		});
 		jbtStartGame.setEnabled(false); // TODO enable once all photos are set
