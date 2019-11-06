@@ -104,6 +104,8 @@ public class PhotoChooserFrame extends JFrame {
 		    // clearing selection
 		    photoChooser.setSelectedFile(new File(""));
 		    photoChooser.setSelectedFiles(new File[] { new File("") });
+		    
+		    handleLoadedFiles();
 		}
 	    }
 	});
@@ -124,7 +126,6 @@ public class PhotoChooserFrame extends JFrame {
 	chooserPanelTop.add(jbtStartGame);
 	
 	// creating and setting the JFileChooser
-
 	photoChooser = new JFileChooser();
 	FileNameExtensionFilter extensionFiler = new FileNameExtensionFilter("images", "jpg", "png", "gif", "jpeg");
 	photoChooser.setAcceptAllFileFilterUsed(false);
@@ -152,12 +153,34 @@ public class PhotoChooserFrame extends JFrame {
 	    (photoLabelVector.elementAt(fieldNo)).setIcon(new ImageIcon(photo));
 	    (photoLabelVector.elementAt(fieldNo)).setHorizontalAlignment(JLabel.CENTER);
 	    (photoLabelVector.elementAt(fieldNo)).setVerticalAlignment(JLabel.CENTER);
+	    System.out.println("Photo displayed!?");
 	} catch (IOException e) {
 	    System.out.println("PhotoChooserFrame.setPhoto(): loading image failed." + e.getMessage());
 	    e.printStackTrace();
 	}
+	repaint();
+	validate();
     }
 
+    private void handleLoadedFiles() {
+	if (chosenFiles.size() == numberOfPhotos) {
+	    jlMessage.setText("Your cards are now set. You can start the game.");
+	    fillPhotoPanel();
+	} else {
+	    if (chosenFiles.size() > numberOfPhotos) {
+		jlMessage.setText("You chose too many photos. The first " + numberOfPhotos
+			+ " of the selected photos will be used."
+			+ " You can start the game now.");
+		fillPhotoPanel();
+	    } else {
+		if (chosenFiles.size() < numberOfPhotos) {
+		    jlMessage.setText("Please choose another "
+		+ (numberOfPhotos - chosenFiles.size()) + " photos from your filesystem.");
+		}
+	    }
+	}
+    }
+    
     // TODO repaint after loading images
 
     /**
