@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+
 /**
  * @author yume
  *
@@ -36,6 +37,7 @@ public class PhotoChooserFrame extends JFrame {
 	private JFileChooser photoChooser;
 	private JFrame thisFrame = this;
 	private Vector<File> chosenFiles;
+	private JLabel jlMessage;
 
 	
 	
@@ -67,27 +69,46 @@ public class PhotoChooserFrame extends JFrame {
 		photoPanel = new JPanel();
 		photoPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		photoPanel.setLayout(setGridLayout(numberOfPhotos));
-		loadImages();
+//		loadImages();
 		
 		return photoPanel;
 	}
 	
+	private void addFileToVector(File[] filesToAdd) {
+	    if(filesToAdd != null && filesToAdd.length > 0) {
+		for(File file : filesToAdd) {
+		    if(!chosenFiles.contains(file)) {
+			chosenFiles.add(file);
+			System.out.println(file.hashCode() + " added");
+		    }
+		}
+	    }
+	}
 	
 	private JPanel createChooserPanel() {
 		chooserPanel = new JPanel();
 		chooserPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		chooserPanel.setLayout(new GridLayout(1, 4, 5, 5));
 
 		photoChooser = new JFileChooser();
+		
+		jlMessage = new JLabel("Please choose " + numberOfPhotos
+			+ " unique photos");
+		chooserPanel.add(jlMessage);
 		
 		jbtLoadImages = new JButton("Load Images");
 		jbtLoadImages.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				photoChooser.showOpenDialog(thisFrame);
+				if(photoChooser.showOpenDialog(thisFrame) == JFileChooser.APPROVE_OPTION) {
+				    addFileToVector(photoChooser.getSelectedFiles());
+				    // clearing selection
+				    photoChooser.setSelectedFile(new File(""));
+				    photoChooser.setSelectedFiles(new File[] {new File("")});
+				}
 			}
 		});
-		chooserPanel.add(jbtLoadImages);
-	
+		chooserPanel.add(jbtLoadImages);	
 		jbtStartGame = new JButton("Start Game");
 		jbtStartGame.addActionListener(new ActionListener() {
 			@Override
@@ -101,6 +122,8 @@ public class PhotoChooserFrame extends JFrame {
 		
 		FileNameExtensionFilter extensionFiler = new
 				FileNameExtensionFilter("images",  "jpg", "png", "gif", "jpeg");
+		photoChooser.setAcceptAllFileFilterUsed(false);
+		photoChooser.setMultiSelectionEnabled(true);
 		photoChooser.setFileFilter(extensionFiler);
 		chosenFiles = new Vector<File>();
 		// TODO fill 
