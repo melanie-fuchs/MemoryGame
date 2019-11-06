@@ -204,7 +204,7 @@ public class GameSettingsGUI extends JPanel {
 				case 2:
 					jlbChosenMode.setText("");
 					jlbChosenMode.setForeground(Color.BLACK);
-					new StartMemory(numberOfCards, gameMode);
+					new PhotoChooserFrame(numberOfCards);
 					break;
 				}
 			}
