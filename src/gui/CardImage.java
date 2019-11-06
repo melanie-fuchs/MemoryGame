@@ -6,6 +6,7 @@ package gui;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 /**
@@ -22,12 +23,11 @@ public class CardImage extends BaseCard {
 	private boolean faceUp; 		// true if face is visible, false if card is hidden
 
 	private Color backgroundColor;	// backgroundcolor of every card
-	private String imagePath;
 	private ImageIcon foregroundImage;// foregroundcolor of every card
+	private BufferedImage image;	// Buffered Image of the card
 	
-	public CardImage(String imagePath, Color colorBack, int id) {
-		this.imagePath = imagePath;
-//		this.foregroundImage = colorFace;
+	public CardImage(BufferedImage image, Color colorBack, int id) {
+		this.image = image;
 		this.backgroundColor = colorBack;
 		this.cardID = id;
 		
@@ -47,7 +47,6 @@ public class CardImage extends BaseCard {
             g.setColor(getBackground());
         }
         g.fillRect(0, 0, getWidth(), getHeight());
-//      super.paintComponent(g); //TODO might have to be active
     }
 	
 	@Override
@@ -57,14 +56,7 @@ public class CardImage extends BaseCard {
 				this.setBackground(backgroundColor);
 				this.faceUp = false;
 			} else {
-				try {
-					foregroundImage = new ImageIcon(imagePath);
-					this.setIcon(foregroundImage);
-					this.faceUp = true;
-				} catch (Exception e) {
-					System.out.println("CardImage.switchFace: " + e.getMessage());
-					System.exit(99);
-				}
+				this.setIcon(new ImageIcon(image));
 			}
 		}
 	}
