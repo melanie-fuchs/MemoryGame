@@ -174,17 +174,16 @@ public class PhotoChooserFrame extends JFrame {
 	if(photoHeight == photoWidth) {
 	    croppedImage = originalPhoto;	    
 	    return croppedImage;
-
 	} else {
 	    if(photoHeight > photoWidth) {
-		// cropping the photo starting on the top left corner
-		croppedImage = originalPhoto.getSubimage(0, 0, photoWidth, photoWidth);
+		// cropping the photo, set square in the top half of the image
+		int cropY = (photoHeight - photoWidth) / 4;
+		croppedImage = originalPhoto.getSubimage(0, cropY, photoWidth, photoWidth);
 		return croppedImage;
 	    } else {
 			if (photoHeight < photoWidth) {
 			    // cropping the photo centered, full height
 			    int cropX = (photoWidth - photoHeight) / 2;
-			    System.out.println("cropX = " + cropX + "\tphotoWidth " + photoWidth + "\tphotoHeight " + photoHeight);
 			    croppedImage = originalPhoto.getSubimage(cropX, 0, photoHeight, photoHeight);
 			    return croppedImage;
 			}
@@ -229,7 +228,6 @@ public class PhotoChooserFrame extends JFrame {
 	}
     }
     
-    // TODO repaint after loading images
 
     /**
      * The method sets a GridLayout for the JPanel regarding the amount of photos
@@ -240,7 +238,7 @@ public class PhotoChooserFrame extends JFrame {
     private GridLayout setGridLayout(int numberOfPhotos) {
 	switch (numberOfPhotos) {
 	case 8:
-	    thumbSize = 120;
+	    thumbSize = 150;
 	    return new GridLayout(2, 4, 7, 7);
 //			break;
 	case 10:
@@ -248,7 +246,7 @@ public class PhotoChooserFrame extends JFrame {
 	    return new GridLayout(2, 5, 7, 7);
 //			break;
 	case 15:
-	    thumbSize = 80;
+	    thumbSize = 120;
 	    return new GridLayout(3, 5, 7, 7);
 //			break;
 	default:
@@ -263,7 +261,7 @@ public class PhotoChooserFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-	new PhotoChooserFrame(16);
+	new PhotoChooserFrame(30);
 
     }
 }
