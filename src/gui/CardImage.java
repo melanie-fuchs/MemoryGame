@@ -50,12 +50,14 @@ public class CardImage extends BaseCard {
 	
 	@Override
 	protected void paintComponent(Graphics g) {
+		
         if (getModel().isPressed()) {
             g.setColor(backgroundColor);
         } else {
             g.setColor(getBackground());
         }
         g.fillRect(0, 0, getWidth(), getHeight());
+        super.paintComponents(g);
     }
 	
 	@Override
@@ -74,8 +76,7 @@ public class CardImage extends BaseCard {
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
-//						thisCard.setIcon(new ImageIcon(image));
-						thisCard.setBackground(Color.BLUE);
+						thisCard.setIcon(new ImageIcon(image));
 						
 					}
 				});
