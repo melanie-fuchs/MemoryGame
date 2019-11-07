@@ -39,10 +39,12 @@ public class PhotoChooserFrame extends JFrame {
 	private Vector<File> chosenFiles;
 	private Vector<BufferedImage> memoryCardPhotos;
 	private JLabel jlMessage;
+	private String startMessage;
 
 	public PhotoChooserFrame(int numberOfCards) {
 		this.numberOfCards = numberOfCards;
 		this.numberOfPhotos = numberOfCards / 2;
+		this.startMessage = "Your cards are now set. You can start the game."; // default value
 
 		this.memoryCardPhotos = new Vector<BufferedImage>();
 		this.photoLabelVector = new Vector<JLabel>();
@@ -101,6 +103,10 @@ public class PhotoChooserFrame extends JFrame {
 	private void addFileToVector(File[] filesToAdd) {
 		if (filesToAdd != null && filesToAdd.length > 0) {
 			int requiredImages = numberOfPhotos - chosenFiles.size();
+			if(filesToAdd.length > requiredImages) {
+				startMessage = "Too many images selected. The program will use the first "
+						+ requiredImages + " images. " + startMessage;
+			}
 			for (int i = 0; i < requiredImages; i++) {
 				for (File file : filesToAdd) {
 					// Prevent the program to load too many files into choseFiles-Vector
@@ -176,8 +182,6 @@ public class PhotoChooserFrame extends JFrame {
 		jbtStartGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Start the game
-				// resize every item of memoryCardPhotos to memoryCard-size
 				Vector<BufferedImage> resizedImages = new Vector<BufferedImage>();
 				for (BufferedImage photo : memoryCardPhotos) {
 					resizedImages.add(resizePhoto(photo, 200));
@@ -186,11 +190,11 @@ public class PhotoChooserFrame extends JFrame {
 				new StartMemory(numberOfCards, 2, resizedImages);
 			}
 		});
-		jbtStartGame.setEnabled(false); // TODO enable once all photos are set
+		jbtStartGame.setEnabled(false); 
 		chooserPanelTop.add(jbtStartGame);
 
 		// creating and setting the JFileChooser
-		photoChooser = new JFileChooser("D:\\Pictures\\2010_04_11"); // ("C:\\Users\\yume\\Pictures\\javatests"); //
+		photoChooser = new JFileChooser("C:\\Users\\yume\\Pictures\\javatests"); // D:\\Pictures\\2010_04_11
 																		// TODO remove directory
 		FileNameExtensionFilter extensionFiler = new FileNameExtensionFilter("images", "jpg", "png", "gif", "jpeg");
 		photoChooser.setAcceptAllFileFilterUsed(false);
@@ -325,7 +329,7 @@ public class PhotoChooserFrame extends JFrame {
 	 */
 	private void handleLoadedFiles() {
 		if (chosenFiles.size() == numberOfPhotos) {
-			jlMessage.setText("Your cards are now set. You can start the game.");
+			jlMessage.setText(startMessage);
 			fillPhotoPanel();
 			jbtStartGame.setEnabled(true);
 			jbtLoadImages.setEnabled(false);
