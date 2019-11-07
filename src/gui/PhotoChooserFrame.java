@@ -220,6 +220,22 @@ public class PhotoChooserFrame extends JFrame {
 
 	}
 
+	/**
+	 * The method creates a <code>BufferedImage</code> of a given File, crops it
+	 * by calling the method <code>cropPhoto()</code>, resized it by calling the
+	 * method <code> resizePhoto</code> and displays it on the photoPanel.
+	 * The method saves a cropped, but not resized version of the image in a vector
+	 * that will later be used to pass to the game itself.
+	 * 
+	 * @param fieldNo int-value that represents the place where image will be displayed in the 
+	 * <code>GridLayout</code>
+	 * @param photoFile <code>File</code>-object that will be loaded as a <code>BufferedImage</code>
+	 * 
+	 * @see java.awt.image.BufferedImage
+	 * @see gui.PhotoChooserFrame#memoryCardPhotos
+	 * @see gui.PhotoChooserFrame#photoPanel
+	 * 
+	 */
 	public void setPhoto(int fieldNo, File photoFile) {
 		try {
 			BufferedImage photo = ImageIO.read(photoFile);
@@ -237,6 +253,14 @@ public class PhotoChooserFrame extends JFrame {
 		}
 	}
 
+	/**
+	 * The method returns an instance of <code>BufferedImage</code> that is
+	 * a cropped version of the original which is passed as a parameter.
+	 * The cropped area within the image varies depending on the format of the image.
+	 * 
+	 * @param originalPhoto image with original format
+	 * @return cropped version of the original image
+	 */
 	private BufferedImage cropPhoto(BufferedImage originalPhoto) {
 		int photoWidth = originalPhoto.getWidth();
 		int photoHeight = originalPhoto.getHeight();
@@ -261,7 +285,18 @@ public class PhotoChooserFrame extends JFrame {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * The method returns an instance of <code>BufferedImage</code> that is
+	 * a resized version of the original which is passed as a parameter.
+	 * The new size of the image depends on thumbSize, which is set according to
+	 * the amount of cards that will be used in the game.
+	 * 
+	 * @param originalPhoto image with original format
+	 * @return resized version of the original image
+	 * 
+	 * @see gui.PhotoChooserFrame#thumbSize
+	 */
 	private BufferedImage resizePhoto(BufferedImage originalPhoto, int thumbSize) {
 		this.thumbSize = thumbSize;
 		if (originalPhoto != null) {
