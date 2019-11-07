@@ -64,12 +64,12 @@ public class PhotoChooserFrame extends JFrame {
 	}
 
 	/**
-	 * The method returns an instance of JPanel that has a <code>GridLayout</code>
+	 * The method returns an instance of <code>JPanel</code> that has a <code>GridLayout</code>
 	 * and an <code>EmptyBorder</code>.
 	 * The <code>GridLayout</code> will be set by calling the method
 	 * <code>setGridLayout</code>.
 	 * 
-	 * @return photoPanel an instance of JPanel
+	 * @return photoPanel an instance of <code>JPanel</code>
 	 * 
 	 * @see gui.PhotoChooserFrame#setGridLayout(int)
 	 */
@@ -115,8 +115,20 @@ public class PhotoChooserFrame extends JFrame {
 		}
 	}
 	
-	//TODO adding the message that the first x of the selection were taken.
+	//TODO adding the message that the first x images of the selection were taken.
 
+	/**
+	 * The method returns an instance of <code>JPanel</code> that has a <code>BorderLayout</code>
+	 * and an <code>EmptyBorder</code>.
+	 * 
+	 * The panel adds another two instance of <code>JPanel</code>, by callint the methode
+	 * <code>getChooserPanelTop()</code> and <code>getChooserPanelBottom</code>
+	 * 
+	 * @return chooserPanel an instance of <code>JPanel</code>
+	 * 
+	 * @see gui.PhotoChooserFrame#getChooserPanelTop()
+	 * @see gui.PhotoChooserFrame#getChooserPanelBottom()
+	 */
 	private JPanel createChooserPanel() {
 		chooserPanel = new JPanel();
 		chooserPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -128,9 +140,19 @@ public class PhotoChooserFrame extends JFrame {
 		return chooserPanel;
 	}
 
+	/**	
+	 * The method returns an instance of <code>JPanel</code>, that has two
+	 * <code>JButton</code>s on it.
+	 * One of the buttons starts the game, another button opens a 
+	 * <code>JFileChooser</code> and lets the player choose images from the
+	 * filesystem.
+	 * 
+	 * @return chooserPanelTop an instance of <code>JPanel</code>
+	 * 
+	 * @see javax.swing.JFileChooser
+	 */
 	private JPanel getChooserPanelTop() {
 		chooserPanelTop = new JPanel();
-
 		// creating the button to load images (opens JFileChooser)
 		jbtLoadImages = new JButton("Load Images");
 		jbtLoadImages.addActionListener(new ActionListener() {
@@ -179,6 +201,14 @@ public class PhotoChooserFrame extends JFrame {
 		return chooserPanelTop;
 	}
 
+	/**	
+	 * The method returns an instance of <code>JPanel</code>, that has a
+	 * <code>JLabel</code> on it. This Label is used to synamically display
+	 * messages and instructions for the user. 
+	 * 
+	 * @return chooserPanelBottom an instance of <code>JPanel</code>
+	 * 
+	 */
 	private JPanel getChooserPanelBottom() {
 		chooserPanelBottom = new JPanel();
 
