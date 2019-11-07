@@ -64,22 +64,15 @@ public class CardImage extends BaseCard {
 	protected void switchFace() {
 		if(this.isEnabled()) {
 			if(faceUp) {
+				this.setIcon(null);
 				this.setBackground(backgroundColor);
 				this.faceUp = false;
 				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to BACKGROUNDCOLOR---");
 			} else {
-//				this.setIcon(new ImageIcon(image));
-//				this.setSelectedIcon(new ImageIcon("C:\\Users\\yume\\Pictures\\javatests\\1.jpg"));
 
-				SwingUtilities.invokeLater(new Runnable() {
-					
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						thisCard.setIcon(new ImageIcon(image));
-						
-					}
-				});
+				this.setBackground(getBackground());
+				this.setIcon(new ImageIcon(image));
+				
 				this.faceUp = true;
 				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to FOREGROUNDCOLOR---");
 			}
