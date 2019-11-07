@@ -88,8 +88,10 @@ public class CardColor extends BaseCard {
 		if(this.isEnabled()) {
 			if(faceUp) {
 				this.setBackground(backgroundColor);
+	            this.faceUp = false;
 			} else {
 				this.setBackground(foregroundColor);
+	            this.faceUp = false;
 			}
 		}
 	}
