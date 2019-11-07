@@ -28,11 +28,11 @@ public class CardColor extends BaseCard {
 	private boolean faceUp;
 
 	/**
-	 * Backgroundcolor of every card
+	 * Backgroundcolor of the card
 	 */
 	private Color backgroundColor;
 	/**
-	 * Foregroundcolor of every card
+	 * Foregroundcolor of the card
 	 */
 	private Color foregroundColor;
 	
