@@ -123,9 +123,9 @@ public class MemoryModel implements BaseModel {
 		BaseCard cardB = tempCardArray.elementAt(1);
 		if (cardA.getCardID() == cardB.getCardID()) {
 			foundPairs += 1;
-			this.handleFlippedCards(cardA, cardB, true, 500);
+			this.handleFlippedCards(cardA, cardB, true, 400);
 		} else {
-			this.handleFlippedCards(cardA, cardB, false, 1200);
+			this.handleFlippedCards(cardA, cardB, false, 1000);
 		}
 	}
 
