@@ -63,6 +63,16 @@ public class PhotoChooserFrame extends JFrame {
 		this.setVisible(true);
 	}
 
+	/**
+	 * The method returns an instance of JPanel that has a <code>GridLayout</code>
+	 * and an <code>EmptyBorder</code>.
+	 * The <code>GridLayout</code> will be set by calling the method
+	 * <code>setGridLayout</code>.
+	 * 
+	 * @return photoPanel an instance of JPanel
+	 * 
+	 * @see gui.PhotoChooserFrame#setGridLayout(int)
+	 */
 	private JPanel createPhotoPanel() {
 		photoPanel = new JPanel();
 		photoPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -71,23 +81,41 @@ public class PhotoChooserFrame extends JFrame {
 		return photoPanel;
 	}
 
-	// Prevent the program to load too many files into choseFiles-Vector
+	
+	/**
+	 * The method adds files which are passed to the method in an array of
+	 * <code>File</code-objects into a vector.
+	 * The method sets the number of still required files and then adds
+	 * the amount of files into the vector.
+	 * 
+	 * The method will not load every file into the vector. It will only load
+	 * the amount of files that are required to reach the maximum amount
+	 * of <code>numberOfPhotos</code>
+	 * 
+	 * @param filesToAdd an Array of File-objects that have to be added to
+	 * the <code>chosenFiles</code>-Vector.
+	 * 
+	 * @see gui.PhotoChooserFrame#numberOfPhotos
+	 * @see gui.PhotoChooserFrame#chosenFiles
+	 */
 	private void addFileToVector(File[] filesToAdd) {
-		int requiredImages = numberOfPhotos - chosenFiles.size();
 		if (filesToAdd != null && filesToAdd.length > 0) {
+			int requiredImages = numberOfPhotos - chosenFiles.size();
 			for (int i = 0; i < requiredImages; i++) {
 				for (File file : filesToAdd) {
+					// Prevent the program to load too many files into choseFiles-Vector
 					if (requiredImages > 0) {
 						if (!chosenFiles.contains(file)) {
 							chosenFiles.add(file);
 							requiredImages--;
-							System.out.println(file.hashCode() + " added");
 						}
 					}
 				}
 			}		
 		}
 	}
+	
+	//TODO adding the message that the first x of the selection were taken.
 
 	private JPanel createChooserPanel() {
 		chooserPanel = new JPanel();
