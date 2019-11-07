@@ -41,35 +41,39 @@ public class CardImage extends BaseCard {
 		this.cardID = id;
 		
 		this.setBackground(backgroundColor);
+
 		this.faceUp = false;
 		
 		if(this.isEnabled()) {
 			this.setCursor(new Cursor(Cursor.HAND_CURSOR)); // cursor for unlocked cards
+		
 		}
 	}
 	
 	@Override
-	protected void paintComponent(Graphics g) {
-		
+	protected void paintComponent(Graphics g) {		
         if (getModel().isPressed()) {
             g.setColor(backgroundColor);
         } else {
             g.setColor(getBackground());
         }
         g.fillRect(0, 0, getWidth(), getHeight());
-        super.paintComponents(g);
+        super.paintComponent(g);
     }
 	
 	@Override
 	protected void switchFace() {
 		if(this.isEnabled()) {
 			if(faceUp) {
+				//now the card will be grey
+				this.setOpaque(true);
 				this.setIcon(null);
 				this.setBackground(backgroundColor);
 				this.faceUp = false;
 				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to BACKGROUNDCOLOR---");
 			} else {
-
+				// now the card will show the face
+				this.setOpaque(true);
 				this.setBackground(getBackground());
 				this.setIcon(new ImageIcon(image));
 				

@@ -46,7 +46,7 @@ public class CardColor extends BaseCard {
             g.setColor(getBackground());
         }
         g.fillRect(0, 0, getWidth(), getHeight());
-//      super.paintComponent(g); //TODO might have to be active
+      super.paintComponent(g);
     }
 	
 	@Override

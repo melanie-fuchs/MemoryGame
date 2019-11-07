@@ -12,5 +12,6 @@ local.properties
 .loadpath
 notes.txt
 TestClass.java
+PhotoChooserFrame2.java
 .idea/
 MemoryGame.iml

@@ -26,7 +26,9 @@ public abstract class BaseCard extends JButton {
 	}	
 
 	protected abstract int getCardID();
-	protected abstract void paintComponent(Graphics g);
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+	}
 	
 	/**
 	 * The method switches the faces of the memory-card.
