@@ -314,6 +314,15 @@ public class PhotoChooserFrame extends JFrame {
 
 	}
 
+	/**
+	 * The method sets different texts in the status-panel and calls the method
+	 * <code>fillPhotoPanel()</code> to fill the panel with the images.
+	 * The method further sets the buttons enabled or disabled according to the
+	 * game's needs.
+	 * 
+	 * @see gui.PhotoChooserFrame#fillPhotoPanel()
+	 * 
+	 */
 	private void handleLoadedFiles() {
 		if (chosenFiles.size() == numberOfPhotos) {
 			jlMessage.setText("Your cards are now set. You can start the game.");
@@ -336,6 +345,8 @@ public class PhotoChooserFrame extends JFrame {
 	 * used in the game.
 	 * 
 	 * @param numberOfPhotos number of photos for the game
+	 * 
+	 * @see gui.PhotoChooserFrame#setPhoto(int, File)
 	 */
 	private GridLayout setGridLayout(int numberOfPhotos) {
 		switch (
@@ -359,18 +370,14 @@ public class PhotoChooserFrame extends JFrame {
 	}
 
 	private void fillPhotoPanel() {
-		System.out.println("entered partiallyFillPhotoPanel");
 		if (chosenFiles.size() == numberOfPhotos) {
 			for (int i = 0; i < numberOfPhotos; i++) {
 				setPhoto(i, chosenFiles.elementAt(i));
 			}
-		} else { // = chosenFiles.size() < numberOfPhotos
-			System.out.println("STEP 1 TAKEN");
+		} else { 
 			if (loadedImages < chosenFiles.size()) {
-				System.out.println("Step 2 taken");
 				for (int i = loadedImages; i < chosenFiles.size(); i++) {
 					setPhoto(loadedImages, chosenFiles.elementAt(loadedImages));
-					System.out.println("Step 3 taken");
 					loadedImages++;
 				}
 
@@ -378,6 +385,7 @@ public class PhotoChooserFrame extends JFrame {
 		}
 	}
 
+	// for test purposes only
 	public static void main(String[] args) {
 		new PhotoChooserFrame(16);
 
