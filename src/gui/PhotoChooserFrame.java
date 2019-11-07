@@ -24,7 +24,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-
 /**
  * @author yume
  *
@@ -123,7 +122,7 @@ public class PhotoChooserFrame extends JFrame {
 				// TODO Start the game
 				// resize every item of memoryCardPhotos to memoryCard-size
 				Vector<BufferedImage> resizedImages = new Vector<BufferedImage>();
-				for(BufferedImage photo : memoryCardPhotos) {
+				for (BufferedImage photo : memoryCardPhotos) {
 					resizedImages.add(resizePhoto(photo, 200));
 				}
 				System.out.println("Game should start now");
@@ -134,7 +133,8 @@ public class PhotoChooserFrame extends JFrame {
 		chooserPanelTop.add(jbtStartGame);
 
 		// creating and setting the JFileChooser
-		photoChooser = new JFileChooser("D:\\Pictures\\2010_04_11"); //("C:\\Users\\yume\\Pictures\\javatests"); // TODO remove directory
+		photoChooser = new JFileChooser("D:\\Pictures\\2010_04_11"); // ("C:\\Users\\yume\\Pictures\\javatests"); //
+																		// TODO remove directory
 		FileNameExtensionFilter extensionFiler = new FileNameExtensionFilter("images", "jpg", "png", "gif", "jpeg");
 		photoChooser.setAcceptAllFileFilterUsed(false);
 		photoChooser.setMultiSelectionEnabled(true);
@@ -203,36 +203,43 @@ public class PhotoChooserFrame extends JFrame {
 			BufferedImage resizedImage = new BufferedImage(thumbSize, thumbSize, originalPhoto.getType());
 			Graphics2D graphic = resizedImage.createGraphics();
 			graphic.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-			graphic.drawImage(originalPhoto, 0, 0, thumbSize, thumbSize, 0, 0, originalPhoto.getWidth(),
-					originalPhoto.getHeight(), null);
+			graphic.drawImage(
+					originalPhoto, 0, 0, thumbSize, thumbSize, 0, 0, originalPhoto.getWidth(),
+					originalPhoto.getHeight(), null
+			);
 			graphic.dispose();
 			return resizedImage;
 		}
 		return null;
 
 	}
-	
-//TODO handle case that not all required images have been selected yet
+
 	private void handleLoadedFiles() {
 		if (chosenFiles.size() == numberOfPhotos) {
 			jlMessage.setText("Your cards are now set. You can start the game.");
 			fillPhotoPanel();
 			jbtStartGame.setEnabled(true);
+			jbtLoadImages.setEnabled(false);
 		} else {
 			if (chosenFiles.size() > numberOfPhotos) {
-				jlMessage.setText("You chose too many photos. The first " + numberOfPhotos
-						+ " of the selected photos will be used." + " You can start the game now.");
+				jlMessage.setText(
+						"You chose too many photos. The first " + numberOfPhotos
+								+ " of the selected photos will be used." + " You can start the game now."
+				);
 				// removing items so the vector contains only the required number of photos:
 				while (chosenFiles.size() > numberOfPhotos) {
 					chosenFiles.remove(numberOfPhotos);
 				}
 				fillPhotoPanel();
 				jbtStartGame.setEnabled(true);
+				jbtLoadImages.setEnabled(false);
 			} else {
 				if (chosenFiles.size() < numberOfPhotos) {
-				    System.out.println("\t\tHEllo");
-					jlMessage.setText("Please choose another " + (numberOfPhotos - chosenFiles.size())
-							+ " photos from your filesystem.");
+					System.out.println("\t\tHEllo");
+					jlMessage.setText(
+							"Please choose another " + (numberOfPhotos - chosenFiles.size())
+									+ " photos from your filesystem."
+					);
 				}
 				System.out.println("\t\tBYE");
 				fillPhotoPanel();
@@ -248,7 +255,9 @@ public class PhotoChooserFrame extends JFrame {
 	 * @param numberOfPhotos number of photos for the game
 	 */
 	private GridLayout setGridLayout(int numberOfPhotos) {
-		switch (numberOfPhotos) {
+		switch (
+			numberOfPhotos
+		) {
 		case 8:
 			thumbSize = 150;
 			return new GridLayout(2, 4, 7, 7);
@@ -267,24 +276,24 @@ public class PhotoChooserFrame extends JFrame {
 	}
 
 	private void fillPhotoPanel() {
-        	System.out.println("entered partiallyFillPhotoPanel");
-        	if (chosenFiles.size() == numberOfPhotos) {
-        	    for (int i = 0; i < numberOfPhotos; i++) {
-        		setPhoto(i, chosenFiles.elementAt(i));
-        	    }
-        	} else { // = chosenFiles.size() < numberOfPhotos
-        		System.out.println("STEP 1 TAKEN");
-        		if (loadedImages < chosenFiles.size()) {
-        		    System.out.println("Step 2 taken");
-        		    for (int i = loadedImages; i < chosenFiles.size(); i++) {
-                		    setPhoto(loadedImages, chosenFiles.elementAt(loadedImages));
-                		    System.out.println("Step 3 taken");
-                		    loadedImages++;
-        		    }
-        		
-        	    }
-        	}
-            }
+		System.out.println("entered partiallyFillPhotoPanel");
+		if (chosenFiles.size() == numberOfPhotos) {
+			for (int i = 0; i < numberOfPhotos; i++) {
+				setPhoto(i, chosenFiles.elementAt(i));
+			}
+		} else { // = chosenFiles.size() < numberOfPhotos
+			System.out.println("STEP 1 TAKEN");
+			if (loadedImages < chosenFiles.size()) {
+				System.out.println("Step 2 taken");
+				for (int i = loadedImages; i < chosenFiles.size(); i++) {
+					setPhoto(loadedImages, chosenFiles.elementAt(loadedImages));
+					System.out.println("Step 3 taken");
+					loadedImages++;
+				}
+
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		new PhotoChooserFrame(16);
