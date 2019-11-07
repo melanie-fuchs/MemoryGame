@@ -187,7 +187,7 @@ public class PhotoChooserFrame extends JFrame {
 				for (BufferedImage photo : memoryCardPhotos) {
 					resizedImages.add(resizePhoto(photo, 200));
 				}
-				System.out.println("Game should start now");
+				thisFrame.dispose();
 				SwingUtilities.invokeLater(new Runnable() {
 		            public void run() {
 		            	new StartMemory(numberOfCards, 2, resizedImages);
