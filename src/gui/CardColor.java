@@ -14,17 +14,40 @@ import java.awt.Graphics;
  */
 public class CardColor extends BaseCard {
 	
-	private int cardID;				// ID of the card. The game will use this ID to compare pairs
-	
+	private int cardID;
+	/**
+	 * returns the cardID
+	 */
 	@Override
-	protected int getCardID() {		// getter for cardID
+	protected int getCardID() {
 		return cardID;
 	}
-	private boolean faceUp; 		// true if face is visible, false if card is hidden
+	/**
+	 * boolean-value: true if face is visible, false if card is covered
+	 */
+	private boolean faceUp;
 
-	private Color backgroundColor;	// backgroundcolor of every card
-	private Color foregroundColor;	// foregroundcolor of every card
+	/**
+	 * Backgroundcolor of every card
+	 */
+	private Color backgroundColor;
+	/**
+	 * Foregroundcolor of every card
+	 */
+	private Color foregroundColor;
 	
+	/**
+	 * The constructor sets the backgroundcolor, the cardID and the image.
+	 * The card's faceUp-variable will be set to false so it's backgroundcolor
+	 * will be visible and the face covered once the game started. 
+	 * The cursor for enabled cards will be visible as a hand.
+	 * 
+	 * @param colorFace <code>Color</code>-object that represents the foreground-
+	 * color of the memory-card
+	 * @param colorBack <code>Color</code>-object that represents the backgound-
+	 * color of the memory-card
+	 * @param id int-value that represents the ID of the card
+	 */
 	public CardColor(Color colorFace, Color colorBack, int id) {
 		this.foregroundColor = colorFace;
 		this.backgroundColor = colorBack;
@@ -34,10 +57,15 @@ public class CardColor extends BaseCard {
 		this.faceUp = false;
 
 		if(this.isEnabled()) {
-			this.setCursor(new Cursor(Cursor.HAND_CURSOR)); // cursor for unlocked cards
+			this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		}
 	}
 	
+	/**
+	 * The method calls it's parent's <code>paintComponent</code>-method
+	 * and sets the color of the card to background-color in the moment
+	 * when the button is clicked. 
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
         if (getModel().isPressed()) {
@@ -46,26 +74,23 @@ public class CardColor extends BaseCard {
             g.setColor(getBackground());
         }
         g.fillRect(0, 0, getWidth(), getHeight());
-      super.paintComponent(g);
+        super.paintComponent(g);
     }
 	
+	/**
+	 * The method switches the colors of the card if the card is enabled.
+	 * If the background was set to the foreground-color, it will be set
+	 * to the backgroundcolor and vice versa. After switching the side,
+	 * the variable <code>faceUp</code> will be updated accordingly.
+	 */
 	@Override
 	protected void switchFace() {
 		if(this.isEnabled()) {
 			if(faceUp) {
 				this.setBackground(backgroundColor);
-				this.faceUp = false;
-
-				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to BACKGROUNDCOLOR---");
 			} else {
 				this.setBackground(foregroundColor);
-				this.faceUp = true;
-
-				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to FOREGROUNDCOLOR---");
 			}
-			this.repaint();
-			this.validate();
-			System.out.println("harr, switchi switchi");
 		}
 	}
 }

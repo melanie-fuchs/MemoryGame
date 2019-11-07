@@ -35,7 +35,7 @@ public class CardImage extends BaseCard {
 	private boolean faceUp;
 
 	/**
-	 * Backgroundcolor of every card
+	 * Backgroundcolor of the card
 	 */
 	private Color backgroundColor;
 	/**
@@ -51,7 +51,7 @@ public class CardImage extends BaseCard {
 	 * 
 	 * @param image <code>BufferedImage</code>-object that will be used as the
 	 * front side of the memorycard
-	 * @param colorBack <color>Color</code>-object that represents the backgound-
+	 * @param colorBack <code>Color</code>-object that represents the backgound-
 	 * color of the memory-card
 	 * @param id int-value that represents the ID of the card
 	 */
