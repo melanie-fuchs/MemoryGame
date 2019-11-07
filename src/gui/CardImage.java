@@ -68,6 +68,7 @@ public class CardImage extends BaseCard {
 				//now the card will be grey
 				this.setOpaque(true);
 				this.setIcon(null);
+				this.setDisabledIcon(null);
 				this.setBackground(backgroundColor);
 				this.faceUp = false;
 				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to BACKGROUNDCOLOR---");
@@ -76,6 +77,7 @@ public class CardImage extends BaseCard {
 				this.setOpaque(true);
 				this.setBackground(getBackground());
 				this.setIcon(new ImageIcon(image));
+				this.setDisabledIcon(new ImageIcon(image));
 				
 				this.faceUp = true;
 				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to FOREGROUNDCOLOR---");
