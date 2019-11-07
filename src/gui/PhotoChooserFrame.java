@@ -71,14 +71,21 @@ public class PhotoChooserFrame extends JFrame {
 		return photoPanel;
 	}
 
+	// Prevent the program to load too many files into choseFiles-Vector
 	private void addFileToVector(File[] filesToAdd) {
+		int requiredImages = numberOfPhotos - chosenFiles.size();
 		if (filesToAdd != null && filesToAdd.length > 0) {
-			for (File file : filesToAdd) {
-				if (!chosenFiles.contains(file)) {
-					chosenFiles.add(file);
-					System.out.println(file.hashCode() + " added");
+			for (int i = 0; i < requiredImages; i++) {
+				for (File file : filesToAdd) {
+					if (requiredImages > 0) {
+						if (!chosenFiles.contains(file)) {
+							chosenFiles.add(file);
+							requiredImages--;
+							System.out.println(file.hashCode() + " added");
+						}
+					}
 				}
-			}
+			}		
 		}
 	}
 
@@ -221,30 +228,13 @@ public class PhotoChooserFrame extends JFrame {
 			jbtStartGame.setEnabled(true);
 			jbtLoadImages.setEnabled(false);
 		} else {
-			if (chosenFiles.size() > numberOfPhotos) {
+			if (chosenFiles.size() < numberOfPhotos) {
 				jlMessage.setText(
-						"You chose too many photos. The first " + numberOfPhotos
-								+ " of the selected photos will be used." + " You can start the game now."
+						"Please choose another " + (numberOfPhotos - chosenFiles.size())
+								+ " photos from your filesystem."
 				);
-				// removing items so the vector contains only the required number of photos:
-				while (chosenFiles.size() > numberOfPhotos) {
-					chosenFiles.remove(numberOfPhotos);
-				}
-				fillPhotoPanel();
-				jbtStartGame.setEnabled(true);
-				jbtLoadImages.setEnabled(false);
-			} else {
-				if (chosenFiles.size() < numberOfPhotos) {
-					System.out.println("\t\tHEllo");
-					jlMessage.setText(
-							"Please choose another " + (numberOfPhotos - chosenFiles.size())
-									+ " photos from your filesystem."
-					);
-				}
-				System.out.println("\t\tBYE");
-				fillPhotoPanel();
-				System.out.println("\t\tAND NOW?");
 			}
+			fillPhotoPanel();
 		}
 	}
 
