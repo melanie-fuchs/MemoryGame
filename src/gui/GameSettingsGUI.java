@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 public class GameSettingsGUI extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -199,7 +200,10 @@ public class GameSettingsGUI extends JPanel {
 				case 1:
 					jlbChosenMode.setText("");
 					jlbChosenMode.setForeground(Color.BLACK);
-					new StartMemory(numberOfCards, gameMode);
+					SwingUtilities.invokeLater(new Runnable() {
+			            public void run() {
+							new StartMemory(numberOfCards, gameMode);			            }
+					});
 					break;
 				case 2:
 					jlbChosenMode.setText("");
