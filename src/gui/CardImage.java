@@ -6,14 +6,9 @@ package gui;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.SwingUtilities;
 
 
 
@@ -23,17 +18,43 @@ import javax.swing.SwingUtilities;
  */
 public class CardImage extends BaseCard {
 	
-	private int cardID;				// ID of the card. The game will use this ID to compare pairs
+	/**
+	 * ID of the card. The game will use this ID to compare cards and find pairs
+	 */
+	private int cardID;
+	/**
+	 * returns the cardID
+	 */
 	@Override
-	protected int getCardID() {		// getter for cardID
+	protected int getCardID() {
 		return cardID;
 	}
-	private boolean faceUp; 		// true if face is visible, false if card is hidden
+	/**
+	 * boolean-value: true if face is visible, false if card is covered
+	 */
+	private boolean faceUp;
 
-	private Color backgroundColor;	// backgroundcolor of every card
-	private BufferedImage image;	// Buffered Image of the card
-	private BaseCard thisCard = this;
+	/**
+	 * Backgroundcolor of every card
+	 */
+	private Color backgroundColor;
+	/**
+	 * Buffered Image of the card (represents the front of the card)
+	 */
+	private BufferedImage image;
 	
+	/**
+	 * The constructor sets the backgroundcolor, the cardID and the image.
+	 * The card's faceUp-variable will be set to false so it's backgroundcolor
+	 * will be visible and the face covered once the game started. 
+	 * The cursor for enabled cards will be visible as a hand.
+	 * 
+	 * @param image <code>BufferedImage</code>-object that will be used as the
+	 * front side of the memorycard
+	 * @param colorBack <color>Color</code>-object that represents the backgound-
+	 * color of the memory-card
+	 * @param id int-value that represents the ID of the card
+	 */
 	public CardImage(BufferedImage image, Color colorBack, int id) {
 		this.image = image;
 		
@@ -45,11 +66,16 @@ public class CardImage extends BaseCard {
 		this.faceUp = false;
 		
 		if(this.isEnabled()) {
-			this.setCursor(new Cursor(Cursor.HAND_CURSOR)); // cursor for unlocked cards
+			this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		}
 	}
 	
+	/**
+	 * The method calls it's parent's <code>paintComponent</code>-method
+	 * and sets the color of the card to background-color in the moment
+	 * when the button is clicked. 
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {		
         if (getModel().isPressed()) {
@@ -61,29 +87,27 @@ public class CardImage extends BaseCard {
         super.paintComponent(g);
     }
 	
+	/**
+	 * The method switches the colors of the card if the card is enabled.
+	 * If the face of the card was visible, the card's background will be
+	 * set to the background color and vice versa. After switching the side,
+	 * the variable <code>faceUp</code> will be updated accordingly.
+	 */
 	@Override
 	protected void switchFace() {
 		if(this.isEnabled()) {
 			if(faceUp) {
-				//now the card will be grey
-				this.setOpaque(true);
 				this.setIcon(null);
 				this.setDisabledIcon(null);
 				this.setBackground(backgroundColor);
 				this.faceUp = false;
-				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to BACKGROUNDCOLOR---");
 			} else {
-				// now the card will show the face
-				this.setOpaque(true);
 				this.setBackground(getBackground());
 				this.setIcon(new ImageIcon(image));
 				this.setDisabledIcon(new ImageIcon(image));
 				
 				this.faceUp = true;
-				System.out.println(this.hashCode() + "\tID: " + this.getCardID() + "\t---switched to FOREGROUNDCOLOR---");
 			}
-			this.repaint();
-			this.validate();
 		}
 	}
 }
