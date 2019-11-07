@@ -91,7 +91,7 @@ public class CardColor extends BaseCard {
 	            this.faceUp = false;
 			} else {
 				this.setBackground(foregroundColor);
-	            this.faceUp = false;
+	            this.faceUp = true;
 			}
 		}
 	}
