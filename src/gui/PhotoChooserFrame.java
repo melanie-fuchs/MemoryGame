@@ -63,6 +63,7 @@ public class PhotoChooserFrame extends JFrame {
 		this.add(photoPanel, BorderLayout.CENTER);
 		this.add(chooserPanel, BorderLayout.SOUTH);
 
+		this.setResizable(false);
 		this.setVisible(true);
 	}
 

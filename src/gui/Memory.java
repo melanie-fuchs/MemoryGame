@@ -31,6 +31,7 @@ public class Memory extends JFrame {
 		
 		this.createGUI();
 
+		this.setResizable(false);
 		this.setVisible(true);
 	}
 	

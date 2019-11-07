@@ -37,6 +37,7 @@ public class MemoryFrame extends JFrame {
 		this.add(memoryCardPanel, BorderLayout.CENTER);
 		this.add(memoryStatsPanel, BorderLayout.SOUTH);
 		
+		this.setResizable(false);
 		this.setVisible(true);
 	}
 }
