@@ -21,6 +21,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -120,8 +121,7 @@ public class PhotoChooserFrame extends JFrame {
 			}		
 		}
 	}
-	
-	//TODO adding the message that the first x images of the selection were taken.
+
 
 	/**
 	 * The method returns an instance of <code>JPanel</code> that has a <code>BorderLayout</code>
@@ -187,7 +187,11 @@ public class PhotoChooserFrame extends JFrame {
 					resizedImages.add(resizePhoto(photo, 200));
 				}
 				System.out.println("Game should start now");
-				new StartMemory(numberOfCards, 2, resizedImages);
+				SwingUtilities.invokeLater(new Runnable() {
+		            public void run() {
+		            	new StartMemory(numberOfCards, 2, resizedImages);
+		            }
+				});
 			}
 		});
 		jbtStartGame.setEnabled(false); 
