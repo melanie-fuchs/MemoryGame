@@ -27,7 +27,8 @@ public class MemoryFrame extends JFrame {
 		} else {
 			this.setSize(720, 750);
 		}
-		
+
+		this.setLocation(453, 0); // placing it right next to the main Memory-Frame to not cover it
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		
