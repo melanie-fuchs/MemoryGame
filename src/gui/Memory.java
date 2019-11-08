@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -28,6 +29,12 @@ public class Memory extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		this.setSize(450, 500);
+
+		String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+
+		for (int i = 0; i < fonts.length; i++) {
+			System.out.println(fonts[i]);
+		}
 		
 		this.createGUI();
 
