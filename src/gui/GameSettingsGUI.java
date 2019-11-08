@@ -21,16 +21,14 @@ import javax.swing.SwingUtilities;
 public class GameSettingsGUI extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-
-	private Font fontTitle = new Font("Arial", Font.BOLD, 24);
-	private Font fontRegular = new Font("Arial", Font.PLAIN, 14);
-	private Font fontBold = new Font("Arial", Font.BOLD, 14);	
-	
 	private JLabel jlbNumberOfCards, jlbChooseMode, jlbChosenMode;
 	private JRadioButton jrbSixteen, jrbTwenty, jrbThirty;
 	private JButton jbStart, jbUseColors, jbChoseFiles;
 	private JPanel jRadioBoxes, jpButtons;
 	private JTextField jtfStatus;
+	
+	private FontRegular fontRegular = new FontRegular(14);
+	private FontBold fontBold = new FontBold(14);
 	
 	/**
 	 * A static variable that represents the number of memory cards to play
@@ -67,7 +65,7 @@ public class GameSettingsGUI extends JPanel {
 	private JLabel title() {
 		JLabel jlbTitleSettings = new JLabel("Settings", SwingConstants.CENTER);
 		jlbTitleSettings.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
-		jlbTitleSettings.setFont(fontTitle);
+		jlbTitleSettings.setFont(new FontTitle(28));
 		
 		return jlbTitleSettings;		
 	}

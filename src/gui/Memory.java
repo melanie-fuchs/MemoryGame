@@ -18,9 +18,6 @@ public class Memory extends JFrame {
 	private JLabel jlbTitleMemory;
 	private JTextArea jtaInstructions;
 	private Container contentpane = this.getContentPane();
-
-	private Font fontTitle = new Font("Arial", Font.BOLD, 24);
-	private Font fontRegular = new Font("Arial", Font.PLAIN, 14);
 	
 	
 	// Constructor
@@ -29,12 +26,6 @@ public class Memory extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		this.setSize(450, 500);
-
-		String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-
-		for (int i = 0; i < fonts.length; i++) {
-			System.out.println(fonts[i]);
-		}
 		
 		this.createGUI();
 
@@ -47,7 +38,7 @@ public class Memory extends JFrame {
 		jlbTitleMemory = new JLabel("Memory Game", SwingConstants.CENTER);
 		jlbTitleMemory.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jlbTitleMemory.setForeground(new Color(80, 50, 50));
-		jlbTitleMemory.setFont(fontTitle);
+		jlbTitleMemory.setFont(new FontTitle(36));
 		
 		// set textfield for instructions
 		String instructions = 
@@ -61,7 +52,7 @@ public class Memory extends JFrame {
 				"system.";
 		jtaInstructions = new JTextArea(instructions);
 		jtaInstructions.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-		jtaInstructions.setFont(fontRegular);
+		jtaInstructions.setFont(new FontRegular(14));
 		jtaInstructions.setEditable(false);
 
 		// create all the settings:

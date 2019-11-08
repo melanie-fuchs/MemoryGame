@@ -40,6 +40,10 @@ public class MemoryStatsPanel extends JPanel {
 		return parentFrame;
 	}
 	
+	private FontRegular fontRegular = new FontRegular(14);
+	private FontRegular fontStats = new FontRegular(20);
+	private FontBold fontBold = new FontBold(14);
+	
 	public MemoryStatsPanel(JFrame parentFrame, int gameMode, int gameSize) {
 		this.parentFrame = parentFrame;
 		this.gameMode = gameMode;
@@ -59,6 +63,7 @@ public class MemoryStatsPanel extends JPanel {
 		statsPanel.setLayout(new GridLayout(2, 4, 60, 5));
 		statsPanel.setBorder(new EmptyBorder(10, 10, 15, 10));
 		jbEndGame = new JButton("End Game");
+		jbEndGame.setFont(fontRegular);
 		jbEndGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -81,10 +86,14 @@ public class MemoryStatsPanel extends JPanel {
 		
 			}
 		});
-		jlAttemptsText= new JLabel("Attempts: ", SwingConstants.CENTER);
+		jlAttemptsText = new JLabel("Attempts: ", SwingConstants.CENTER);
+		jlAttemptsText.setFont(fontBold);
 		jlAttemptsCounter = new JLabel("0", SwingConstants.CENTER);
+		jlAttemptsCounter.setFont(fontStats);
 		jlPairsFoundText = new JLabel("Found Pairs:", SwingConstants.CENTER);
+		jlPairsFoundText.setFont(fontBold);
 		jlPairsFoundCounter = new JLabel("0", SwingConstants.CENTER);
+		jlPairsFoundCounter.setFont(fontStats);
 		
 		statsPanel.add(jlAttemptsText);
 		statsPanel.add(jlPairsFoundText);
@@ -100,7 +109,7 @@ public class MemoryStatsPanel extends JPanel {
 		gameOverPanel = new JPanel();
 		gameOverPanel.setBorder(new EmptyBorder(0, 10, 0, 10));
 		jlGameOver = new JLabel(" ");
-		jlGameOver.setFont(new Font("Arial Narrow", Font.BOLD, 50));
+		jlGameOver.setFont(new FontTitle(50));
 		
 		gameOverPanel.add(jlGameOver, SwingConstants.CENTER);
 	}
