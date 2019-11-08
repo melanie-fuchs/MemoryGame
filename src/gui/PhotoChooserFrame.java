@@ -31,7 +31,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class PhotoChooserFrame extends JFrame {
 
-	private int numberOfCards, numberOfPhotos, thumbSize, loadedImages;
+	private int numberOfCards, numberOfPhotos, thumbPreviewSize, thumbMemorySize, loadedImages;
 	private Vector<JLabel> photoLabelVector;
 	private JPanel photoPanel, chooserPanel, chooserPanelTop, chooserPanelBottom;
 	private JButton jbtLoadImages, jbtStartGame;
@@ -185,7 +185,7 @@ public class PhotoChooserFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Vector<BufferedImage> resizedImages = new Vector<BufferedImage>();
 				for (BufferedImage photo : memoryCardPhotos) {
-					resizedImages.add(resizePhoto(photo, 200));
+					resizedImages.add(resizePhoto(photo, thumbMemorySize));
 				}
 				thisFrame.dispose();
 				SwingUtilities.invokeLater(new Runnable() {
@@ -250,7 +250,7 @@ public class PhotoChooserFrame extends JFrame {
 			BufferedImage photo = ImageIO.read(photoFile);
 			BufferedImage croppedPhoto = cropPhoto(photo);
 			memoryCardPhotos.add(croppedPhoto); // adding the cropped version into vector
-			BufferedImage resizedPhoto = resizePhoto(croppedPhoto, thumbSize);
+			BufferedImage resizedPhoto = resizePhoto(croppedPhoto, thumbPreviewSize);
 			JLabel tempLabel = photoLabelVector.elementAt(fieldNo);
 			tempLabel.setIcon(new ImageIcon(resizedPhoto));
 			tempLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -298,16 +298,16 @@ public class PhotoChooserFrame extends JFrame {
 	/**
 	 * The method returns an instance of <code>BufferedImage</code> that is
 	 * a resized version of the original which is passed as a parameter.
-	 * The new size of the image depends on thumbSize, which is set according to
+	 * The new size of the image depends on thumbPreviewSize, which is set according to
 	 * the amount of cards that will be used in the game.
 	 * 
 	 * @param originalPhoto image with original format
 	 * @return resized version of the original image
 	 * 
-	 * @see gui.PhotoChooserFrame#thumbSize
+	 * @see gui.PhotoChooserFrame#thumbPreviewSize
 	 */
 	private BufferedImage resizePhoto(BufferedImage originalPhoto, int thumbSize) {
-		this.thumbSize = thumbSize;
+		this.thumbPreviewSize = thumbSize;
 		if (originalPhoto != null) {
 			BufferedImage resizedImage = new BufferedImage(thumbSize, thumbSize, originalPhoto.getType());
 			Graphics2D graphic = resizedImage.createGraphics();
@@ -362,15 +362,18 @@ public class PhotoChooserFrame extends JFrame {
 			numberOfPhotos
 		) {
 		case 8:
-			thumbSize = 150;
+			thumbPreviewSize = 150;
+			thumbMemorySize = 146;
 			return new GridLayout(2, 4, 7, 7);
 //			break;
 		case 10:
-			thumbSize = 120;
+			thumbPreviewSize = 120;
+			thumbMemorySize = 130;
 			return new GridLayout(2, 5, 7, 7);
 //			break;
 		case 15:
-			thumbSize = 120;
+			thumbPreviewSize = 120;
+			thumbMemorySize = 110;
 			return new GridLayout(3, 5, 7, 7);
 //			break;
 		default:
@@ -396,7 +399,7 @@ public class PhotoChooserFrame extends JFrame {
 
 	// for test purposes only
 	public static void main(String[] args) {
-		new PhotoChooserFrame(16);
+		new PhotoChooserFrame(30);
 
 	}
 }
