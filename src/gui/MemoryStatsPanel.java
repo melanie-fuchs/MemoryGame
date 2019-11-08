@@ -79,7 +79,11 @@ public class MemoryStatsPanel extends JPanel {
 					}
 				} else {
 					if (((JButton)e.getSource()).getText() == "Play Again") {
-						new StartMemory(gameSize, gameMode);
+						if(gameMode == 1) { // if Player played with colors
+							new StartMemory(gameSize, gameMode);
+						} else { // if player played with images
+							new PhotoChooserFrame(gameSize);
+						}
 						parentFrame.dispose();
 					}
 				}
