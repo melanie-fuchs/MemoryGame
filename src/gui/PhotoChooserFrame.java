@@ -42,6 +42,8 @@ public class PhotoChooserFrame extends JFrame {
 	private JLabel jlMessage;
 	private String startMessage;
 
+	private FontRegular fontRegular = new FontRegular(14);
+	
 	public PhotoChooserFrame(int numberOfCards) {
 		this.numberOfCards = numberOfCards;
 		this.numberOfPhotos = numberOfCards / 2;
@@ -162,6 +164,7 @@ public class PhotoChooserFrame extends JFrame {
 		chooserPanelTop = new JPanel();
 		// creating the button to load images (opens JFileChooser)
 		jbtLoadImages = new JButton("Load Images");
+		jbtLoadImages.setFont(fontRegular);
 		jbtLoadImages.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -180,6 +183,7 @@ public class PhotoChooserFrame extends JFrame {
 		// creating the button to start the game. Will be set disabled while
 		// required numbers of photos is not loaded.
 		jbtStartGame = new JButton("Start Game");
+		jbtStartGame.setFont(fontRegular);
 		jbtStartGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -223,6 +227,7 @@ public class PhotoChooserFrame extends JFrame {
 
 		// creating message with instructions
 		jlMessage = new JLabel("Please choose " + numberOfPhotos + " unique photos form your file system");
+		jlMessage.setFont(fontRegular);
 		chooserPanelBottom.add(jlMessage);
 
 		return chooserPanelBottom;
