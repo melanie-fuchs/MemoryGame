@@ -37,7 +37,6 @@ public class Memory extends JFrame {
 		// set title		
 		jlbTitleMemory = new JLabel("Memory Game", SwingConstants.CENTER);
 		jlbTitleMemory.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-		jlbTitleMemory.setForeground(new Color(80, 50, 50));
 		jlbTitleMemory.setFont(new FontTitle(36));
 		
 		// set textfield for instructions
