@@ -23,8 +23,10 @@ public class MemoryModel implements BaseModel {
 	 */
 	private int attempts = 0;
 	/**
-	 * The method returns the number (int value) of attempts)
-	 * 	 */
+	 * The method returns the number (int value) of attempts
+	 * 
+	 * @return the number of attempts
+	 */
 	public int getAttempts() {
 		return attempts;
 	}
@@ -34,8 +36,9 @@ public class MemoryModel implements BaseModel {
 	 */
 	private int foundPairs = 0;
 	/**
-	 * The method returns the number (int vaue) of successfully revealed pairs
-	 * @return
+	 * The method returns the number (int value) of successfully revealed pairs
+	 * 
+	 * @return the number of found pairs
 	 */
 	public int getPairsFound() {
 		return foundPairs;
@@ -48,13 +51,21 @@ public class MemoryModel implements BaseModel {
 	private Vector<BaseCard> tempCardArray;
 	/**
 	 * Vector-Object that is used to collect flipped pairs of memory-cards (type 
-	 * <code>BaseCard</code> to later check if the game is over or not
+	 * <code>BaseCard</code>) to later check if the game is over or not by comparing it's size
+	 * with the number of cards in the game.
 	 */
 	private Vector<BaseCard> flippedPairs;
 	/**
-	 * Hashmap-Object that contains all cards of the game (type <code>BaseCard</code>)
+	 * Hashmap-Object that contains every card of the game (type <code>BaseCard</code>)
 	 */
 	private HashMap<Integer, BaseCard> allMemoryCards;
+	/**
+	 * The method returns an int value that represents the amount of cards that are
+	 * contained in the <code>HashMap</code> 'allMemoryCards'.
+	 * 
+	 * @return int-value that represents the number of cards that 'allMemoryCards'
+	 * contains
+	 */
 	public int getAllMemoryCardsSize() {
 		return allMemoryCards.size();
 	}
@@ -69,20 +80,21 @@ public class MemoryModel implements BaseModel {
 	}
 	
 	/**
-	 * The Method takes an Integer (hashCode of a BaseCard-Object) as parameter
-	 * and returns the according object from the vector <code>allMemoryCard</code>
-	 * @param hashCode hashCode of an boject as <code>Integer</code>-value
-	 * @return object of type BaseCard
+	 * The Method takes an Integer (hashCode of a <code>BaseCard</code>-object) as parameter
+	 * and returns the belonging object from the <code>HashMap</code> 'allMemoryCards'.
+	 * 
+	 * @param hashCode hashCode of an object as <code>Integer</code>-value
+	 * @return object of type BaseCard that belongs to the given hashcode
 	 */
 	public BaseCard getMemoryCard(Integer hashCode) {
 		return allMemoryCards.get(hashCode);
 	}	
 	
 	/**
-	 * The method that registers a card of type <code>BaseCard</code> in the
-	 * HashMap of allMemoryCards.
+	 * The method registers a card of type <code>BaseCard</code> in the
+	 * <code>HashMap</code> 'allMemoryCards'.
 	 * 
-	 * @param card card-Object of type <code>BaseCard</code>
+	 * @param card Card-Ooject of type <code>BaseCard</code>
 	 */
 	public void registerCard(BaseCard card) {
 		allMemoryCards.put(card.hashCode(), card);
@@ -93,6 +105,8 @@ public class MemoryModel implements BaseModel {
 	 * It handles events on the cards.
 	 * 
 	 * @param hashCode	int-value that represents the cashCode of an object
+	 * 
+	 * @see java.awt.event.ActionListener
 	 */
 	@Override
 	public void action(int hashCode) {
@@ -100,7 +114,6 @@ public class MemoryModel implements BaseModel {
 		tempCard.switchFace();
 		tempCard.setEnabled(false);
 		tempCardArray.add(tempCard);
-		System.out.println("CARD IS SWITCHED: " + tempCard.hashCode());
 		if(tempCardArray.size() == 2){
 			this.checkPairs();
 		}
@@ -109,9 +122,9 @@ public class MemoryModel implements BaseModel {
 	/**
 	 * The method compares two cards by comparing the cardID of the objects.
 	 * Depending on whether the two cards are identical, different parameters are
-	 * used to call the <code>handleFlippedCards()</code>-Method.
+	 * used to call the <code>handleFlippedCards()</code>-method.
 	 * Every card is being set disabled to prevent the player from pushing cards
-	 * while the operations are running in the background.
+	 * while the operations are still running in the background.
 	 */
 	private void checkPairs() {
 		for (BaseCard card : allMemoryCards.values()) {
@@ -132,11 +145,11 @@ public class MemoryModel implements BaseModel {
 	
 	/**
 	 * The method performs operations based on whether a pair was found or
-	 * not. If a pair was found, it will be saved in the Vector <code>flippedPairs</code>
-	 * and the card will be set disabled. All other cards will be set enabled. If no
-	 * pair was found, all of the cards (except the ones saved in the Vector for already
-	 * successfully flipped pairs) will be set enabled and the two cards are covered again.
-	 * The Method uses a timer to improve the feel of the game.
+	 * not. If a pair was found, it will be saved in the vector <code>flippedPairs</code>
+	 * and the cards will be set disabled.  If no pair was found, all of the cards (except
+	 * the ones saved in the vector for already successfully flipped pairs) will be
+	 * set enabled and the two cards are covered again. The Method uses a timer to improve
+	 * the feel of the game.
 	 * 
 	 * @param cardA <BaseCard</code>-object, the first card in the temporary flipped
 	 * cards-Vector: <code>tempCardsArray</code>
@@ -152,7 +165,6 @@ public class MemoryModel implements BaseModel {
             @Override 
             public void actionPerformed(ActionEvent e) {
         		if (pairFound) {
-        			System.out.println("They match");
         			flippedPairs.add(cardA);
         			flippedPairs.add(cardB);
         			for(BaseCard card : allMemoryCards.values()) {
@@ -169,7 +181,6 @@ public class MemoryModel implements BaseModel {
         					System.out.println(card.hashCode());
         				}
         			}
-        			System.out.println("They do not match");
         			cardA.switchFace();
         			cardB.switchFace();
         			tempCardArray.removeAllElements();
