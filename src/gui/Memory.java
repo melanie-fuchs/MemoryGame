@@ -63,8 +63,7 @@ public class Memory extends JFrame {
 		contentpane.add(gameSettings, BorderLayout.SOUTH);
 	}
 	
-	
-	// testing
+
 	public static void main(String[] args) {
 		new Memory();
 	}

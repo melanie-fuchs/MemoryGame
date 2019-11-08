@@ -401,10 +401,4 @@ public class PhotoChooserFrame extends JFrame {
 			}
 		}
 	}
-
-	// for test purposes only
-	public static void main(String[] args) {
-		new PhotoChooserFrame(30);
-
-	}
 }
