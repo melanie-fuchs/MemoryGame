@@ -10,7 +10,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
- * Abstract BaseClass for memorycards (JButtons).
+ * Abstract BaseClass that extends JButton to represent a memorycard.
+ * 
  * @author yume
  *
  */
