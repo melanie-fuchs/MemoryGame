@@ -4,8 +4,6 @@
 package gui;
 
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
@@ -16,7 +14,8 @@ import javax.swing.JButton;
  *
  */
 public abstract class BaseCard extends JButton {
-	
+	private static final long serialVersionUID = -3051338794543519002L;
+
 	/**
 	 * Constructor that calls the constructor of it's parent and
 	 * sets the <code>ContentAreaFilled</code> to false.
