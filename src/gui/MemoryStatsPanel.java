@@ -123,7 +123,7 @@ public class MemoryStatsPanel extends JPanel {
 	}
 	
 	public void setGameOver() {
-		jlGameOver.setText("Game Over");
+		jlGameOver.setText("Congratulations! You won!");
 		jlGameOver.setForeground(Color.WHITE);
 		jlGameOver.setOpaque(true);
 		jlGameOver.setBackground(Color.BLACK);
