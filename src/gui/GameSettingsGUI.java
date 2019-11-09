@@ -257,10 +257,11 @@ public class GameSettingsGUI extends JPanel {
 		return jRadioBoxes;
 
 	}
-	
+
 	/**
-	 * The method creates a JPanel and adds Buttons on it. The method handles events on the buttons.
-	 * It checks if the required setting are made and informs the user if not. 
+	 * The method creates a JPanel and adds Buttons on it. The method handles events
+	 * on the buttons. It checks if the required setting are made and informs the
+	 * user if not.
 	 * 
 	 * @return <code>Component</code>-object that contains buttons and a title
 	 */
