@@ -56,10 +56,10 @@ public class Memory extends JFrame {
 		// set textfield for instructions
 		String instructions = "Reveal two cards and try to find pairs. If the two cards are\n"
 				+ "identical, you can reveal another two cards. If you did not find\n"
-				+ "a pair, the cards will be turned around again. Try to remember\n"
+				+ "a pair, the cards will be concealed again. Try to remember\n"
 				+ "which card is hidden where and try to reveal the pairs with as\n" + "few tries as possible.\n\n"
 				+ "You can either play the game with given different colors or\n"
-				+ "by using your own photos by chosing them from your file\n" + "system.\n";
+				+ "by using your own photos by choosing them from your file\n" + "system.\n";
 		jtaInstructions = new JTextArea(instructions);
 		jtaInstructions.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jtaInstructions.setFont(new FontRegular(14));
