@@ -32,6 +32,7 @@ import fonts.FontRegular;
  * @author yume
  */
 public class PhotoChooserFrame extends JFrame {
+	private static final long serialVersionUID = 4490499353005373498L;
 
 	/**
 	 * int-value that represents the total amount of cards in the game

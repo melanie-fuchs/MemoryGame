@@ -5,7 +5,6 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +28,7 @@ import fonts.FontTitle;
  *
  */
 public class MemoryStatsPanel extends JPanel {
+	private static final long serialVersionUID = 7254027254289317759L;
 
 	/**
 	 * String that is used to display the number of attempts
