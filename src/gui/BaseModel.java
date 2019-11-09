@@ -3,8 +3,6 @@
  */
 package gui;
 
-import java.awt.Component;
-
 /**
  * @author yume
  *
