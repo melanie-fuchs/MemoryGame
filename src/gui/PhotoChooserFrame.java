@@ -33,20 +33,126 @@ import fonts.FontRegular;
  */
 public class PhotoChooserFrame extends JFrame {
 
-	private int numberOfCards, numberOfPhotos, thumbPreviewSize, thumbMemorySize, loadedImages;
-	private Vector<JLabel> photoLabelVector;
-	private JPanel photoPanel, chooserPanel, chooserPanelTop, chooserPanelBottom;
-	private JButton jbtLoadImages, jbtStartGame;
-	private JFileChooser photoChooser;
-	private JFrame thisFrame = this;
+	/**
+	 * int-value that represents the total amount of cards in the game
+	 */
+	private int numberOfCards;
+
+	/**
+	 * int-value that represents the total amount of unique photos in the game
+	 */
+	private int numberOfPhotos;
+
+	/**
+	 * int-value that represents the size (width + height) of the preview-image
+	 */
+	private int thumbPreviewSize;
+
+	/**
+	 * int-value that represents the size (width + height) of the image for the
+	 * memory-game
+	 */
+	private int thumbMemorySize;
+
+	/**
+	 * int-value that represents the number of already loaded images
+	 */
+	private int loadedImages;
+
+	/**
+	 * <code>Vector</code>-object that contains <code>File</code>-objects. The files
+	 * will be loaded into the vector after the user selected them in the
+	 * <code>JFileChooser</code>-window
+	 */
 	private Vector<File> chosenFiles;
+
+	/**
+	 * <code>Vector</code>-object that contains <code>BufferedImages</code>-objects
+	 * - images that will be used as faces for the memory-cards
+	 */
 	private Vector<BufferedImage> memoryCardPhotos;
+
+	/**
+	 * <code>Vector</code>-object that contains <code>JLabel</code>-objects which
+	 * display images after loading
+	 */
+	private Vector<JLabel> photoLabelVector;
+
+	/**
+	 * <code>JPanel</code>-object that displays the preview of the selected files
+	 */
+	private JPanel photoPanel;
+
+	/**
+	 * <code>JPanel</code>-object that contains two other
+	 * <code>JPanel</code>-objects: 'chooserPanelTop' and 'chooserPanelBottom'
+	 */
+	private JPanel chooserPanel;
+
+	/**
+	 * <code>JPanel</code>-object that contains buttons
+	 */
+	private JPanel chooserPanelTop;
+
+	/**
+	 * <code>JPanel</code>-object that contains a status bar to display instructions
+	 * for the user
+	 */
+	private JPanel chooserPanelBottom;
+
+	/**
+	 * <code>JButton</code>-object to load images. A click on the button will open a
+	 * <code>JFileChooser</code>
+	 */
+	private JButton jbtLoadImages;
+
+	/**
+	 * <code>JButton</code>-object to start the game
+	 */
+	private JButton jbtStartGame;
+
+	/**
+	 * <code>JFileChooser</code>-object to load images
+	 */
+	private JFileChooser photoChooser;
+
+	/**
+	 * <code>JFrame</code>-object that represents the main frame
+	 */
+	private JFrame thisFrame = this;
+
+	/**
+	 * <code>JLabel</code>-object as status-bar to display instructions and
+	 * information for the user
+	 */
 	private JLabel jlMessage;
+
+	/**
+	 * <code>String</code>-object that is used to dynamically display a message in
+	 * the status-bar
+	 */
 	private String startMessage;
 
+	/**
+	 * <code>FontRegular</code>-object to set a regular font
+	 */
 	private FontRegular fontRegular = new FontRegular(14);
+
+	/**
+	 * <code>FontRegular</code>-object to set a regular, small sized font
+	 */
 	private FontRegular fontRegularSmall = new FontRegular(12);
 
+	/**
+	 * The constructor instantiates the vectors and creates empty
+	 * <code>JLabel</code>s to later display the chosen images.
+	 * 
+	 * @param numberOfCards int-value that represents the total amount of cards in
+	 *                      the game
+	 *                      
+	 * @see gui.PhotoChooserFrame#createPhotoPanel()
+	 * @ see {@link gui.PhotoChooserFrame#createChooserPanel()}
+	 */
 	public PhotoChooserFrame(int numberOfCards) {
 		this.numberOfCards = numberOfCards;
 		this.numberOfPhotos = numberOfCards / 2;
@@ -64,8 +170,8 @@ public class PhotoChooserFrame extends JFrame {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 
-		createPhotoPanel();
-		createChooserPanel();
+		this.createPhotoPanel();
+		this.createChooserPanel();
 
 		this.add(photoPanel, BorderLayout.CENTER);
 		this.add(chooserPanel, BorderLayout.SOUTH);
@@ -379,6 +485,16 @@ public class PhotoChooserFrame extends JFrame {
 		}
 	}
 
+	/**
+	 * The method calls the method <code>setPhoto</code> for the first images that
+	 * are contained in the <code>Vector</code> 'chosenFiles'. The method considers
+	 * how many images are already loaded and will only load the rest of the
+	 * required images
+	 * 
+	 * @see gui.PhotoChooserFrame#setPhoto(int, File)
+	 * @see gui.PhotoChooserFrame#chosenFiles
+	 * @see gui.PhotoChooserFrame#loadedImages
+	 */
 	private void fillPhotoPanel() {
 		for (int i = loadedImages; i < chosenFiles.size(); i++) {
 			setPhoto(loadedImages, chosenFiles.elementAt(loadedImages));
