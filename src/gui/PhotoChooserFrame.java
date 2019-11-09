@@ -166,7 +166,7 @@ public class PhotoChooserFrame extends JFrame {
 			photoLabelVector.add(new JLabel());
 		}
 
-		this.setSize(720, 500);
+		this.setSize(720, 510);
 		this.setLocation(453, 0); // placing it right next to the main Memory-Frame to not cover it
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
