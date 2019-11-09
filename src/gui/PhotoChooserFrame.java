@@ -45,11 +45,13 @@ public class PhotoChooserFrame extends JFrame {
 	private String startMessage;
 
 	private FontRegular fontRegular = new FontRegular(14);
-	
+	private FontRegular fontRegularSmall = new FontRegular(12);
+
 	public PhotoChooserFrame(int numberOfCards) {
 		this.numberOfCards = numberOfCards;
 		this.numberOfPhotos = numberOfCards / 2;
 		this.startMessage = "Your cards are now set. You can start the game."; // default value
+		this.loadedImages = 0;
 
 		this.memoryCardPhotos = new Vector<BufferedImage>();
 		this.photoLabelVector = new Vector<JLabel>();
@@ -73,9 +75,9 @@ public class PhotoChooserFrame extends JFrame {
 	}
 
 	/**
-	 * The method returns an instance of <code>JPanel</code> that has a <code>GridLayout</code>
-	 * and an <code>EmptyBorder</code>.
-	 * The <code>GridLayout</code> will be set by calling the method
+	 * The method returns an instance of <code>JPanel</code> that has a
+	 * <code>GridLayout</code> and an <code>EmptyBorder</code>. The
+	 * <code>GridLayout</code> will be set by calling the method
 	 * <code>setGridLayout</code>.
 	 * 
 	 * @return photoPanel an instance of <code>JPanel</code>
@@ -90,7 +92,6 @@ public class PhotoChooserFrame extends JFrame {
 		return photoPanel;
 	}
 
-	
 	/**
 	 * The method adds files which are passed to the method in an array of
 	 * <code>File</code-objects into a vector.
@@ -101,8 +102,8 @@ public class PhotoChooserFrame extends JFrame {
 	 * the amount of files that are required to reach the maximum amount
 	 * of <code>numberOfPhotos</code>
 	 * 
-	 * @param filesToAdd an Array of File-objects that have to be added to
-	 * the <code>chosenFiles</code>-Vector.
+	 * @param filesToAdd an Array of File-objects that have to be added to the
+	 *                   <code>chosenFiles</code>-Vector.
 	 * 
 	 * @see gui.PhotoChooserFrame#numberOfPhotos
 	 * @see gui.PhotoChooserFrame#chosenFiles
@@ -110,9 +111,9 @@ public class PhotoChooserFrame extends JFrame {
 	private void addFileToVector(File[] filesToAdd) {
 		if (filesToAdd != null && filesToAdd.length > 0) {
 			int requiredImages = numberOfPhotos - chosenFiles.size();
-			if(filesToAdd.length > requiredImages) {
-				startMessage = "Too many images selected. The program will use the first "
-						+ requiredImages + " images. " + startMessage;
+			if (filesToAdd.length > requiredImages) {
+				startMessage = "Too many images selected. The program will use the first " + requiredImages
+						+ " images. " + startMessage;
 			}
 			for (int i = 0; i < requiredImages; i++) {
 				for (File file : filesToAdd) {
@@ -124,17 +125,17 @@ public class PhotoChooserFrame extends JFrame {
 						}
 					}
 				}
-			}		
+			}
 		}
 	}
 
-
 	/**
-	 * The method returns an instance of <code>JPanel</code> that has a <code>BorderLayout</code>
-	 * and an <code>EmptyBorder</code>.
+	 * The method returns an instance of <code>JPanel</code> that has a
+	 * <code>BorderLayout</code> and an <code>EmptyBorder</code>.
 	 * 
-	 * The panel adds another two instance of <code>JPanel</code>, by callint the methode
-	 * <code>getChooserPanelTop()</code> and <code>getChooserPanelBottom</code>
+	 * The panel adds another two instance of <code>JPanel</code>, by callint the
+	 * methode <code>getChooserPanelTop()</code> and
+	 * <code>getChooserPanelBottom</code>
 	 * 
 	 * @return chooserPanel an instance of <code>JPanel</code>
 	 * 
@@ -152,12 +153,11 @@ public class PhotoChooserFrame extends JFrame {
 		return chooserPanel;
 	}
 
-	/**	
+	/**
 	 * The method returns an instance of <code>JPanel</code>, that has two
-	 * <code>JButton</code>s on it.
-	 * One of the buttons starts the game, another button opens a 
-	 * <code>JFileChooser</code> and lets the player choose images from the
-	 * filesystem.
+	 * <code>JButton</code>s on it. One of the buttons starts the game, another
+	 * button opens a <code>JFileChooser</code> and lets the player choose images
+	 * from the filesystem.
 	 * 
 	 * @return chooserPanelTop an instance of <code>JPanel</code>
 	 * 
@@ -196,13 +196,13 @@ public class PhotoChooserFrame extends JFrame {
 				}
 				thisFrame.dispose();
 				SwingUtilities.invokeLater(new Runnable() {
-		            public void run() {
-		            	new StartMemory(numberOfCards, 2, resizedImages);
-		            }
+					public void run() {
+						new StartMemory(numberOfCards, 2, resizedImages);
+					}
 				});
 			}
 		});
-		jbtStartGame.setEnabled(false); 
+		jbtStartGame.setEnabled(false);
 		chooserPanelTop.add(jbtStartGame);
 
 		// creating and setting the JFileChooser
@@ -216,10 +216,10 @@ public class PhotoChooserFrame extends JFrame {
 		return chooserPanelTop;
 	}
 
-	/**	
+	/**
 	 * The method returns an instance of <code>JPanel</code>, that has a
-	 * <code>JLabel</code> on it. This Label is used to synamically display
-	 * messages and instructions for the user. 
+	 * <code>JLabel</code> on it. This Label is used to synamically display messages
+	 * and instructions for the user.
 	 * 
 	 * @return chooserPanelBottom an instance of <code>JPanel</code>
 	 * 
@@ -229,7 +229,7 @@ public class PhotoChooserFrame extends JFrame {
 
 		// creating message with instructions
 		jlMessage = new JLabel("Please choose " + numberOfPhotos + " unique photos form your file system");
-		jlMessage.setFont(fontRegular);
+		jlMessage.setFont(fontRegularSmall);
 		chooserPanelBottom.add(jlMessage);
 
 		return chooserPanelBottom;
@@ -237,15 +237,16 @@ public class PhotoChooserFrame extends JFrame {
 	}
 
 	/**
-	 * The method creates a <code>BufferedImage</code> of a given File, crops it
-	 * by calling the method <code>cropPhoto()</code>, resized it by calling the
-	 * method <code> resizePhoto</code> and displays it on the photoPanel.
-	 * The method saves a cropped, but not resized version of the image in a vector
-	 * that will later be used to pass to the game itself.
+	 * The method creates a <code>BufferedImage</code> of a given File, crops it by
+	 * calling the method <code>cropPhoto()</code>, resized it by calling the method
+	 * <code> resizePhoto</code> and displays it on the photoPanel. The method saves
+	 * a cropped, but not resized version of the image in a vector that will later
+	 * be used to pass to the game itself.
 	 * 
-	 * @param fieldNo int-value that represents the place where image will be displayed in the 
-	 * <code>GridLayout</code>
-	 * @param photoFile <code>File</code>-object that will be loaded as a <code>BufferedImage</code>
+	 * @param fieldNo   int-value that represents the place where image will be
+	 *                  displayed in the <code>GridLayout</code>
+	 * @param photoFile <code>File</code>-object that will be loaded as a
+	 *                  <code>BufferedImage</code>
 	 * 
 	 * @see java.awt.image.BufferedImage
 	 * @see gui.PhotoChooserFrame#memoryCardPhotos
@@ -270,9 +271,9 @@ public class PhotoChooserFrame extends JFrame {
 	}
 
 	/**
-	 * The method returns an instance of <code>BufferedImage</code> that is
-	 * a cropped version of the original which is passed as a parameter.
-	 * The cropped area within the image varies depending on the format of the image.
+	 * The method returns an instance of <code>BufferedImage</code> that is a
+	 * cropped version of the original which is passed as a parameter. The cropped
+	 * area within the image varies depending on the format of the image.
 	 * 
 	 * @param originalPhoto image with original format
 	 * @return cropped version of the original image
@@ -301,12 +302,12 @@ public class PhotoChooserFrame extends JFrame {
 		}
 		return null;
 	}
-	
+
 	/**
-	 * The method returns an instance of <code>BufferedImage</code> that is
-	 * a resized version of the original which is passed as a parameter.
-	 * The new size of the image depends on thumbPreviewSize, which is set according to
-	 * the amount of cards that will be used in the game.
+	 * The method returns an instance of <code>BufferedImage</code> that is a
+	 * resized version of the original which is passed as a parameter. The new size
+	 * of the image depends on thumbPreviewSize, which is set according to the
+	 * amount of cards that will be used in the game.
 	 * 
 	 * @param originalPhoto image with original format
 	 * @return resized version of the original image
@@ -319,10 +320,8 @@ public class PhotoChooserFrame extends JFrame {
 			BufferedImage resizedImage = new BufferedImage(thumbSize, thumbSize, originalPhoto.getType());
 			Graphics2D graphic = resizedImage.createGraphics();
 			graphic.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-			graphic.drawImage(
-					originalPhoto, 0, 0, thumbSize, thumbSize, 0, 0, originalPhoto.getWidth(),
-					originalPhoto.getHeight(), null
-			);
+			graphic.drawImage(originalPhoto, 0, 0, thumbSize, thumbSize, 0, 0, originalPhoto.getWidth(),
+					originalPhoto.getHeight(), null);
 			graphic.dispose();
 			return resizedImage;
 		}
@@ -332,9 +331,8 @@ public class PhotoChooserFrame extends JFrame {
 
 	/**
 	 * The method sets different texts in the status-panel and calls the method
-	 * <code>fillPhotoPanel()</code> to fill the panel with the images.
-	 * The method further sets the buttons enabled or disabled according to the
-	 * game's needs.
+	 * <code>fillPhotoPanel()</code> to fill the panel with the images. The method
+	 * further sets the buttons enabled or disabled according to the game's needs.
 	 * 
 	 * @see gui.PhotoChooserFrame#fillPhotoPanel()
 	 * 
@@ -347,10 +345,8 @@ public class PhotoChooserFrame extends JFrame {
 			jbtLoadImages.setEnabled(false);
 		} else {
 			if (chosenFiles.size() < numberOfPhotos) {
-				jlMessage.setText(
-						"Please choose another " + (numberOfPhotos - chosenFiles.size())
-								+ " photos from your filesystem."
-				);
+				jlMessage.setText("Please choose another " + (numberOfPhotos - chosenFiles.size())
+						+ " photos from your filesystem.");
 			}
 			fillPhotoPanel();
 		}
@@ -365,42 +361,29 @@ public class PhotoChooserFrame extends JFrame {
 	 * @see gui.PhotoChooserFrame#setPhoto(int, File)
 	 */
 	private GridLayout setGridLayout(int numberOfPhotos) {
-		switch (
-			numberOfPhotos
-		) {
+		switch (numberOfPhotos) {
 		case 8:
 			thumbPreviewSize = 150;
 			thumbMemorySize = 146;
 			return new GridLayout(2, 4, 7, 7);
-//			break;
 		case 10:
 			thumbPreviewSize = 120;
 			thumbMemorySize = 130;
 			return new GridLayout(2, 5, 7, 7);
-//			break;
 		case 15:
 			thumbPreviewSize = 120;
 			thumbMemorySize = 110;
 			return new GridLayout(3, 5, 7, 7);
-//			break;
 		default:
 			return null;
 		}
 	}
 
 	private void fillPhotoPanel() {
-		if (chosenFiles.size() == numberOfPhotos) {
-			for (int i = 0; i < numberOfPhotos; i++) {
-				setPhoto(i, chosenFiles.elementAt(i));
-			}
-		} else { 
-			if (loadedImages < chosenFiles.size()) {
-				for (int i = loadedImages; i < chosenFiles.size(); i++) {
-					setPhoto(loadedImages, chosenFiles.elementAt(loadedImages));
-					loadedImages++;
-				}
-
-			}
+		for (int i = loadedImages; i < chosenFiles.size(); i++) {
+			setPhoto(loadedImages, chosenFiles.elementAt(loadedImages));
+			loadedImages++;
 		}
+
 	}
 }
