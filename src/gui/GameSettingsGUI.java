@@ -21,6 +21,11 @@ import fonts.FontBold;
 import fonts.FontRegular;
 import fonts.FontTitle;
 
+/**
+ * The class extends <code>JPanel</code> and displays the game-settings
+ * @author yume
+ *
+ */
 public class GameSettingsGUI extends JPanel {
 	private static final long serialVersionUID = 8656127665527890300L;
 

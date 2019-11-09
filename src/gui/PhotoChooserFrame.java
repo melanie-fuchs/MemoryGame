@@ -28,8 +28,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import fonts.FontRegular;
 
 /**
+ * The class extends <code>JFrame</code> and is used to load images and display them as a preview.
  * @author yume
- *
  */
 public class PhotoChooserFrame extends JFrame {
 

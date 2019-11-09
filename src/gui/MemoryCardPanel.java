@@ -11,9 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 /**
- * 
+ * The class extends <code>JPanel</code> and displays the memory-cards
  * @author yume
- *
  */
 public class MemoryCardPanel extends JPanel {
 	private static final long serialVersionUID = -7225763224244935931L;

@@ -11,6 +11,11 @@ import javax.swing.SwingConstants;
 import fonts.FontRegular;
 import fonts.FontTitle;
 
+/**
+ * The class extends <code>JFrame</code> and is the main class of the memory-game
+ * @author yume
+ *
+ */
 public class Memory extends JFrame {
 	private static final long serialVersionUID = 7074129096697005584L;
 

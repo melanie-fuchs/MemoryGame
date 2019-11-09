@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
 /**
+ * The class represents a memory-card that has a backgroundcolor and an image as face
  * @author yume
  *
  */

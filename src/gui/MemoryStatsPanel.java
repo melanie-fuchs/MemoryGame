@@ -23,7 +23,7 @@ import fonts.FontRegular;
 import fonts.FontTitle;
 
 /**
- * Class that handles the settings within a started memory-game.
+ * The class extends <code>JPanel</code> and handles the settings within a started memory-game.
  * 
  * @author yume
  *

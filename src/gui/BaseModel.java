@@ -4,6 +4,7 @@
 package gui;
 
 /**
+ * <code>interface</code>-model that can be implemented by memory-models
  * @author yume
  *
  */

@@ -8,6 +8,9 @@ import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 /**
+ * The class will start the game by either directly start a color-memory or
+ * opening the images-option where the user can load their own images
+ * 
  * @author yume
  *
  */

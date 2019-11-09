@@ -9,8 +9,10 @@ import java.util.Vector;
 import javax.swing.JFrame;
 
 /**
+ * The class extends <code>JFrame</code> and is used to display the cards and
+ * the settings once the game has started
+ * 
  * @author yume
- *
  */
 public class MemoryFrame extends JFrame {
 	private static final long serialVersionUID = 1615254294394375523L;
@@ -30,9 +32,11 @@ public class MemoryFrame extends JFrame {
 	 * the total amount of cards used in the game - sets the location of the frame
 	 * and adds the components.
 	 * 
-	 * @param memorySize int-value that represents the total number of cards in the game
-	 * @param gameMode int-value that represents the game-mode
-	 * @param cards <code>Vector</code>-object that contains the memory-cards for the game
+	 * @param memorySize int-value that represents the total number of cards in the
+	 *                   game
+	 * @param gameMode   int-value that represents the game-mode
+	 * @param cards      <code>Vector</code>-object that contains the memory-cards
+	 *                   for the game
 	 */
 	public MemoryFrame(int memorySize, int gameMode, Vector<BaseCard> cards) {
 		super("Memory");

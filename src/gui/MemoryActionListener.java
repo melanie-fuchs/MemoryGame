@@ -9,6 +9,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 /**
+ * The class implements <code>ActionListener</code> and will be used as listener of the memory-cards
  * @author yume
  *
  */

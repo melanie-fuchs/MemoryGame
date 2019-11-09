@@ -8,6 +8,7 @@ import java.awt.Cursor;
 import java.awt.Graphics;
 
 /**
+ * The class represents a memory-card that has a background- and a foregroundcolor
  * @author yume
  *
  */
