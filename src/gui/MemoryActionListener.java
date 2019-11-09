@@ -14,8 +14,14 @@ import java.util.Hashtable;
  */
 public class MemoryActionListener implements ActionListener {
 
-	Hashtable<Integer, BaseModel> modelHashtable;
-	MemoryStatsPanel passivePanel;
+	/**
+	 * <code>HashTable</code>-object that contains memory-cards
+	 */
+	private Hashtable<Integer, BaseModel> modelHashtable;
+	/**
+	 * <code>MemoryStatsPanel</code>-object that represents a passive panel
+	 */
+	private MemoryStatsPanel passivePanel;
 	
 	public MemoryActionListener(BaseModel model, MemoryStatsPanel passivePanel) {
 		this.passivePanel = passivePanel;

@@ -7,8 +7,6 @@ import java.util.Vector;
 
 import javax.swing.Timer;
 
-import gui.BaseCard;
-
 /**
  * Model-Class for the Memory-Game. The class is used to handle the events when
  * cards are being clicked.
