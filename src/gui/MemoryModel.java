@@ -20,6 +20,7 @@ public class MemoryModel implements BaseModel {
 	 * The number of attempts (number of pairs revealed no matter if they matched or not)
 	 */
 	private int attempts = 0;
+	
 	/**
 	 * The method returns the number (int value) of attempts
 	 * 
@@ -33,6 +34,7 @@ public class MemoryModel implements BaseModel {
 	 * The number of successfully revealed pairs of cards
 	 */
 	private int foundPairs = 0;
+	
 	/**
 	 * The method returns the number (int value) of successfully revealed pairs
 	 * 
@@ -47,12 +49,14 @@ public class MemoryModel implements BaseModel {
 	 * to later check them for unity.
 	 */
 	private Vector<BaseCard> tempCardArray;
+	
 	/**
 	 * Vector-Object that is used to collect flipped pairs of memory-cards (type 
 	 * <code>BaseCard</code>) to later check if the game is over or not by comparing it's size
 	 * with the number of cards in the game.
 	 */
 	private Vector<BaseCard> flippedPairs;
+	
 	/**
 	 * Hashmap-Object that contains every card of the game (type <code>BaseCard</code>)
 	 */
