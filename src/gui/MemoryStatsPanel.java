@@ -18,6 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import fonts.FontBold;
+import fonts.FontRegular;
+import fonts.FontTitle;
+
 /**
  * Class that handles the settings within a started memory-game.
  * @author yume

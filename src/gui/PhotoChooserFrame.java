@@ -25,6 +25,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import fonts.FontRegular;
+
 /**
  * @author yume
  *

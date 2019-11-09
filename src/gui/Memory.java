@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+import fonts.FontRegular;
+import fonts.FontTitle;
+
 public class Memory extends JFrame {
 	private static final long serialVersionUID = 1L;
 	

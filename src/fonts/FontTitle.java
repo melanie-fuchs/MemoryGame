@@ -1,7 +1,7 @@
 /**
  * 
  */
-package gui;
+package fonts;
 
 import java.awt.Font;
 
