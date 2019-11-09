@@ -275,7 +275,7 @@ public class GameSettingsGUI extends JPanel {
 		jpButtons.setLayout(new GridLayout(5, 0, 2, 2));
 
 		// create buttons
-		jlbChooseMode = new JLabel("Choose prefered version:");
+		jlbChooseMode = new JLabel("Choose preferred version:");
 		jlbChooseMode.setFont(fontBold);
 		jbUseColors = new JButton("Use Preset Colors");
 		jbChoseFiles = new JButton("Choose Photos");
