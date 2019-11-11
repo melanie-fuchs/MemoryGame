@@ -157,7 +157,7 @@ public class PhotoChooserFrame extends JFrame {
 	public PhotoChooserFrame(int numberOfCards) {
 		this.numberOfCards = numberOfCards;
 		this.numberOfPhotos = numberOfCards / 2;
-		this.startMessage = "Your cards are now set. You can start the game."; // default value
+		this.startMessage = Messages.getString("PhotoChooserFrame.statusMessageYourCardsAreSet"); // default value //$NON-NLS-1$
 		this.loadedImages = 0;
 
 		this.memoryCardPhotos = new Vector<BufferedImage>();
@@ -219,8 +219,8 @@ public class PhotoChooserFrame extends JFrame {
 		if (filesToAdd != null && filesToAdd.length > 0) {
 			int requiredImages = numberOfPhotos - chosenFiles.size();
 			if (filesToAdd.length > requiredImages) {
-				startMessage = "Too many images selected. The program will use the first " + requiredImages
-						+ " images. " + startMessage;
+				startMessage = Messages.getString("PhotoChooserFrame.statusMessageInfoText+YourCardsAreSetPART1") + requiredImages //$NON-NLS-1$
+						+ Messages.getString("PhotoChooserFrame.statusMessageInfoText+YourCardsAreSetPART2") + startMessage; //$NON-NLS-1$
 			}
 			for (int i = 0; i < requiredImages; i++) {
 				for (File file : filesToAdd) {
@@ -273,7 +273,7 @@ public class PhotoChooserFrame extends JFrame {
 	private JPanel getChooserPanelTop() {
 		chooserPanelTop = new JPanel();
 		// creating the button to load images (opens JFileChooser)
-		jbtLoadImages = new JButton("Load Images");
+		jbtLoadImages = new JButton(Messages.getString("PhotoChooserFrame.buttonLoadImages")); //$NON-NLS-1$
 		jbtLoadImages.setFont(fontRegular);
 		jbtLoadImages.addActionListener(new ActionListener() {
 			@Override
@@ -292,7 +292,7 @@ public class PhotoChooserFrame extends JFrame {
 
 		// creating the button to start the game. Will be set disabled while
 		// required numbers of photos is not loaded.
-		jbtStartGame = new JButton("Start Game");
+		jbtStartGame = new JButton(Messages.getString("PhotoChooserFrame.buttonStartGame")); //$NON-NLS-1$
 		jbtStartGame.setFont(fontRegular);
 		jbtStartGame.addActionListener(new ActionListener() {
 			@Override
@@ -335,7 +335,7 @@ public class PhotoChooserFrame extends JFrame {
 		chooserPanelBottom = new JPanel();
 
 		// creating message with instructions
-		jlMessage = new JLabel("Please choose " + numberOfPhotos + " unique photos form your file system");
+		jlMessage = new JLabel(Messages.getString("PhotoChooserFrame.messageChooseXPhotosFromFilesystemPART1") + numberOfPhotos + Messages.getString("PhotoChooserFrame.messageChooseXPhotosFromFilesystemPART2")); //$NON-NLS-1$ //$NON-NLS-2$
 		jlMessage.setFont(fontRegularSmall);
 		chooserPanelBottom.add(jlMessage);
 
@@ -452,8 +452,8 @@ public class PhotoChooserFrame extends JFrame {
 			jbtLoadImages.setEnabled(false);
 		} else {
 			if (chosenFiles.size() < numberOfPhotos) {
-				jlMessage.setText("Please choose another " + (numberOfPhotos - chosenFiles.size())
-						+ " photos from your filesystem.");
+				jlMessage.setText(Messages.getString("PhotoChooserFrame.messageChooseAnotherXPhotosFromFilesystemPART1") + (numberOfPhotos - chosenFiles.size()) //$NON-NLS-1$
+						+ Messages.getString("PhotoChooserFrame.messageChooseAnotherXPhotosFromFilesystemPART2")); //$NON-NLS-1$
 			}
 			fillPhotoPanel();
 		}

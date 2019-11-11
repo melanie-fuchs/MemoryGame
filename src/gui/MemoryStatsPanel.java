@@ -156,14 +156,14 @@ public class MemoryStatsPanel extends JPanel {
 		statsPanel = new JPanel();
 		statsPanel.setLayout(new GridLayout(2, 4, 60, 5));
 		statsPanel.setBorder(new EmptyBorder(10, 10, 15, 10));
-		jbEndGame = new JButton("End Game");
+		jbEndGame = new JButton(Messages.getString("MemoryStatsPanel.buttonEndGame")); //$NON-NLS-1$
 		jbEndGame.setFont(fontRegular);
 		jbEndGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (((JButton) e.getSource()).getText() == "End Game") {
-					int close = JOptionPane.showConfirmDialog(parentFrame, "Do you want to end this round?",
-							"Close Memory Window", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+				if (((JButton) e.getSource()).getText() == Messages.getString("MemoryStatsPanel.buttonEndGame")) { //$NON-NLS-1$
+					int close = JOptionPane.showConfirmDialog(parentFrame, Messages.getString("MemoryStatsPanel.confirmDialogDoYouWantToEndThisRound"), //$NON-NLS-1$
+							Messages.getString("MemoryStatsPanel.confirmDialogCloseMemoryWindow"), JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE); //$NON-NLS-1$
 					if (close == 0) {
 						parentFrame.dispose();
 					}
@@ -171,7 +171,7 @@ public class MemoryStatsPanel extends JPanel {
 						return;
 					}
 				} else {
-					if (((JButton) e.getSource()).getText() == "Play Again") {
+					if (((JButton) e.getSource()).getText() == Messages.getString("MemoryStatsPanel.buttonPlayAgain")) { //$NON-NLS-1$
 						if (gameMode == 1) { // if Player played with colors
 							new StartMemory(gameSize, gameMode);
 						} else { // if player played with images
@@ -183,11 +183,11 @@ public class MemoryStatsPanel extends JPanel {
 
 			}
 		});
-		jlAttemptsText = new JLabel("Attempts: ", SwingConstants.CENTER);
+		jlAttemptsText = new JLabel(Messages.getString("MemoryStatsPanel.labelAttempts"), SwingConstants.CENTER); //$NON-NLS-1$
 		jlAttemptsText.setFont(fontBold);
 		jlAttemptsCounter = new JLabel("0", SwingConstants.CENTER);
 		jlAttemptsCounter.setFont(fontStats);
-		jlPairsFoundText = new JLabel("Found Pairs:", SwingConstants.CENTER);
+		jlPairsFoundText = new JLabel(Messages.getString("MemoryStatsPanel.labelFoundPairs"), SwingConstants.CENTER); //$NON-NLS-1$
 		jlPairsFoundText.setFont(fontBold);
 		jlPairsFoundCounter = new JLabel("0", SwingConstants.CENTER);
 		jlPairsFoundCounter.setFont(fontStats);
@@ -228,13 +228,13 @@ public class MemoryStatsPanel extends JPanel {
 	 * Game'-button to a 'Play Again'-button.
 	 */
 	public void setGameOver() {
-		jlGameOver.setText("Congratulations! You won!");
+		jlGameOver.setText(Messages.getString("MemoryStatsPanel.labelCongratulationsYouWon")); //$NON-NLS-1$
 		jlGameOver.setForeground(Color.WHITE);
 		jlGameOver.setOpaque(true);
 		jlGameOver.setBackground(Color.BLACK);
 		gameOverPanel.setOpaque(true);
 		gameOverPanel.setBackground(Color.BLACK);
-		jbEndGame.setText("Play Again");
+		jbEndGame.setText(Messages.getString("MemoryStatsPanel.buttonPlayAgain")); //$NON-NLS-1$
 	}
 
 	/**
