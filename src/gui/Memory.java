@@ -34,7 +34,7 @@ public class Memory extends JFrame {
 	 * calls the method <code>createGUI()</code>
 	 */
 	private Memory() {
-		super("Memory");
+		super(Messages.getString("Memory.gameTitleFrame")); //$NON-NLS-1$
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		this.setSize(450, 510);
@@ -50,17 +50,17 @@ public class Memory extends JFrame {
 	 */
 	private void createGUI() {
 		// set title
-		jlbTitleMemory = new JLabel("Memory Game", SwingConstants.CENTER);
+		jlbTitleMemory = new JLabel(Messages.getString("Memory.gameTitleInGame"), SwingConstants.CENTER); //$NON-NLS-1$
 		jlbTitleMemory.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jlbTitleMemory.setFont(new FontTitle(36));
 
 		// set textfield for instructions
-		String instructions = "Reveal two cards and try to find pairs. If the two cards are\n"
-				+ "identical, you can reveal another two cards. If you did not find\n"
-				+ "a pair, the cards will be concealed again. Try to remember\n"
-				+ "which card is hidden where and try to reveal the pairs with as\n" + "few tries as possible.\n\n"
-				+ "You can either play the game with given different colors or\n"
-				+ "by using your own photos by choosing them from your file\n" + "system.\n";
+		String instructions = Messages.getString("Memory.gameInstructions1") //$NON-NLS-1$
+				+ Messages.getString("Memory.gameInstructions2") //$NON-NLS-1$
+				+ Messages.getString("Memory.gameInstructions3") //$NON-NLS-1$
+				+ Messages.getString("Memory.gameInstructions4") + Messages.getString("Memory.gameInstructions5") //$NON-NLS-1$ //$NON-NLS-2$
+				+ Messages.getString("Memory.gameInstructions6") //$NON-NLS-1$
+				+ Messages.getString("Memory.gameInstructions7") + Messages.getString("Memory.gameInstructions"); //$NON-NLS-1$ //$NON-NLS-2$
 		jtaInstructions = new JTextArea(instructions);
 		jtaInstructions.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jtaInstructions.setFont(new FontRegular(14));

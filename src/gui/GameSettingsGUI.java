@@ -162,7 +162,7 @@ public class GameSettingsGUI extends JPanel {
 	 * @return a JLabel
 	 */
 	private JLabel title() {
-		JLabel jlbTitleSettings = new JLabel("Settings", SwingConstants.CENTER);
+		JLabel jlbTitleSettings = new JLabel(Messages.getString("GameSettingsGUI.0"), SwingConstants.CENTER); //$NON-NLS-1$
 		jlbTitleSettings.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		jlbTitleSettings.setFont(new FontTitle(28));
 
@@ -193,7 +193,7 @@ public class GameSettingsGUI extends JPanel {
 	 * @return <code>JTextField</code>-object
 	 */
 	private JTextField status() {
-		jtfStatus = new JTextField("");
+		jtfStatus = new JTextField(Messages.getString("GameSettingsGUI.1")); //$NON-NLS-1$
 		jtfStatus.setBorder(BorderFactory.createEmptyBorder(1, 10, 1, 10));
 		jtfStatus.setEditable(false);
 		jtfStatus.setForeground(Color.WHITE);
@@ -215,11 +215,11 @@ public class GameSettingsGUI extends JPanel {
 		jRadioBoxes.setLayout(new GridLayout(5, 0, 2, 2));
 
 		// create options for number of memory cards to play with:
-		jlbNumberOfCards = new JLabel("No. of Memory-Cards:");
+		jlbNumberOfCards = new JLabel(Messages.getString("GameSettingsGUI.2")); //$NON-NLS-1$
 		jlbNumberOfCards.setFont(fontBold);
-		jrbSixteen = new JRadioButton("Sixteen");
-		jrbTwenty = new JRadioButton("Twenty");
-		jrbThirty = new JRadioButton("Thirty");
+		jrbSixteen = new JRadioButton(Messages.getString("GameSettingsGUI.radioButton16")); //$NON-NLS-1$
+		jrbTwenty = new JRadioButton(Messages.getString("GameSettingsGUI.radioButton20")); //$NON-NLS-1$
+		jrbThirty = new JRadioButton(Messages.getString("GameSettingsGUI.radioButton30")); //$NON-NLS-1$
 
 		// add fonts
 		jrbSixteen.setFont(fontRegular);
@@ -275,13 +275,13 @@ public class GameSettingsGUI extends JPanel {
 		jpButtons.setLayout(new GridLayout(5, 0, 2, 2));
 
 		// create buttons
-		jlbChooseMode = new JLabel("Choose preferred version:");
+		jlbChooseMode = new JLabel(Messages.getString("GameSettingsGUI.labelChoosePreferredVersion")); //$NON-NLS-1$
 		jlbChooseMode.setFont(fontBold);
-		jbUseColors = new JButton("Use Preset Colors");
-		jbChoseFiles = new JButton("Choose Photos");
+		jbUseColors = new JButton(Messages.getString("GameSettingsGUI.buttonUsePresetColors")); //$NON-NLS-1$
+		jbChoseFiles = new JButton(Messages.getString("GameSettingsGUI.buttonChoosePhotos")); //$NON-NLS-1$
 		jlbChosenMode = new JLabel("");
 		jlbChosenMode.setFont(fontBold);
-		jbStart = new JButton("Start Game");
+		jbStart = new JButton(Messages.getString("GameSettingsGUI.buttonStartGame")); //$NON-NLS-1$
 
 		// set fonts
 		jbUseColors.setFont(fontRegular);
@@ -309,7 +309,7 @@ public class GameSettingsGUI extends JPanel {
 				jbUseColors.setFont(fontRegular);
 				jlbChosenMode.setForeground(Color.BLACK);
 				jlbChosenMode.setText("");
-				jtfStatus.setText("You will choose images from your filesystem");
+				jtfStatus.setText(Messages.getString("GameSettingsGUI.statusText_ChooseImagesFromFileSystem")); //$NON-NLS-1$
 			}
 		});
 
@@ -318,7 +318,7 @@ public class GameSettingsGUI extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				switch (gameMode) {
 				case 0:
-					jlbChosenMode.setText("Game-Mode must be set!");
+					jlbChosenMode.setText(Messages.getString("GameSettingsGUI.statusText_GameModeMustBeSet")); //$NON-NLS-1$
 					jlbChosenMode.setForeground(Color.RED);
 					break;
 				case 1:
