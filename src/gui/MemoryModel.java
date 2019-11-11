@@ -180,7 +180,6 @@ public class MemoryModel implements BaseModel {
         			for(BaseCard card : allMemoryCards.values()) {
         				if(!flippedPairs.contains(card)) {
         					card.setEnabled(true);
-        					System.out.println(card.hashCode());
         				}
         			}
         			cardA.switchFace();
