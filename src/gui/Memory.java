@@ -1,4 +1,5 @@
 package gui;
+// Main class of the game
 
 import java.awt.BorderLayout;
 
