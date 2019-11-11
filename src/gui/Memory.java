@@ -60,7 +60,7 @@ public class Memory extends JFrame {
 				+ Messages.getString("Memory.gameInstructions3") //$NON-NLS-1$
 				+ Messages.getString("Memory.gameInstructions4") + Messages.getString("Memory.gameInstructions5") //$NON-NLS-1$ //$NON-NLS-2$
 				+ Messages.getString("Memory.gameInstructions6") //$NON-NLS-1$
-				+ Messages.getString("Memory.gameInstructions7") + Messages.getString("Memory.gameInstructions"); //$NON-NLS-1$ //$NON-NLS-2$
+				+ Messages.getString("Memory.gameInstructions7") + Messages.getString("Memory.gameInstructions8"); //$NON-NLS-1$ //$NON-NLS-2$
 		jtaInstructions = new JTextArea(instructions);
 		jtaInstructions.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jtaInstructions.setFont(new FontRegular(14));
