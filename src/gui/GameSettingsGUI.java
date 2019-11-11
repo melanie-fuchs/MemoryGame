@@ -162,7 +162,7 @@ public class GameSettingsGUI extends JPanel {
 	 * @return a JLabel
 	 */
 	private JLabel title() {
-		JLabel jlbTitleSettings = new JLabel(resourceBundle.getString("settings"), SwingConstants.CENTER);
+		JLabel jlbTitleSettings = new JLabel("Settings", SwingConstants.CENTER);
 		jlbTitleSettings.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		jlbTitleSettings.setFont(new FontTitle(28));
 
@@ -215,7 +215,7 @@ public class GameSettingsGUI extends JPanel {
 		jRadioBoxes.setLayout(new GridLayout(5, 0, 2, 2));
 
 		// create options for number of memory cards to play with:
-		jlbNumberOfCards = new JLabel(resourceBundle.getString("no.of.memory.cards_title"));
+		jlbNumberOfCards = new JLabel("No. of Memory-Cards:");
 		jlbNumberOfCards.setFont(fontBold);
 		jrbSixteen = new JRadioButton("Sixteen");
 		jrbTwenty = new JRadioButton("Twenty");
