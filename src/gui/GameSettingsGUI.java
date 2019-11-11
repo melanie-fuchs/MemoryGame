@@ -162,7 +162,7 @@ public class GameSettingsGUI extends JPanel {
 	 * @return a JLabel
 	 */
 	private JLabel title() {
-		JLabel jlbTitleSettings = new JLabel(Messages.getString("GameSettingsGUI.0"), SwingConstants.CENTER); //$NON-NLS-1$
+		JLabel jlbTitleSettings = new JLabel(Messages.getString("GameSettingsGUI.GUISettingsTitle"), SwingConstants.CENTER); //$NON-NLS-1$
 		jlbTitleSettings.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		jlbTitleSettings.setFont(new FontTitle(28));
 
@@ -193,7 +193,7 @@ public class GameSettingsGUI extends JPanel {
 	 * @return <code>JTextField</code>-object
 	 */
 	private JTextField status() {
-		jtfStatus = new JTextField(Messages.getString("GameSettingsGUI.1")); //$NON-NLS-1$
+		jtfStatus = new JTextField("");
 		jtfStatus.setBorder(BorderFactory.createEmptyBorder(1, 10, 1, 10));
 		jtfStatus.setEditable(false);
 		jtfStatus.setForeground(Color.WHITE);
@@ -215,7 +215,7 @@ public class GameSettingsGUI extends JPanel {
 		jRadioBoxes.setLayout(new GridLayout(5, 0, 2, 2));
 
 		// create options for number of memory cards to play with:
-		jlbNumberOfCards = new JLabel(Messages.getString("GameSettingsGUI.2")); //$NON-NLS-1$
+		jlbNumberOfCards = new JLabel(Messages.getString("GameSettingsGUI.labelChooseNoOfCardsTitle")); //$NON-NLS-1$
 		jlbNumberOfCards.setFont(fontBold);
 		jrbSixteen = new JRadioButton(Messages.getString("GameSettingsGUI.radioButton16")); //$NON-NLS-1$
 		jrbTwenty = new JRadioButton(Messages.getString("GameSettingsGUI.radioButton20")); //$NON-NLS-1$
