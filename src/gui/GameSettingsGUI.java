@@ -162,7 +162,7 @@ public class GameSettingsGUI extends JPanel {
 	 * @return a JLabel
 	 */
 	private JLabel title() {
-		JLabel jlbTitleSettings = new JLabel("Settings", SwingConstants.CENTER);
+		JLabel jlbTitleSettings = new JLabel(resourceBundle.getString("settings"), SwingConstants.CENTER);
 		jlbTitleSettings.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		jlbTitleSettings.setFont(new FontTitle(28));
 
