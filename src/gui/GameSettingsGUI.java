@@ -215,7 +215,7 @@ public class GameSettingsGUI extends JPanel {
 		jRadioBoxes.setLayout(new GridLayout(5, 0, 2, 2));
 
 		// create options for number of memory cards to play with:
-		jlbNumberOfCards = new JLabel("No. of Memory-Cards:");
+		jlbNumberOfCards = new JLabel(resourceBundle.getString("no.of.memory.cards_title"));
 		jlbNumberOfCards.setFont(fontBold);
 		jrbSixteen = new JRadioButton("Sixteen");
 		jrbTwenty = new JRadioButton("Twenty");
