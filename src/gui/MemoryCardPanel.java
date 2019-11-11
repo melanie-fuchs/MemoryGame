@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 /**
  * The class extends <code>JPanel</code> and displays the memory-cards
+ *
  * @author yume
  */
 public class MemoryCardPanel extends JPanel {
@@ -21,15 +22,6 @@ public class MemoryCardPanel extends JPanel {
 	 * int-value that represents the number of cards in the game
 	 */
 	private int memorySize; // 16, 20 or 30 cards possible
-
-	/**
-	 * The method returns the number of cards in the game
-	 * 
-	 * @return int-value that represents the number of cards in the game
-	 */
-	public int getMemorySize() {
-		return memorySize;
-	}
 
 	/**
 	 * A <code>Vector</code>-object that contains memory-cards of type

@@ -33,7 +33,7 @@ public class Memory extends JFrame {
 	 * Constructor that sets the size, resizability and visibility of the frame and
 	 * calls the method <code>createGUI()</code>
 	 */
-	public Memory() {
+	private Memory() {
 		super("Memory");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());

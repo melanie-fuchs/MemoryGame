@@ -240,8 +240,8 @@ public class PhotoChooserFrame extends JFrame {
 	 * The method returns an instance of <code>JPanel</code> that has a
 	 * <code>BorderLayout</code> and an <code>EmptyBorder</code>.
 	 * 
-	 * The panel adds another two instance of <code>JPanel</code>, by callint the
-	 * methode <code>getChooserPanelTop()</code> and
+	 * The panel adds another two instance of <code>JPanel</code>, by calling the
+	 * method <code>getChooserPanelTop()</code> and
 	 * <code>getChooserPanelBottom</code>
 	 * 
 	 * @return chooserPanel an instance of <code>JPanel</code>
@@ -325,7 +325,7 @@ public class PhotoChooserFrame extends JFrame {
 
 	/**
 	 * The method returns an instance of <code>JPanel</code>, that has a
-	 * <code>JLabel</code> on it. This Label is used to synamically display messages
+	 * <code>JLabel</code> on it. This Label is used to dynamically display messages
 	 * and instructions for the user.
 	 * 
 	 * @return chooserPanelBottom an instance of <code>JPanel</code>

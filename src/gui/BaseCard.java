@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gui;
 
 import java.awt.Graphics;
@@ -8,7 +5,7 @@ import java.awt.Graphics;
 import javax.swing.JButton;
 
 /**
- * Abstract BaseClass that extends JButton to represent a memorycard.
+ * Abstract BaseClass that extends JButton to represent a memory-card.
  * 
  * @author yume
  *

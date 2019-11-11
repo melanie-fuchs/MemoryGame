@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gui;
 
 import java.awt.Color;
@@ -8,7 +5,8 @@ import java.awt.Cursor;
 import java.awt.Graphics;
 
 /**
- * The class represents a memory-card that has a background- and a foregroundcolor
+ * The class represents a memory-card that has a background- and a foreground-color
+ *
  * @author yume
  *
  */
@@ -16,7 +14,7 @@ public class CardColor extends BaseCard {
 	private static final long serialVersionUID = 263636766241084074L;
 
 	/**
-	 * int-value that represents the card's ID. Every card will be genereated within
+	 * int-value that represents the card's ID. Every card will be generated within
 	 * a loop and the cards will receive a number in ascending order. The cardID
 	 * will be used to compare cards with each others to find pairs (two cards with
 	 * same cardID are a pair).
@@ -39,18 +37,18 @@ public class CardColor extends BaseCard {
 	private boolean faceUp;
 
 	/**
-	 * Backgroundcolor of the card when it's concealed
+	 * Background-color of the card when it's concealed
 	 */
 	private Color backgroundColor;
 
 	/**
-	 * Foregroundcolor of the card when the face is up
+	 * Foreground-color of the card when the face is up
 	 */
 	private Color foregroundColor;
 
 	/**
-	 * The constructor sets the backgroundcolor, the cardID and the foregroundcolor.
-	 * The card's faceUp-variable will be set to false so it's backgroundcolor will
+	 * The constructor sets the background-color, the cardID and the foreground-color.
+	 * The card's faceUp-variable will be set to false so it's background-color will
 	 * be up and the face will will be concealed once the game started. The cursor
 	 * is being set as hand when the cursor hovers over enabled cards.
 	 * 
