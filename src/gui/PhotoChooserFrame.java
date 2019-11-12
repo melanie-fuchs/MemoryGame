@@ -3,10 +3,7 @@
  */
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -167,7 +164,10 @@ public class PhotoChooserFrame extends JFrame {
 		}
 
 		this.setSize(720, 510);
-		this.setLocation(453, 0); // placing it right next to the main Memory-Frame to not cover it
+
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 

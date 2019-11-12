@@ -1,7 +1,7 @@
 package gui;
 // Main-class of the game
 
-import java.awt.BorderLayout;
+import java.awt.*;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -38,6 +38,8 @@ public class Memory extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		this.setSize(450, 510);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height);
 
 		this.createGUI();
 
