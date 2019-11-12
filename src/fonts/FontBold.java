@@ -6,6 +6,8 @@ package fonts;
 import java.awt.Font;
 
 /**
+ * The class extends <code>Font</code> and is used for bold text.
+ * 
  * @author yume
  *
  */
