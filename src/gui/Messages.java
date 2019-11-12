@@ -7,15 +7,16 @@ public class Messages {
 	private static final String english = "gui.lang_en";
 	private static final String german = "gui.lang_de";
 
-	private static String BUNDLE_NAME; //$NON-NLS-1$
+	private static ResourceBundle resourceBundleEnglish = ResourceBundle.getBundle(english);
+	private static ResourceBundle resourceBundleGerman = ResourceBundle.getBundle(german);
 
-	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
+	private static ResourceBundle currentResourceBundle = resourceBundleEnglish;
 
 	public static void setLanguage(String language) {
         if(language == "german") {
-            BUNDLE_NAME = german;
+			currentResourceBundle = resourceBundleGerman;
         } else {
-            BUNDLE_NAME = english;
+			currentResourceBundle = resourceBundleEnglish;
         }
     }
 
@@ -24,7 +25,7 @@ public class Messages {
 
 	public static String getString(String key) {
 		try {
-			return RESOURCE_BUNDLE.getString(key);
+			return currentResourceBundle.getString(key);
 		} catch (MissingResourceException e) {
 			return '!' + key + '!';
 		}

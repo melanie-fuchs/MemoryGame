@@ -12,6 +12,7 @@ public class Main extends JFrame {
     private JPanel panel;
     private JButton buttonEnglish, buttonGerman;
     private JLabel labelMemory;
+    private JFrame thisFrame = this;
 
     public Main() {
         this.setSize(200, 150);
@@ -38,6 +39,7 @@ public class Main extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Messages.setLanguage("english");
                 new Memory();
+                thisFrame.dispose();
             }
         });
 
@@ -48,6 +50,7 @@ public class Main extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Messages.setLanguage("german");
                 new Memory();
+                thisFrame.dispose();
             }
         });
 
