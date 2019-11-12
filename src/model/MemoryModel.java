@@ -1,4 +1,4 @@
-package gui;
+package model;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.Timer;
+
+import gui.BaseCard;
 
 /**
  * Model-class for the Memory-Game. The class is used to handle the events when

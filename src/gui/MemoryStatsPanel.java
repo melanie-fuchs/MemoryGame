@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import fonts.FontBold;
 import fonts.FontRegular;
 import fonts.FontTitle;
+import languages.Messages;
 
 /**
  * The class extends <code>JPanel</code> and handles the settings within a started memory-game.

@@ -1,4 +1,4 @@
-package gui;
+package languages;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;

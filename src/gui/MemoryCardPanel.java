@@ -10,6 +10,8 @@ import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import model.MemoryModel;
+
 /**
  * The class extends <code>JPanel</code> and displays the memory-cards
  *
@@ -17,11 +19,6 @@ import javax.swing.border.EmptyBorder;
  */
 public class MemoryCardPanel extends JPanel {
 	private static final long serialVersionUID = -7225763224244935931L;
-
-	/**
-	 * int-value that represents the number of cards in the game
-	 */
-	private int memorySize; // 16, 20 or 30 cards possible
 
 	/**
 	 * A <code>Vector</code>-object that contains memory-cards of type
@@ -63,7 +60,6 @@ public class MemoryCardPanel extends JPanel {
 	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards, MemoryStatsPanel foreignPanel) {
 		this.setBorder(new EmptyBorder(10, 10, 15, 10));
 		this.foreignPanel = foreignPanel;
-		this.memorySize = memorySize;
 		this.cards = cards;
 		this.setGridLayout(memorySize);
 		this.fillPanel(cards);

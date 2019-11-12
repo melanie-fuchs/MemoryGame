@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+import model.BaseModel;
+
 /**
  * The class implements <code>ActionListener</code> and will be used as listener of the memory-cards
  * @author yume

@@ -27,7 +27,7 @@ public abstract class BaseCard extends JButton {
 	/**
 	 * returns the cardID
 	 */
-	protected abstract int getCardID();
+	public abstract int getCardID();
 	
 	
 	/**
@@ -42,5 +42,5 @@ public abstract class BaseCard extends JButton {
 	/**
 	 * The method switches the faces of the memory-card.
 	 */
-	protected abstract void switchFace();
+	public abstract void switchFace();
 }

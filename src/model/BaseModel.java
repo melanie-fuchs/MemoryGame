@@ -1,4 +1,4 @@
-package gui;
+package model;
 
 /**
  * <code>interface</code>-model that can be implemented by memory-models

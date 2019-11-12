@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 
 import fonts.FontRegular;
 import fonts.FontTitle;
+import languages.Messages;
 
 /**
  * The class extends <code>JFrame</code> and is the main class of the memory-game

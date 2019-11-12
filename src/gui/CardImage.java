@@ -27,7 +27,7 @@ public class CardImage extends BaseCard {
 	 * returns the cardID
 	 */
 	@Override
-	protected int getCardID() {
+	public int getCardID() {
 		return cardID;
 	}
 
@@ -101,7 +101,7 @@ public class CardImage extends BaseCard {
 	 * <code>faceUp</code> will be updated accordingly.
 	 */
 	@Override
-	protected void switchFace() {
+	public void switchFace() {
 		if (this.isEnabled()) {
 			if (faceUp) {
 				this.setIcon(null);

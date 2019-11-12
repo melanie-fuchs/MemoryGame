@@ -20,6 +20,7 @@ import javax.swing.SwingUtilities;
 import fonts.FontBold;
 import fonts.FontRegular;
 import fonts.FontTitle;
+import languages.Messages;
 
 /**
  * The class extends <code>JPanel</code> and displays the game-settings

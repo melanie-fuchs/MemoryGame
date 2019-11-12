@@ -1,6 +1,7 @@
 package gui;
 
 import fonts.FontTitle;
+import languages.Messages;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
