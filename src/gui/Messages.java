@@ -7,12 +7,19 @@ public class Messages {
 	private static final String english = "gui.lang_en";
 	private static final String german = "gui.lang_de";
 
-	private Messages(String language) {
-		if(language == german) {
-			private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(this.german);
-		} else {
-			private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(this.english);
-		}
+	private static String BUNDLE_NAME; //$NON-NLS-1$
+
+	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
+
+	public static void setLanguage(String language) {
+        if(language == "german") {
+            BUNDLE_NAME = german;
+        } else {
+            BUNDLE_NAME = english;
+        }
+    }
+
+	private Messages() {
 	}
 
 	public static String getString(String key) {
