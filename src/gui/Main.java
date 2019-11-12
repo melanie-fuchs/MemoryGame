@@ -5,6 +5,8 @@ import fonts.FontTitle;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main extends JFrame {
     private JPanel panel;
@@ -31,9 +33,23 @@ public class Main extends JFrame {
 
         buttonEnglish = new JButton();
         buttonEnglish.setIcon(new ImageIcon("icons\\en.png"));
+        buttonEnglish.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Messages.setLanguage("english");
+                new Memory();
+            }
+        });
 
         buttonGerman = new JButton();
         buttonGerman.setIcon(new ImageIcon("icons\\de.png"));
+        buttonGerman.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Messages.setLanguage("german");
+                new Memory();
+            }
+        });
 
         panel.add(buttonEnglish);
         panel.add(buttonGerman);

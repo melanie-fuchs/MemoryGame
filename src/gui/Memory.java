@@ -33,9 +33,8 @@ public class Memory extends JFrame {
 	 * Constructor that sets the size, resizability and visibility of the frame and
 	 * calls the method <code>createGUI()</code>
 	 */
-	private Memory(String language) {
+	public Memory() {
 		super(Messages.getString("Memory.gameTitleFrame")); //$NON-NLS-1$
-		Messages.setLanguage(language);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		this.setSize(450, 510);
