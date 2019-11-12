@@ -81,7 +81,7 @@ public class Main extends JFrame {
 	}
 
 	/**
-	 * The mathod stats the game
+	 * The method stats the game
 	 * 
 	 * @param args
 	 */
