@@ -23,7 +23,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import fonts.FontRegular;
-import languages.Messages;
 
 /**
  * The class extends <code>JFrame</code> and is used to load images and display them as a preview.
