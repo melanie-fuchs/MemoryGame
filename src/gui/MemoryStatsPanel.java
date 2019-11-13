@@ -38,6 +38,11 @@ public class MemoryStatsPanel extends JPanel {
 	private String pairsFound = "";
 
 	/**
+	 * String that is used to display the ratio (attempts / found pairs)
+	 */
+	private String ratio = "";
+
+	/**
 	 * int-value that represents the total number of cards in the game
 	 */
 	private int gameSize;
@@ -83,6 +88,16 @@ public class MemoryStatsPanel extends JPanel {
 	 * <code>JLabel</code>-object to display the number of found pairs
 	 */
 	private JLabel jlPairsFoundCounter;
+
+	/**
+	 * <code>JLabel</code>-object to display text
+	 */
+	private JLabel jlRatioText;
+
+	/**
+	 * <code>JLabel</code>-object to display the number of found pairs
+	 */
+	private JLabel jlRatioCounter;
 
 	/**
 	 * <code>JLabel</code>-object to display a message when the game is over
@@ -191,11 +206,11 @@ public class MemoryStatsPanel extends JPanel {
 
 		statsPanel.add(jlAttemptsText);
 		statsPanel.add(jlPairsFoundText);
-		statsPanel.add(new JLabel("")); // dummy
+		statsPanel.add(jlRatioText);
 		statsPanel.add(new JLabel("")); // dummy
 		statsPanel.add(jlAttemptsCounter);
 		statsPanel.add(jlPairsFoundCounter);
-		statsPanel.add(new JLabel("")); // dummy
+		statsPanel.add(jlRatioCounter);
 		statsPanel.add(jbEndGame);
 
 		return statsPanel;
