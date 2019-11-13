@@ -19,18 +19,18 @@ public class MemoryActionListener implements ActionListener {
 	 */
 	private Hashtable<Integer, BaseModel> modelHashtable;
 	/**
-	 * <code>MemoryStatsPanel</code>-object that represents a passive panel
+	 * <code>MemorySettingsPanel</code>-object that represents a passive panel
 	 */
-	private MemoryStatsPanel passivePanel;
+	private MemorySettingsPanel passivePanel;
 
 	/**
 	 * Constructor that instantiates the <code>HashTable</code>, sets the passive
 	 * panel and calls the method <code>addModel</code>.
 	 * 
 	 * @param model        An instance of a model of type <code>BaseModel</code>
-	 * @param passivePanel An instance of <code>MemoryStatsPanel</code>
+	 * @param passivePanel An instance of <code>MemorySettingsPanel</code>
 	 */
-	public MemoryActionListener(BaseModel model, MemoryStatsPanel passivePanel) {
+	public MemoryActionListener(BaseModel model, MemorySettingsPanel passivePanel) {
 		this.passivePanel = passivePanel;
 		modelHashtable = new Hashtable<Integer, BaseModel>();
 		this.addModel(model);
@@ -62,7 +62,7 @@ public class MemoryActionListener implements ActionListener {
 			int key = enuma.nextElement();
 			(modelHashtable.get(key)).action(hashCode);
 
-			// update JLabels in MemoryStatsPanel:
+			// update JLabels in MemorySettingsPanel:
 			int attempts = (modelHashtable.get(key)).getAttempts();
 			passivePanel.setAttemptsLabel(attempts);
 

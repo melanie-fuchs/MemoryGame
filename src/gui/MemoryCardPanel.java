@@ -35,7 +35,7 @@ public class MemoryCardPanel extends JPanel {
 	/**
 	 * A reference to another <code>JPanel</code> to update it.
 	 */
-	private MemoryStatsPanel foreignPanel;
+	private MemorySettingsPanel foreignPanel;
 
 	/**
 	 * instance of class <code>MemoryModel</code>
@@ -44,17 +44,17 @@ public class MemoryCardPanel extends JPanel {
 
 	/**
 	 * Constructor that takes an int-value that represents the gamesize (number of
-	 * cards in the game), a Vector of memory-cards and a MemoryStatsPanel. This
-	 * MemoryStatsPanel will be used to connect the class with the foreign Panel to
+	 * cards in the game), a Vector of memory-cards and a MemorySettingsPanel. This
+	 * MemorySettingsPanel will be used to connect the class with the foreign Panel to
 	 * display numbers.
 	 * 
 	 * @param memorySize   int-value that represents the total number of cards in
 	 *                     the game
 	 * @param cards        a <code>Vector</code>-object that contains memory-cards
-	 * @param foreignPanel a <code>MemoryStatsPanel</code> to update it's components
+	 * @param foreignPanel a <code>MemorySettingsPanel</code> to update it's components
 	 *                     from outside the class
 	 */
-	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards, MemoryStatsPanel foreignPanel) {
+	public MemoryCardPanel(int memorySize, Vector<BaseCard> cards, MemorySettingsPanel foreignPanel) {
 		this.setBorder(new EmptyBorder(10, 10, 15, 10));
 		this.foreignPanel = foreignPanel;
 		this.cards = cards;
