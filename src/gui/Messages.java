@@ -7,8 +7,8 @@ import java.util.ResourceBundle;
  * The class manages different languages. The language can be set from outside.
  */
 public class Messages {
-	private static final String english = Messages.getString("Messages.languageFileEnglish"); //$NON-NLS-1$
-	private static final String german = Messages.getString("Messages.languageFileGerman"); //$NON-NLS-1$
+	private static final String english = "gui.lang_en";
+	private static final String german = "gui.lang_de";
 
 	private static ResourceBundle resourceBundleEnglish = ResourceBundle.getBundle(english);
 	private static ResourceBundle resourceBundleGerman = ResourceBundle.getBundle(german);
