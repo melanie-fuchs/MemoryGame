@@ -276,7 +276,7 @@ public class GameSettingsGUI extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setGameMode(1);
-				jtfStatus.setText("You will play with preset colors");
+				jtfStatus.setText(Messages.getString("GameSettingsGUI.statusMessagePlayWithPresetColors")); //$NON-NLS-1$
 				jbUseColors.setFont(fontBold);
 				jbChoseFiles.setFont(fontRegular);
 				jlbChosenMode.setForeground(Color.BLACK);
