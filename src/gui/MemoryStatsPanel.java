@@ -205,7 +205,7 @@ public class MemoryStatsPanel extends JPanel {
 		jlPairsFoundCounter.setFont(fontStats);
 		jlRatioText = new JLabel("Ratio:", SwingConstants.CENTER);
 		jlRatioText.setFont(fontBold);
-		jlRatioCounter = new JLabel("", SwingConstants.CENTER);
+		jlRatioCounter = new JLabel("0.0", SwingConstants.CENTER);
 		jlRatioCounter.setFont(fontStats);
 
 		statsPanel.add(jlAttemptsText);
