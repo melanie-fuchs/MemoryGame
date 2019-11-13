@@ -55,18 +55,17 @@ public class MemoryModel implements BaseModel {
 	 * The Method sets the ratio of successfully revealed pairs
 	 */
 	public void refreshRatio() {
-		if(attempts != 0 && foundPairs != 0) {
+		if(getAttempts() == 0 || getPairsFound() == 0) {
 			
+			ratio = 0;
 			System.out.println("MemoryModel: RefreshRation: before refreshing: ratio = " + ratio);
 			System.out.println("Attempts " + attempts + "\t Pairs: " + foundPairs);
 			
-			ratio = Math.round(foundPairs / attempts);
+			
 			System.out.println("MemoryModel: RefreshRation: within try: ratio = " + ratio);
-		} else {
-			this.ratio = 0;
 		}
-		
-
+		System.out.println("Juuuu");
+		ratio = Math.round(foundPairs / attempts);
 	}
 
 	/**
@@ -146,7 +145,6 @@ public class MemoryModel implements BaseModel {
 	 */
 	@Override
 	public void action(int hashCode) {
-		this.refreshRatio();
 		BaseCard tempCard = getMemoryCard(hashCode);
 		tempCard.switchFace();
 		tempCard.setEnabled(false);
@@ -177,6 +175,7 @@ public class MemoryModel implements BaseModel {
 		} else {
 			this.handleFlippedCards(cardA, cardB, false, 1000);
 		}
+		this.refreshRatio();
 	}
 
 	
