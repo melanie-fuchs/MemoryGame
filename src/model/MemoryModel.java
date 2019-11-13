@@ -49,17 +49,22 @@ public class MemoryModel implements BaseModel {
 	/**
 	 * The ratio of successfully revealed pairs
 	 */
-	private double ratio = 0;
+	private double ratio = (100.0/100.0);
 
 	/**
 	 * The Method sets the ratio of successfully revealed pairs
 	 */
-	public void refreshRatio() {
-		if(getAttempts() == 0 || getPairsFound() == 0) {
-			ratio = 0;
+	private void refreshRatio() {
+		if(attempts < 1) {
+			//ratio = Math.round((0 * 100d) / 100d);
 			System.out.println("Ratio = 0, because one is zero");
 		} else {
-			ratio = Math.round((foundPairs / attempts)*100d)/100d;
+			System.out.println("now its about to round");
+			System.out.println("attempts: " + attempts + "   pairs: " + foundPairs);
+			//ratio = Math.round((foundPairs / attempts)*100d)/100d;
+			double r = (double)foundPairs / attempts;
+			ratio = Math.round((r * 100.00) / 100.00);
+			System.out.println("ratio is now: " + ratio);
 		}
 	}
 
@@ -145,6 +150,7 @@ public class MemoryModel implements BaseModel {
 		tempCard.setEnabled(false);
 		tempCardArray.add(tempCard);
 		if(tempCardArray.size() == 2){
+			this.refreshRatio();
 			this.checkPairs();
 		}
 	}
@@ -170,7 +176,6 @@ public class MemoryModel implements BaseModel {
 		} else {
 			this.handleFlippedCards(cardA, cardB, false, 1000);
 		}
-		this.refreshRatio();
 	}
 
 	
