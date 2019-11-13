@@ -64,7 +64,7 @@ public class MemoryModel implements BaseModel {
 			
 			System.out.println("MemoryModel: RefreshRation: within try: ratio = " + ratio);
 		}
-		System.out.println("Juuuu");
+		System.out.println("MemoryModel: refreshTatio: Juuuu");
 		ratio = Math.round(foundPairs / attempts);
 	}
 
