@@ -277,12 +277,15 @@ public class MemoryStatsPanel extends JPanel {
 
 	/**
 	 * The method updates the text of the <code>JLabel</code>-object
-	 * 'jlRatio' and displays the current ration of successfully revealed cards in %.
+	 * 'jlRatio' and displays the current ration of successfully revealed cards.
 	 *
-	 * @param r int-value that represents the current ratio in %
+	 * @param r int-value that represents the current ratio
 	 */
 	public void setRatio(int r) {
+		System.out.println("MemoryStatsPanel: setRation: r = " + r);
 		this.ratio = String.valueOf(r);
 		jlRatioCounter.setText(ratio);
+
+		System.out.println("MemoryStatsPanel: setRation: ration is now = " + ratio);
 	}
 }

@@ -55,11 +55,18 @@ public class MemoryModel implements BaseModel {
 	 * The Method sets the ratio of successfully revealed pairs
 	 */
 	public void refreshRatio() {
-		try {
-			this.ratio = Math.round(getPairsFound() / getAttempts());
-		} catch (ArithmeticException ae) {
+		if(attempts != 0 && foundPairs != 0) {
+			
+			System.out.println("MemoryModel: RefreshRation: before refreshing: ratio = " + ratio);
+			System.out.println("Attempts " + attempts + "\t Pairs: " + foundPairs);
+			
+			ratio = Math.round(foundPairs / attempts);
+			System.out.println("MemoryModel: RefreshRation: within try: ratio = " + ratio);
+		} else {
 			this.ratio = 0;
 		}
+		
+
 	}
 
 	/**
