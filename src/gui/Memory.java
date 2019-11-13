@@ -31,7 +31,7 @@ public class Memory extends JFrame {
 		this.setSize(450, 510);
 		
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 5 * 4);
 
 		this.createGUI();
 
