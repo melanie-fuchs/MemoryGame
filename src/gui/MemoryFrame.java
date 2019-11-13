@@ -39,7 +39,7 @@ public class MemoryFrame extends JFrame {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 
-		MemorySettingsPanel memoryStatsPanel = new MemorySettingsPanel(this, gameMode, memorySize);
+		MemoryStatsPanel memoryStatsPanel = new MemoryStatsPanel(this, gameMode, memorySize);
 		MemoryCardPanel memoryCardPanel = new MemoryCardPanel(memorySize, cards, memoryStatsPanel);
 
 		this.add(memoryCardPanel, BorderLayout.CENTER);

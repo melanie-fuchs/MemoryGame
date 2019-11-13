@@ -24,7 +24,7 @@ import fonts.FontTitle;
  * @author yume
  *
  */
-public class MemorySettingsPanel extends JPanel {
+public class MemoryStatsPanel extends JPanel {
 	private static final long serialVersionUID = 7254027254289317759L;
 
 	/**
@@ -128,7 +128,7 @@ public class MemorySettingsPanel extends JPanel {
 	 * @param gameSize    int-value that represents the total amount of cards in the
 	 *                    game
 	 */
-	public MemorySettingsPanel(JFrame parentFrame, int gameMode, int gameSize) {
+	public MemoryStatsPanel(JFrame parentFrame, int gameMode, int gameSize) {
 		this.parentFrame = parentFrame;
 		this.gameMode = gameMode;
 		this.gameSize = gameSize;
@@ -153,14 +153,14 @@ public class MemorySettingsPanel extends JPanel {
 		statsPanel = new JPanel();
 		statsPanel.setLayout(new GridLayout(2, 4, 60, 5));
 		statsPanel.setBorder(new EmptyBorder(10, 10, 15, 10));
-		jbEndGame = new JButton(Messages.getString("MemorySettingsPanel.buttonEndGame")); //$NON-NLS-1$
+		jbEndGame = new JButton(Messages.getString("MemoryStatsPanel.buttonEndGame")); //$NON-NLS-1$
 		jbEndGame.setFont(fontRegular);
 		jbEndGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (((JButton) e.getSource()).getText() == Messages.getString("MemorySettingsPanel.buttonEndGame")) { //$NON-NLS-1$
-					int close = JOptionPane.showConfirmDialog(getParentFrame(), Messages.getString("MemorySettingsPanel.confirmDialogDoYouWantToEndThisRound"), //$NON-NLS-1$
-							Messages.getString("MemorySettingsPanel.confirmDialogCloseMemoryWindow"), JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE); //$NON-NLS-1$
+				if (((JButton) e.getSource()).getText() == Messages.getString("MemoryStatsPanel.buttonEndGame")) { //$NON-NLS-1$
+					int close = JOptionPane.showConfirmDialog(getParentFrame(), Messages.getString("MemoryStatsPanel.confirmDialogDoYouWantToEndThisRound"), //$NON-NLS-1$
+							Messages.getString("MemoryStatsPanel.confirmDialogCloseMemoryWindow"), JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE); //$NON-NLS-1$
 					if (close == 0) {
 						parentFrame.dispose();
 					}
@@ -168,7 +168,7 @@ public class MemorySettingsPanel extends JPanel {
 						return;
 					}
 				} else {
-					if (((JButton) e.getSource()).getText() == Messages.getString("MemorySettingsPanel.buttonPlayAgain")) { //$NON-NLS-1$
+					if (((JButton) e.getSource()).getText() == Messages.getString("MemoryStatsPanel.buttonPlayAgain")) { //$NON-NLS-1$
 						if (gameMode == 1) { // if Player played with colors
 							new StartMemory(gameSize, gameMode);
 						} else { // if player played with images
@@ -180,11 +180,11 @@ public class MemorySettingsPanel extends JPanel {
 
 			}
 		});
-		jlAttemptsText = new JLabel(Messages.getString("MemorySettingsPanel.labelAttempts"), SwingConstants.CENTER); //$NON-NLS-1$
+		jlAttemptsText = new JLabel(Messages.getString("MemoryStatsPanel.labelAttempts"), SwingConstants.CENTER); //$NON-NLS-1$
 		jlAttemptsText.setFont(fontBold);
 		jlAttemptsCounter = new JLabel("0", SwingConstants.CENTER);
 		jlAttemptsCounter.setFont(fontStats);
-		jlPairsFoundText = new JLabel(Messages.getString("MemorySettingsPanel.labelFoundPairs"), SwingConstants.CENTER); //$NON-NLS-1$
+		jlPairsFoundText = new JLabel(Messages.getString("MemoryStatsPanel.labelFoundPairs"), SwingConstants.CENTER); //$NON-NLS-1$
 		jlPairsFoundText.setFont(fontBold);
 		jlPairsFoundCounter = new JLabel("0", SwingConstants.CENTER);
 		jlPairsFoundCounter.setFont(fontStats);
@@ -225,13 +225,13 @@ public class MemorySettingsPanel extends JPanel {
 	 * Game'-button to a 'Play Again'-button.
 	 */
 	public void setGameOver() {
-		jlGameOver.setText(Messages.getString("MemorySettingsPanel.labelCongratulationsYouWon")); //$NON-NLS-1$
+		jlGameOver.setText(Messages.getString("MemoryStatsPanel.labelCongratulationsYouWon")); //$NON-NLS-1$
 		jlGameOver.setForeground(Color.WHITE);
 		jlGameOver.setOpaque(true);
 		jlGameOver.setBackground(Color.BLACK);
 		gameOverPanel.setOpaque(true);
 		gameOverPanel.setBackground(Color.BLACK);
-		jbEndGame.setText(Messages.getString("MemorySettingsPanel.buttonPlayAgain")); //$NON-NLS-1$
+		jbEndGame.setText(Messages.getString("MemoryStatsPanel.buttonPlayAgain")); //$NON-NLS-1$
 	}
 
 	/**
