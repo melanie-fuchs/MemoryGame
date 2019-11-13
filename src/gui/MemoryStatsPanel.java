@@ -203,7 +203,7 @@ public class MemoryStatsPanel extends JPanel {
 		jlPairsFoundText.setFont(fontBold);
 		jlPairsFoundCounter = new JLabel("0", SwingConstants.CENTER);
 		jlPairsFoundCounter.setFont(fontStats);
-		jlRatioText = new JLabel("Ratio:", SwingConstants.CENTER);
+		jlRatioText = new JLabel(Messages.getString("MemoryStatsPanel.LabelRatioTitle"), SwingConstants.CENTER); //$NON-NLS-1$
 		jlRatioText.setFont(fontBold);
 		jlRatioCounter = new JLabel("0.0", SwingConstants.CENTER);
 		jlRatioCounter.setFont(fontStats);
