@@ -69,6 +69,9 @@ public class MemoryActionListener implements ActionListener {
 			int foundPairs = (modelHashtable.get(key)).getPairsFound();
 			passivePanel.setPairsFound(foundPairs);
 
+			int ratio = (modelHashtable.get(key)).getRatio();
+			passivePanel.setRatio(ratio);
+
 			int totalPairs = (modelHashtable.get(key)).getAllMemoryCardsSize() / 2;
 
 			if (totalPairs - foundPairs == 0) {

@@ -203,6 +203,10 @@ public class MemoryStatsPanel extends JPanel {
 		jlPairsFoundText.setFont(fontBold);
 		jlPairsFoundCounter = new JLabel("0", SwingConstants.CENTER);
 		jlPairsFoundCounter.setFont(fontStats);
+		jlRatioText = new JLabel("Ratio:", SwingConstants.CENTER);
+		jlRatioText.setFont(fontBold);
+		jlRatioCounter = new JLabel("", SwingConstants.CENTER);
+		jlRatioCounter.setFont(fontStats);
 
 		statsPanel.add(jlAttemptsText);
 		statsPanel.add(jlPairsFoundText);
@@ -269,5 +273,16 @@ public class MemoryStatsPanel extends JPanel {
 	public void setPairsFound(int pairs) {
 		pairsFound = String.valueOf(pairs);
 		jlPairsFoundCounter.setText(pairsFound);
+	}
+
+	/**
+	 * The method updates the text of the <code>JLabel</code>-object
+	 * 'jlRatio' and displays the current ration of successfully revealed cards in %.
+	 *
+	 * @param r int-value that represents the current ratio in %
+	 */
+	public void setRatio(int r) {
+		this.ratio = String.valueOf(r);
+		jlRatioCounter.setText(ratio);
 	}
 }

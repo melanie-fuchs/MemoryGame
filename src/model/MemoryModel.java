@@ -49,12 +49,23 @@ public class MemoryModel implements BaseModel {
 	/**
 	 * The ratio of successfully revealed pairs
 	 */
-	private int ratio = Math.round(getPairsFound() * 100 / getAttempts());
+	private int ratio = 0;
 
 	/**
-	 * The method returns % (int value) of successfully revealed cards
+	 * The Method sets the ratio of successfully revealed pairs
+	 */
+	public void refreshRatio() {
+		try {
+			this.ratio = Math.round(getPairsFound() / getAttempts());
+		} catch (ArithmeticException ae) {
+			this.ratio = 0;
+		}
+	}
+
+	/**
+	 * The method ratio (int value) of successfully revealed cards
 	 *
-	 * @return the ratio in %
+	 * @return the ratio of successfully revealed cards
 	 */
 	public int getRatio() {
 		return ratio;
@@ -128,6 +139,7 @@ public class MemoryModel implements BaseModel {
 	 */
 	@Override
 	public void action(int hashCode) {
+		this.refreshRatio();
 		BaseCard tempCard = getMemoryCard(hashCode);
 		tempCard.switchFace();
 		tempCard.setEnabled(false);

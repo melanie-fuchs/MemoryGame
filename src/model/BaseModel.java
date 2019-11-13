@@ -27,7 +27,12 @@ public interface BaseModel {
 	 * The method returns the number (int value) of successfully revealed pairs
 	 */
 	int getPairsFound();
-	
+
+	/**
+	 * The method returns % (int value) of successfully revealed cards
+	 */
+	public int getRatio();
+
 	/**
 	 * The method returns an int value that represents the amount of cards that are
 	 * contained in the <code>HashMap</code> 'allMemoryCards'.
