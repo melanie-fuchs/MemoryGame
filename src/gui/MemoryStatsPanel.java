@@ -281,11 +281,8 @@ public class MemoryStatsPanel extends JPanel {
 	 *
 	 * @param r int-value that represents the current ratio
 	 */
-	public void setRatio(int r) {
-		System.out.println("MemoryStatsPanel: setRatio: r = " + r);
+	public void setRatio(double r) {
 		ratio = String.valueOf(r);
 		jlRatioCounter.setText(ratio);
-
-		System.out.println("MemoryStatsPanel: setRatio: ratio is now = " + ratio);
 	}
 }

@@ -31,7 +31,7 @@ public interface BaseModel {
 	/**
 	 * The method returns % (int value) of successfully revealed cards
 	 */
-	public int getRatio();
+	public double getRatio();
 
 	/**
 	 * The method returns an int value that represents the amount of cards that are

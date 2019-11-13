@@ -69,7 +69,7 @@ public class MemoryActionListener implements ActionListener {
 			int foundPairs = (modelHashtable.get(key)).getPairsFound();
 			passivePanel.setPairsFound(foundPairs);
 
-			int ratio = (modelHashtable.get(key)).getRatio();
+			double ratio = (modelHashtable.get(key)).getRatio();
 			System.out.println("Ratio = " + ratio);
 			passivePanel.setRatio(ratio);
 

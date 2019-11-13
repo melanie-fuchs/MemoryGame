@@ -49,31 +49,26 @@ public class MemoryModel implements BaseModel {
 	/**
 	 * The ratio of successfully revealed pairs
 	 */
-	private int ratio = 0;
+	private double ratio = 0;
 
 	/**
 	 * The Method sets the ratio of successfully revealed pairs
 	 */
 	public void refreshRatio() {
 		if(getAttempts() == 0 || getPairsFound() == 0) {
-			
 			ratio = 0;
-			System.out.println("MemoryModel: RefreshRation: before refreshing: ratio = " + ratio);
-			System.out.println("Attempts " + attempts + "\t Pairs: " + foundPairs);
-			
-			
-			System.out.println("MemoryModel: RefreshRation: within try: ratio = " + ratio);
+			System.out.println("Ratio = 0, because one is zero");
+		} else {
+			ratio = Math.round((foundPairs / attempts)*100d)/100d;
 		}
-		System.out.println("MemoryModel: refreshTatio: Juuuu");
-		ratio = Math.round(foundPairs / attempts);
 	}
 
 	/**
-	 * The method ratio (int value) of successfully revealed cards
+	 * The method ratio (double value) of successfully revealed cards
 	 *
 	 * @return the ratio of successfully revealed cards
 	 */
-	public int getRatio() {
+	public double getRatio() {
 		return ratio;
 	}
 	
