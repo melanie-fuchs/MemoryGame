@@ -29,7 +29,7 @@ public class Main extends JFrame {
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		JLabel labelMemory = new JLabel(Messages.getString("Main.labelMemory"), SwingConstants.CENTER); //$NON-NLS-1$
+		JLabel labelMemory = new JLabel("Memory", SwingConstants.CENTER); //$NON-NLS-1$
 		labelMemory.setFont(new FontTitle(30));
 		labelMemory.setBorder(new EmptyBorder(15, 10, 10, 10));
 		this.add(labelMemory, BorderLayout.NORTH);
