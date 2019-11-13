@@ -45,6 +45,20 @@ public class MemoryModel implements BaseModel {
 	public int getPairsFound() {
 		return foundPairs;
 	}
+
+	/**
+	 * The ratio of successfully revealed pairs
+	 */
+	private int ratio = Math.round(getPairsFound() * 100 / getAttempts());
+
+	/**
+	 * The method returns % (int value) of successfully revealed cards
+	 *
+	 * @return the ratio in %
+	 */
+	public int getRatio() {
+		return ratio;
+	}
 	
 	/**
 	 * Vector-Object that is used to collect two cards (type <code>BaseCard</code>)
