@@ -88,17 +88,6 @@ public class PhotoChooserFrame extends JFrame {
 	private JPanel chooserPanel;
 
 	/**
-	 * <code>JPanel</code>-object that contains buttons
-	 */
-	private JPanel chooserPanelTop;
-
-	/**
-	 * <code>JPanel</code>-object that contains a status bar to display instructions
-	 * for the user
-	 */
-	private JPanel chooserPanelBottom;
-
-	/**
 	 * <code>JButton</code>-object to load images. A click on the button will open a
 	 * <code>JFileChooser</code>
 	 */
@@ -271,7 +260,7 @@ public class PhotoChooserFrame extends JFrame {
 	 * @see javax.swing.JFileChooser
 	 */
 	private JPanel getChooserPanelTop() {
-		chooserPanelTop = new JPanel();
+		JPanel chooserPanelTop = new JPanel();
 		// creating the button to load images (opens JFileChooser)
 		jbtLoadImages = new JButton(Messages.getString("PhotoChooserFrame.buttonLoadImages")); //$NON-NLS-1$
 		jbtLoadImages.setFont(fontRegular);
@@ -332,7 +321,7 @@ public class PhotoChooserFrame extends JFrame {
 	 * 
 	 */
 	private JPanel getChooserPanelBottom() {
-		chooserPanelBottom = new JPanel();
+		JPanel chooserPanelBottom = new JPanel();
 
 		// creating message with instructions
 		jlMessage = new JLabel(Messages.getString("PhotoChooserFrame.messageChooseXPhotosFromFilesystemPART1") + numberOfPhotos + Messages.getString("PhotoChooserFrame.messageChooseXPhotosFromFilesystemPART2")); //$NON-NLS-1$ //$NON-NLS-2$

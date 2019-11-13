@@ -21,15 +21,6 @@ public class Memory extends JFrame {
 	private static final long serialVersionUID = 7074129096697005584L;
 
 	/**
-	 * <code>JLabel</code>-object that represents the title of the game
-	 */
-	private JLabel jlbTitleMemory;
-	/**
-	 * <code>JTextArea</code>-object to display the game-instructions
-	 */
-	private JTextArea jtaInstructions;
-
-	/**
 	 * Constructor that sets the size, resizability and visibility of the frame and
 	 * calls the method <code>createGUI()</code>
 	 */
@@ -53,7 +44,7 @@ public class Memory extends JFrame {
 	 */
 	private void createGUI() {
 		// set title
-		jlbTitleMemory = new JLabel(Messages.getString("Memory.gameTitleInGame"), SwingConstants.CENTER); //$NON-NLS-1$
+		JLabel jlbTitleMemory = new JLabel(Messages.getString("Memory.gameTitleInGame"), SwingConstants.CENTER); //$NON-NLS-1$
 		jlbTitleMemory.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jlbTitleMemory.setFont(new FontTitle(36));
 
@@ -64,7 +55,7 @@ public class Memory extends JFrame {
 				+ Messages.getString("Memory.gameInstructions4") + Messages.getString("Memory.gameInstructions5") //$NON-NLS-1$ //$NON-NLS-2$
 				+ Messages.getString("Memory.gameInstructions6") //$NON-NLS-1$
 				+ Messages.getString("Memory.gameInstructions7") + Messages.getString("Memory.gameInstructions8"); //$NON-NLS-1$ //$NON-NLS-2$
-		jtaInstructions = new JTextArea(instructions);
+		JTextArea jtaInstructions = new JTextArea(instructions);
 		jtaInstructions.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		jtaInstructions.setFont(new FontRegular(14));
 		jtaInstructions.setEditable(false);

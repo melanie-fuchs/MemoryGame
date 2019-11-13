@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gui;
 
 import java.awt.event.ActionEvent;
@@ -45,7 +42,7 @@ public class MemoryActionListener implements ActionListener {
 	 * 
 	 * @param model An instance of a model of type <code>BaseModel</code>
 	 */
-	public void addModel(BaseModel model) {
+	private void addModel(BaseModel model) {
 		Integer key = model.hashCode();
 		modelHashtable.put(key, model);
 	}
@@ -57,22 +54,22 @@ public class MemoryActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// get hashCode of the pressed card:
-		int hashCode = ((BaseCard) e.getSource()).hashCode();
+		int hashCode = e.getSource().hashCode();
 
 		Enumeration<Integer> enuma = modelHashtable.keys();
 		while (enuma.hasMoreElements()) {
 			// execute method action of every model in the HashMap:
 			int key = enuma.nextElement();
-			((BaseModel) modelHashtable.get(key)).action(hashCode);
+			(modelHashtable.get(key)).action(hashCode);
 
 			// update JLabels in MemoryStatsPanel:
-			int attempts = ((BaseModel) modelHashtable.get(key)).getAttempts();
+			int attempts = (modelHashtable.get(key)).getAttempts();
 			passivePanel.setAttemptsLabel(attempts);
 
-			int foundPairs = ((BaseModel) modelHashtable.get(key)).getPairsFound();
+			int foundPairs = (modelHashtable.get(key)).getPairsFound();
 			passivePanel.setPairsFound(foundPairs);
 
-			int totalPairs = ((BaseModel) modelHashtable.get(key)).getAllMemoryCardsSize() / 2;
+			int totalPairs = (modelHashtable.get(key)).getAllMemoryCardsSize() / 2;
 
 			if (totalPairs - foundPairs == 0) {
 				passivePanel.setGameOver();

@@ -238,29 +238,12 @@ public class GameSettingsGUI extends JPanel {
 		group.add(jrbTwenty);
 		group.add(jrbThirty);
 
-		jrbSixteen.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setNumberOfCards(16);
-			}
-		});
-
-		jrbTwenty.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setNumberOfCards(20);
-			}
-		});
-
-		jrbThirty.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setNumberOfCards(30);
-			}
-		});
+		// lambda-expressions --> actionPerformed of ActionListeners updates setNumberOfCards
+		jrbSixteen.addActionListener(e -> setNumberOfCards(16));
+		jrbTwenty.addActionListener(e -> setNumberOfCards(20));
+		jrbThirty.addActionListener(e -> setNumberOfCards(30));
 
 		return jRadioBoxes;
-
 	}
 
 	/**

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gui;
 
 import java.awt.BorderLayout;
@@ -162,7 +159,7 @@ public class MemoryStatsPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (((JButton) e.getSource()).getText() == Messages.getString("MemoryStatsPanel.buttonEndGame")) { //$NON-NLS-1$
-					int close = JOptionPane.showConfirmDialog(parentFrame, Messages.getString("MemoryStatsPanel.confirmDialogDoYouWantToEndThisRound"), //$NON-NLS-1$
+					int close = JOptionPane.showConfirmDialog(getParentFrame(), Messages.getString("MemoryStatsPanel.confirmDialogDoYouWantToEndThisRound"), //$NON-NLS-1$
 							Messages.getString("MemoryStatsPanel.confirmDialogCloseMemoryWindow"), JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE); //$NON-NLS-1$
 					if (close == 0) {
 						parentFrame.dispose();

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gui;
 
 import java.awt.GridLayout;
@@ -93,8 +90,7 @@ public class MemoryCardPanel extends JPanel {
 	 */
 	private void fillPanel(Vector<BaseCard> cards) {
 		Collections.shuffle(cards); // shuffle cards in random order
-		for (int i = 0; i < cards.size(); i++) {
-			BaseCard currentCard = cards.get(i);
+		for (BaseCard currentCard : cards) {
 			currentCard.addActionListener(new MemoryActionListener(model, foreignPanel));
 			this.add(currentCard);
 			model.registerCard(currentCard);

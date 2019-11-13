@@ -17,9 +17,6 @@ import java.awt.event.ActionListener;
  */
 public class Main extends JFrame {
 	private static final long serialVersionUID = -702599035722119310L;
-	private JPanel panel;
-	private JButton buttonEnglish, buttonGerman;
-	private JLabel labelMemory;
 	private JFrame thisFrame = this;
 	
 	/**
@@ -32,7 +29,7 @@ public class Main extends JFrame {
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		labelMemory = new JLabel("Memory", SwingConstants.CENTER);
+		JLabel labelMemory = new JLabel("Memory", SwingConstants.CENTER);
 		labelMemory.setFont(new FontTitle(30));
 		labelMemory.setBorder(new EmptyBorder(15, 10, 10, 10));
 		this.add(labelMemory, BorderLayout.NORTH);
@@ -50,9 +47,9 @@ public class Main extends JFrame {
 	 * @return a <code>JPanel</code>-object with buttons on it
 	 */
 	private JPanel createGUI() {
-		panel = new JPanel();
+		JPanel panel = new JPanel();
 
-		buttonEnglish = new JButton();
+		JButton buttonEnglish = new JButton();
 		buttonEnglish.setIcon(new ImageIcon("icons\\en.png"));
 		buttonEnglish.addActionListener(new ActionListener() {
 			@Override
@@ -63,7 +60,7 @@ public class Main extends JFrame {
 			}
 		});
 
-		buttonGerman = new JButton();
+		JButton buttonGerman = new JButton();
 		buttonGerman.setIcon(new ImageIcon("icons\\de.png"));
 		buttonGerman.addActionListener(new ActionListener() {
 			@Override
