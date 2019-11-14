@@ -159,7 +159,6 @@ public class MemoryModel implements BaseModel {
 		tempCard.setEnabled(false);
 		tempCardArray.add(tempCard);
 		if(tempCardArray.size() == 2){
-			this.refreshRatio();
 			this.checkPairs();
 		}
 	}
@@ -181,8 +180,10 @@ public class MemoryModel implements BaseModel {
 		BaseCard cardB = tempCardArray.elementAt(1);
 		if (cardA.getCardID() == cardB.getCardID()) {
 			foundPairs += 1;
+			this.refreshRatio();
 			this.handleFlippedCards(cardA, cardB, true, 400);
 		} else {
+			this.refreshRatio();
 			this.handleFlippedCards(cardA, cardB, false, 1000);
 		}
 	}
