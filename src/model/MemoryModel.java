@@ -65,6 +65,12 @@ public class MemoryModel implements BaseModel {
 		}
 	}
 	
+	/**
+	 * The method scales a passed double-value to two decimals and returns it.
+	 * 
+	 * @param r a double-value that has to be scaled to two decimals
+	 * @return a double-value that is scaled to two decimals
+	 */
 	private double roundedRatio(double r) {
 		BigDecimal decimal = BigDecimal.valueOf(r);
 		decimal = decimal.setScale(2, RoundingMode.HALF_UP);
