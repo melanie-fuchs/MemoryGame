@@ -50,7 +50,7 @@ public class Main extends JFrame {
 		JPanel panel = new JPanel();
 
 		JButton buttonEnglish = new JButton();
-		buttonEnglish.setIcon(new ImageIcon("icons\\en.png"));
+		buttonEnglish.setIcon(new ImageIcon(Main.class.getResource("/en.png")));
 		buttonEnglish.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -61,7 +61,7 @@ public class Main extends JFrame {
 		});
 
 		JButton buttonGerman = new JButton();
-		buttonGerman.setIcon(new ImageIcon("icons\\de.png"));
+		buttonGerman.setIcon(new ImageIcon(Main.class.getResource("/de.png")));
 		buttonGerman.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
